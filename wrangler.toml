@@ -1,0 +1,14 @@
+name = "grimsby-spray-foam"
+compatibility_date = "2026-07-29"
+
+[assets]
+directory = "./site"
+not_found_handling = "404-page"
+
+# Serves /about from about.html, and / from index.html.
+# build.py writes every internal link and canonical tag in the same
+# extensionless form (/about, not /about.html), so nothing redirects.
+#
+# Do NOT set this to "none" - with "none", a request for "/" does not map
+# to index.html and the site root returns the 404 page.
+html_handling = "auto-trailing-slash"

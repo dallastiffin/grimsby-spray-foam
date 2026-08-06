@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Cloudflare / wrangler local state
+.wrangler/
+node_modules/
+
+# Note: the master *.png photos ARE tracked on purpose. They are the
+# originals that build.py --images reworks into site/images/. They are
+# never served to visitors because only site/ is deployed.
+
+# Safety net. Caledon Storefront.png is a photograph of ANOTHER COMPANY's
+# premises - their sign is on the building. It shipped with the shared photo
+# pool. The master is kept in ..\..\Spray Foam Insulation\Spray Foam Photos\
+# but it must never enter this repo or this site.
+Caledon Storefront.png
