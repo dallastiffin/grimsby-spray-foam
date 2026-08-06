@@ -199,7 +199,7 @@
   // It was carried over from Windsor when this folder was copied - leaving it
   // would have posted every Grimsby lead into the Windsor spreadsheet.
   // Rerun build.py after changing it so the cache fingerprint updates.
-  var SHEET_ENDPOINT = 'YOUR-APPS-SCRIPT-EXEC-URL';
+  var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwQbWCFiw35BJTgLT1hyjrO1reXZFFdxLyLsqWg12KRzxyHeWyzNrGVSjo9qjkH4vNg/exec';
 
   /* Fallback for CORS trouble. Leave false. If submissions are reaching
      the sheet but the page still shows an error, set this to true: the

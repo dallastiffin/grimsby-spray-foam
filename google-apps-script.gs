@@ -48,7 +48,6 @@ var COLUMNS = [
   ['Name',      function (d) { return d.name    || ''; }],
   ['Phone',     function (d) { return d.phone   || ''; }],
   ['Email',     function (d) { return d.email   || ''; }],
-  ['City',      function (d) { return d.city    || ''; }],
   ['Service',   function (d) { return d.service || ''; }],
   ['Message',   function (d) { return d.message || ''; }],
   ['Form',      function (d) { return d.source  || ''; }],
@@ -135,10 +134,10 @@ function appendRow(data) {
     sheet.appendRow(headers);
     sheet.getRange(1, 1, 1, headers.length)
          .setFontWeight('bold')
-         .setBackground('#14243f')
+         .setBackground('#2e2a26')  // brand charcoal, matches the site
          .setFontColor('#ffffff');
     sheet.setFrozenRows(1);
-    sheet.setColumnWidth(7, 420);   // give the message column room
+    sheet.setColumnWidth(6, 420);   // give the message column room
   }
 
   sheet.appendRow(COLUMNS.map(function (c) { return c[1](data); }));
@@ -153,7 +152,6 @@ function sendAlert(data) {
     'Name:     ' + (data.name    || '-'),
     'Phone:    ' + (data.phone   || '-'),
     'Email:    ' + (data.email   || '-'),
-    'City:     ' + (data.city    || '-'),
     'Service:  ' + (data.service || '-'),
     '',
     'Message:',
@@ -190,7 +188,6 @@ function testWrite() {
     name: 'Test Lead',
     phone: '226-000-0000',
     email: 'test@example.com',
-    city: 'Grimsby',
     service: 'Attic',
     message: 'This is a test row. Delete it.',
     source: 'Manual test',
