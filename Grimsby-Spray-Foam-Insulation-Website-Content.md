@@ -2,157 +2,171 @@
 
 # Spray Foam Insulation In Grimsby, Ontario
 
-## Insulation For A Town Built On Two Levels
+## Insulation That Seals The House As Well As Insulates It
 
-Grimsby runs from the Lake Ontario shoreline up to the face of the Niagara Escarpment. That is a rise of well over a hundred metres inside one small town, and it means a house on Winston Road and a house up near Ridge Road are not dealing with the same winter at all.
+Spray foam does two jobs in one pass. It insulates, and it stops air moving through the gaps that batt and blown-in leave behind. That is why a house sealed with foam feels different rather than just measuring better.
 
-We spray attics, basements, crawl spaces, garages and new builds across Grimsby and west Niagara. Every space gets looked at before it gets a number, and the number we write down is the number you pay.
+We install open cell and closed cell foam in attics, basements, crawl spaces, garages and new builds. Every space gets looked at before it gets a number, and the number we write down is the number you pay.
 
-## The Escarpment Changes The Job From One End Of Town To The Other
+## Why Air Sealing Matters More Than R-Value Alone
 
-Most towns get quoted as one climate. Grimsby cannot be.
+Most people shop for insulation by R-value. It is the number on the bag, so it is the number that gets compared.
 
-The lakeshore plain along Main Street and down through Grimsby Beach sits low, flat and close to open water. The land then climbs sharply to the escarpment brow above Mountain Road and Ridge Road. Communities sitting at the base and the top of the escarpment reliably pick up noticeably more snow than the flat ground a few kilometres north, because air pushed up the escarpment face cools, hits its dew point sooner and drops what it is carrying.
+The trouble is that R-value describes how well a material resists heat moving through it, and says nothing about air moving around it. A wall stuffed full of batt can still be draughty, because the batt was cut to fit a rectangle and the cavity is not one. Air finds the gap at the edge, the notch cut for a wire, the space behind the electrical box.
 
-That has practical consequences. Roofs on the upper part of town carry snow longer. Attics up there spend more of the winter under an insulating blanket of snow that hides heat loss until it shows up as an ice dam. Wind exposure is different too. A quote that ignores which half of Grimsby your house is in is a quote someone wrote without leaving their truck.
+Foam expands into all of that as it goes on. There is no edge for air to slip past, because there is no edge. You get the insulating value and the air seal from one product in one visit, and the air seal is usually where the comfort you notice actually comes from.
 
-## Grimsby Sits At Zero More Than It Sits Frozen
+## What Are The Benefits Of Foam Over Batt Insulation?
 
-Lake Ontario keeps this end of Niagara milder than most of the province. January here averages somewhere around minus three to minus seven, not the deep sustained cold you get north of the lake. More frost-free days, fewer weeks locked below freezing.
+It insulates and air seals in one pass. Batt slows heat but does nothing about air moving around it, which is why a well-stuffed wall can still feel draughty.
 
-That sounds like an easier climate to insulate for. In one specific way it is harder.
+It goes where cut material cannot. Foam expands into awkward corners, around wiring, over odd framing and into the gaps a rectangle of fibreglass was never going to fill.
 
-A house that stays frozen solid for three months has cold, dry cavities. A house that crosses zero over and over has cavities that warm slightly, hold moisture, then chill again. Every one of those crossings is a chance for warm indoor air to reach a cold surface and give up its water there. Grimsby gets a lot of those crossings. That is why air sealing matters more here than raw R-value alone, and why we spend as much time talking about where the air moves as how thick the foam is.
+Closed cell foam controls vapour as well as heat, so below-grade walls do not need a separate poly layer to do the same job.
+
+It holds its shape. Foam does not settle, slump or sag out of the top of a wall cavity the way loose and batt products can over a few decades.
+
+It stiffens what it is sprayed onto. Closed cell foam bonded to sheathing measurably adds racking strength, which matters on older framing.
+
+It cuts sound. Open cell foam in interior walls and floors noticeably reduces what you hear between rooms and from the road.
+
+## Closed Cell Or Open Cell? Here Is The Short Rule
+
+Below grade, against masonry, or anywhere moisture could reach it, use closed cell. Foundation walls, crawl space walls, rim joists, garage walls facing the weather.
+
+Above grade, dry, and mainly about air sealing or sound, open cell is usually the better buy. Interior partitions, floors between storeys, many attic applications.
+
+Closed cell runs roughly R-6 to R-7 per inch and acts as a vapour retarder at the right thickness. Open cell runs roughly R-3.5 to R-4 per inch, expands far more from the same material, and costs considerably less per square foot covered.
+
+Worth saying plainly, because people assume the opposite: open cell air seals just as well as closed cell. You are paying the difference for vapour control and R-value per inch, not for a better seal.
+
+Most houses want both, in different places. Anyone who only ever quotes one of them is quoting what is on their truck.
+
+## Attic Insulation
+
+The attic is where most houses lose the most heat, and where the loss is easiest to fix.
+
+There are two approaches and they are not interchangeable. Insulating the attic floor keeps the roof space cold and ventilated, which suits most houses with a straightforward roof. Insulating the roof deck brings the attic inside the heated envelope, which is the answer when there is ducting or an air handler up there, or when dormers and valleys make a continuous ceiling plane impossible.
+
+Either way, air sealing comes first. Pot lights, bath fan housings, plumbing stacks, wiring holes and the attic hatch all leak, and depth over the top of an unsealed ceiling is money wasted.
+
+Sometimes the honest answer is to seal the penetrations and blow in cellulose rather than foam the whole roof deck. We will tell you when that is the case.
+
+## Basement Insulation
+
+A bare foundation wall is a large, cold, permanently damp surface sitting inside your house. It pulls heat out all winter and feeds moisture into the air all year.
+
+Closed cell foam sprayed straight onto the concrete handles both. It insulates, and because it is a vapour retarder in its own right it stops ground moisture moving through the wall into the room.
+
+The thing we are most often asked to undo is a stud wall framed against the foundation and filled with batt. That gives moisture a cold surface to condense on, an air gap to circulate in, and paper facing to grow on. Foam leaves no gap and no cold surface for water to find. Studs go up in front of it afterwards, dry and out of trouble.
+
+## Crawl Space Insulation
+
+Crawl spaces cause more trouble than their size suggests. Cold floors above, a musty smell that comes and goes, humidity that will not settle.
+
+The old approach was to vent them and insulate the floor above. In this climate that backfires for much of the year, because warm humid summer air comes in through the vents, meets cool surfaces and condenses on them.
+
+Sealing the crawl space and bringing it inside the building envelope is what we recommend for almost every house. Vents closed, a lapped and taped sheet across the ground, closed cell foam on the perimeter walls and rim joist.
+
+Access drives the price here more than material does. A crawl space with a proper hatch and reasonable headroom is straightforward. One you reach through a hole in a closet floor is not.
+
+## Garage Insulation
+
+An uninsulated attached garage drags down every room it touches. It is usually why the bedroom over the garage never gets warm and why the shared wall feels cold to the hand in February.
+
+The wall between the garage and the house matters most, and it also has to work as a fire separation, so any work there has to keep that intact. The garage ceiling matters where there is living space above. The header above the overhead door is a reliable weak point that gets missed because it is awkward to reach once the door track is in.
+
+Detached garages and shops are worth doing if you use them. A sealed garage sits well above outside temperature with no heat running at all.
+
+## Rim Joists Are The Cheapest Real Win In Most Houses
+
+Where the floor framing lands on the foundation there is a band of timber running right around the house. In most houses it is thin, has a scrap of fibreglass shoved against it, and shows daylight at the corners.
+
+It is a small area that leaks disproportionately. Warm air rises, finds that gap and leaves. Cold air comes in low to replace it. That is the draught you feel across the floor in the room above.
+
+Sealing it is a few hours of work and a small amount of material. On plenty of houses it is the single best value item on the list, and we will quote it on its own without trying to sell you the whole basement.
+
+## New Construction And Renovations
+
+Framing stage is the cheapest and cleanest time to do this. Every cavity is open, nothing has to be cut out, and nothing finished has to be protected.
+
+Filling every cavity solid with closed cell is rarely the best value. A common assembly is one to two inches of closed cell against the sheathing to establish air and vapour control, then batt in front of it to build the rest of the R-value. You get the sealing performance of foam at the cost per R of mineral wool.
+
+We come in after the mechanical rough-in is inspected and before drywall. That sequence is not negotiable, and booking early is the difference between a clean install and one squeezed between two other trades.
+
+## Signs Your Insulation Is Not Doing Its Job
+
+Rooms that never match the rest of the house, particularly above a garage or over a crawl space.
+
+Draughts across the floor rather than from windows, which usually means the rim joist.
+
+Ice building along the roof edge in winter. Heat escaping through the ceiling melts snow high on the roof, the water runs to the cold overhang and refreezes.
+
+Bills climbing while your habits have not changed.
+
+Frost or damp staining on the underside of roof sheathing, which means warm moist air is reaching a cold surface.
+
+A musty smell that gets stronger in humid weather, usually from a crawl space or basement.
 
 ## Why Choose Grimsby Spray Foam Insulation?
 
 We are local, and small on purpose. The person who quotes your house is the person who sprays it.
 
-We install to CAN/ULC S705.2, which is the Canadian standard covering how spray foam is actually applied rather than just what it is made of. Ratio, substrate temperature, lift thickness and cure all sit inside that standard, and all of them are places a job goes wrong quietly.
+We install to CAN/ULC S705.2, the Canadian standard covering how foam is applied rather than what it is made of. Ratio, substrate temperature, lift thickness and cure all sit inside that standard, and every one of them is a place a job goes wrong quietly.
 
-We quote in writing with the product and the installed thickness stated. Not "spray foam the attic." The specification, so you can hold us to it and so you can compare us honestly against anyone else.
+We quote in writing with the product and the installed thickness stated. Not "spray foam the attic" — the specification, so you can hold us to it and compare us honestly against anyone else.
 
-We will tell you when foam is the wrong answer. Plenty of Grimsby attics need air sealing and blown-in over the top, not a full foam roof deck. Saying so costs us a bigger invoice and saves you a few thousand dollars, and we would rather have the referral.
-
-## What Are The Benefits Of Foam Over Batt Insulation?
-
-It insulates and air seals in one pass. Batt insulation slows heat but does nothing about air moving around it, which is why a well-stuffed wall can still feel draughty.
-
-It goes where cut material cannot. Foam expands into the awkward corners, around wiring, over odd framing and into the gaps that a rectangle of fibreglass was never going to fill.
-
-Closed-cell foam controls vapour as well as heat, so below-grade walls do not need a separate poly layer to do the same job.
-
-It holds its shape. Foam does not settle, slump or sag out of the top of a wall cavity the way loose and batt products can over a few decades.
-
-It stiffens what it is sprayed onto. Closed-cell foam bonded to sheathing measurably adds racking strength, which matters on older framing.
-
-It cuts sound. Open-cell foam in interior walls and floors noticeably reduces what you hear between rooms and from the road.
-
-## Attics Are Where The Snow Tells On You
-
-If you want to know how bad your attic is, wait for the first real snowfall and go outside.
-
-A roof that is losing heat melts its snow from underneath. You will see bare patches over the warm spots, and clean lines of snow over the truss chords where there is less heat coming through. Water from that melt runs down to the cold overhang, refreezes, and starts building the ice dam that eventually pushes water back under the shingles.
-
-Grimsby's upper streets get more snow and hold it longer, so this reads more clearly here than most places. It is a free diagnostic and it is more honest than a heating bill.
-
-The fix is not always foam everywhere. Often it is sealing every penetration through the ceiling — pot lights, bath fans, plumbing stacks, the attic hatch — and then getting the depth up. Sometimes it is foaming the roof deck and bringing the attic inside the building. We will tell you which one your roof needs.
-
-## Grimsby Beach And The Cottages That Are Older Than The Code
-
-The painted cottages down at Grimsby Beach started as a Methodist camp meeting ground in the 1880s. Some of those buildings are over 150 years old and a good number have been lived in year-round for decades now.
-
-They are a genuinely different job. Balloon framing runs stud cavities straight from the foundation to the attic with nothing blocking them, so a house like that has a chimney effect built into its walls. Foundations are often stone or rubble. There is frequently a crawl space rather than a basement, and it was never meant to be conditioned space.
-
-We do not go into those houses with a standard package. Blocking off the top of open stud bays and sealing the crawl space perimeter usually buys more comfort per dollar than anything else, and it has to be done in a way that lets an old wall keep drying. Filling a century-old wall cavity solid with the wrong product traps moisture in framing that has been managing fine for a hundred years.
-
-## Basements And Crawl Spaces Below The Escarpment
-
-Below-grade work is the bulk of what we do, and closed-cell foam is almost always the right product for it.
-
-Concrete is porous. Ground moisture moves through a foundation wall as vapour whether or not you have ever had visible water. Put fibreglass against that wall and you have given the moisture a cold surface to condense on and something organic to feed on. Put closed-cell foam directly onto the concrete and you have an insulation layer and a vapour retarder in one, with no gap for air to circulate behind.
-
-Crawl spaces are the same argument, more so. Sealing the perimeter and bringing the crawl space inside the building envelope is what we recommend for most Grimsby homes, rather than trying to insulate the floor above a vented space that will stay damp.
-
-One honest limit: foam is an air and vapour control layer. It is not waterproofing. If water comes through your foundation under pressure, that is a drainage and grading problem and it needs solving before we spray anything.
-
-## Rim Joists Are The Cheapest Real Win In Most Houses
-
-Where the floor framing sits down onto the foundation, there is a band of timber running right around the house. In most houses it is a thin piece of wood with a scrap of fibreglass shoved against it and daylight visible at the corners.
-
-It is a small area and it leaks disproportionately. Warm air rises, finds that gap, and leaves. Cold air comes in low to replace it. That is the draught you feel across the floor in the room above.
-
-Sealing a rim joist is a few hours of work with a small amount of material. On plenty of Grimsby houses it is the single best value item on the list, and we will happily quote it on its own without trying to sell you the whole basement.
-
-## Garages, And The Rooms Sitting Over Them
-
-An attached garage shares walls and usually a ceiling with heated space. When it is uninsulated it drags those rooms down with it, and a bedroom over a garage is almost always the coldest room in the house.
-
-The wall between the garage and the house matters most. So does the garage ceiling where there is living space above it, and the header above the overhead door, which is a reliably bad spot in most builds.
-
-Detached garages and shops are worth doing too if you use them. A sealed detached garage will sit well above outside temperature without any heat running at all, and it holds heat when you do run some.
-
-## The New Builds Around Casablanca And The GO Station
-
-Grimsby is one of the fastest-growing towns in Niagara. The Casablanca and Grimsby-on-the-Lake area has gone from open ground to a master-planned waterfront neighbourhood of condos and townhomes inside a decade, largely on the back of the GO station and the commute.
-
-New construction is the easiest and cheapest time to do this properly, because every cavity is open and nothing has to be cut out first. It is also where the current code has moved hardest.
-
-We work with builders at framing stage, after the mechanical rough-in and before drywall. Booking us into the schedule early is the difference between a clean install and a rushed one squeezed between two other trades.
-
-## Closed Cell Or Open Cell? Here Is The Short Rule
-
-Below grade, against masonry, or anywhere moisture could reach it — closed cell. Foundation walls, crawl space walls, rim joists, garage walls facing the weather.
-
-Above grade, dry, and mainly about air sealing and sound — open cell is usually the better buy. Interior partitions, floors between storeys, many attic applications.
-
-Closed cell runs roughly R-6 to R-7 per inch and acts as a vapour retarder. Open cell runs roughly R-3.5 to R-4 per inch, expands far more from the same material, and is considerably cheaper per square foot covered.
-
-Most houses want both, in different places. Anyone who only ever quotes one of them is quoting what they have on the truck.
-
-## What The Ontario Building Code Asks For Now
-
-The 2024 Ontario Building Code came into force on 1 January 2025, and SB-12 moved up. Grimsby sits in Climate Zone 1, meaning under 5000 heating degree days.
-
-For a new build on a high-efficiency gas furnace, the headline numbers went to roughly R-50 for a ceiling with an attic, around R-24 for above-grade walls, and about R-20 for basement walls. The previous numbers were R-40, R-19 and R-12. Basement walls nearly doubled.
-
-There is also far more weight on airtightness testing and whole-building energy modelling than there used to be. That is the part spray foam is genuinely good at, and it is why more Grimsby builders are specifying it now than five years ago.
-
-These are the compliance-package figures and they shift with your heating equipment and the path your designer chose. Your building department has the final say. We will build to whatever number is on your drawings.
-
-## Foam Has To Be Covered, And That Changes Your Budget
-
-Spray foam is combustible and Ontario does not let you leave it exposed in most occupied spaces. It normally needs a thermal barrier over it — half-inch drywall is the usual answer — or an approved coating where drywall is impractical.
-
-This catches people out on basements. The foam goes on, the basement looks finished, and then there is a drywall bill nobody budgeted for.
-
-We say this at the quote, every time, because finding out afterwards is a bad day for everyone. There are limited exemptions for spaces like unoccupied attics and crawl spaces with restricted access, and we will tell you plainly which side of that line your job falls on.
+We will tell you when foam is the wrong answer. Plenty of attics need air sealing and blown-in over the top, not a full foam roof deck. Saying so costs us a bigger invoice and saves you a few thousand dollars, and we would rather have the referral.
 
 ## What Happens During A Spray Foam Install
 
 We look at the space first, take moisture readings and check substrate temperature. Cold or damp substrate is the main reason foam fails to bond, and it is worth an hour to find out before the truck is committed.
 
-We mask and protect everything that is staying, and set up ventilation. You will not be in the house while we spray.
+We mask and protect everything staying, and set up ventilation. You will not be in the house while we spray.
 
-The foam goes on in controlled lifts rather than one thick pass. Rushing depth builds heat inside the foam and is how you get shrinkage, poor adhesion and, at the extreme, scorching.
+The foam goes on in controlled lifts rather than one thick pass. Rushing depth builds heat inside the foam, which is how you get shrinkage, poor adhesion and at the extreme, scorching.
 
-It rises and firms up within seconds and reaches working cure in a matter of hours. We trim anything proud of the framing so drywall sits flat, clean up, and walk the job with you against the written specification.
+It rises and firms within seconds and reaches working cure in hours. We trim anything proud of the framing so drywall sits flat, clean up, and walk the job with you against the written specification.
 
-Most houses are back in normal use the same day or the next morning, depending on the product and how well the space ventilates.
+Most houses are back in normal use the same day or the next morning.
+
+## What It Costs And What Moves The Number
+
+Across Ontario in 2026, open cell generally runs somewhere around one and a half to two and a half dollars a square foot, and closed cell roughly three to seven. Those are market ranges, not a quote for your house.
+
+Access moves the number more than material does. A walk-in basement and an eighteen-inch crawl space can take similar material and cost very differently, because most of what you are paying for is a crew working in that space for a day.
+
+Like most installers we have a minimum job size covering travel, equipment setup and the material we have to open regardless of how small the area is. We will tell you that number up front, and we will not quote a house over the phone.
+
+## Foam Has To Be Covered, And That Changes Your Budget
+
+Spray foam is combustible and Ontario does not let you leave it exposed in most occupied spaces. It normally needs a thermal barrier over it, and half-inch drywall is the usual answer.
+
+This catches people out on basements. The foam goes on, the basement looks finished, and then there is a drywall bill nobody budgeted for.
+
+There are limited exemptions for spaces like unoccupied attics and crawl spaces with restricted access. We tell you which side of that line your job falls on at the quote, because finding out afterwards is a bad day for everyone.
+
+## What The Ontario Building Code Asks For Now
+
+The 2024 Ontario Building Code came into force on 1 January 2025 and SB-12 moved up. For a new build on a high-efficiency gas furnace in this climate zone, the headline numbers went to roughly R-50 for a ceiling with an attic, around R-24 for above-grade walls and about R-20 for basement walls. The previous figures were R-40, R-19 and R-12.
+
+Basement walls nearly doubled. There is also far more weight on airtightness testing and whole-building energy modelling than there used to be, which is the part foam is genuinely good at.
+
+These are compliance-package figures and they shift with your heating equipment and the path your designer chose. Your building department has the final say, and we will build to whatever number is on your drawings.
 
 ## The Rebate That Is Live Right Now
 
-Ontario's Home Renovation Savings Program runs to the end of November 2026, and insulation is one of the qualifying measures. There are two routes and the difference matters.
+Ontario's Home Renovation Savings Program runs to the end of November 2026, and insulation qualifies. There are two routes and the difference matters.
 
 The standalone attic rebate does not need an energy assessment. You do the attic, it has to reach R-50 or better, and you claim. That is the simple one, and it is open to Enbridge Gas customers who own their home.
 
 The multi-measure route pays more for doing several things at once, but it does need an energy assessment before the work starts and another after it finishes. Start the work first and you have disqualified yourself.
 
-The amounts depend on how your home is heated and how much you improve. We are not the program administrator and we will not promise you a number. What we will do is tell you which of the two routes your job fits, so you do not book an audit you never needed.
+We are not the program administrator and we will not promise you a number. What we will do is tell you which of the two routes your job fits, so you do not book an audit you never needed.
 
 ## Serving Grimsby, Lincoln And West Niagara
 
-Grimsby itself, from the lakeshore and Grimsby Beach up through the older streets around Main and Ontario, out to Nelles Estates, and across the newer builds at Casablanca and Grimsby-on-the-Lake.
+Grimsby, from the lakeshore and Grimsby Beach up through the older streets around Main and Ontario, out to Nelles Estates and across the newer builds at Casablanca and Grimsby-on-the-Lake.
 
 Through the Town of Lincoln — Beamsville, Vineland, Jordan and Campden. These are neighbourhoods of one municipality rather than separate towns, and we cover all of them.
 
@@ -160,26 +174,25 @@ Smithville, Caistor Centre and Grassie to the south, Winona and Stoney Creek to 
 
 ## Frequently Asked Questions
 
-### Does it matter which part of Grimsby my house is in?
+### How do I know whether I need open cell or closed cell?
 
-More than people expect. Houses up toward the escarpment brow hold snow longer and sit more exposed, so attic and roof detailing matters more there. Down on the lakeshore plain the wind off the water and the constant crossing of zero make air sealing the priority. Same product, different emphasis.
-
-### My house is at Grimsby Beach and it is very old. Can you insulate it?
-
-Usually yes, but not with a standard package. Balloon-framed walls, stone foundations and crawl spaces that were never meant to be conditioned all need thinking about. Old walls have to be allowed to keep drying. We will look at it and tell you what is worth doing and what would do harm.
+Where it is going decides it. Below grade or anywhere moisture could reach it takes closed cell. Above grade and dry, where you want air sealing and quiet, open cell does the job for less. Most houses end up with both. Tell us the space and we will tell you which one belongs there.
 
 ### Will spray foam stop my basement leaking?
 
-No. It is an air and vapour control layer, not waterproofing, and it will not hold back water under pressure. If you have active water coming in, fix the grading, gutters and drainage first. We would rather turn a job down than spray over a live leak.
+No, and anyone who says otherwise is selling you something. Foam is an air and vapour control layer. It does not resist liquid water under pressure and it is not a substitute for drainage. Fix the grading, gutters and weeping tile first. We would rather turn work down than spray over a live leak.
 
-### How long do I need to be out of the house?
+### Can it go over the insulation that is already there?
 
-For most jobs, the working day plus a few hours. The foam reaches working cure quickly, but the space needs ventilating and you should not be in it while we spray. We will give you a specific time for your job rather than a general rule.
+Sometimes. If what is there is dry and in reasonable condition, foam can go over the top in some assemblies. If it is damp, mouldy or has had pests in it, it comes out first. Spraying over a wet problem seals it in. We will look before we say.
 
-### Is spray foam worth it compared to just topping up the attic?
+### How long does the smell last?
 
-Sometimes, and sometimes not. If your attic is accessible and the main problem is depth, air sealing the penetrations and blowing in more insulation is often better value than a full foam roof deck. Foam earns its price where air sealing is the actual problem, where space is tight, or where you are below grade. We will say which one you are.
+Properly mixed and properly applied foam is effectively odourless once cured, and cure takes hours rather than weeks. A smell that persists means something went wrong, usually an off-ratio mix or foam sprayed too thick in one pass. It is not something to wait out.
 
+### Is it worth it compared with just topping up what I have?
+
+Sometimes, and sometimes not. If your attic is accessible and the problem is simply depth, air sealing the penetrations and blowing in more insulation is often better value. Foam earns its price where air sealing is the actual problem, where space is tight, or where you are below grade. We will tell you which one you are.
 ---
 
 # SERVICE PAGE 1
