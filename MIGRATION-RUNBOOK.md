@@ -142,27 +142,73 @@ Do not proceed until the form has actually delivered a test lead.
 
 ---
 
-## Step 6 — Domain and DNS (Namecheap)
+## Step 6 — Domain and DNS
 
-1. Cloudflare → **Add a site** → `grimsbysprayfoaminsulation.com` → Free plan.
-2. Cloudflare scans the existing DNS. **Check the imported records before
-   continuing.**
-   - **Keep every MX and TXT record.** Those are email forwarding and domain
-     verification. Losing them kills your email.
-   - **Delete any leftover Namecheap parking A record** (usually `192.64.x.x`).
-   - Delete the A/CNAME records pointing at SitePanda.
-3. Cloudflare gives you two nameservers. In Namecheap: **Domain List → Manage →
-   Nameservers → Custom DNS**, paste both, save.
-4. Back in the Worker → **Settings → Domains & Routes → Add custom domain**.
-   Add **`www.grimsbysprayfoaminsulation.com`**.
-   - www is the canonical host. `DOMAIN` in `build.py` is set to the www form,
-     and it feeds every canonical tag, Open Graph URL, the sitemap and the
-     schema. Do not add the apex as the primary.
-5. Add the apex `grimsbysprayfoaminsulation.com` as well, then create a
-   **Redirect Rule**: apex → `https://www.grimsbysprayfoaminsulation.com/$1`,
-   301 permanent, preserving the path.
+### Actual DNS state, checked 5 August 2026
 
-Nameserver propagation is usually under an hour but can take up to 24.
+The zone is **already on Cloudflare**. No nameserver change is needed — that
+part of the original plan is done.
+
+```
+NS    cleo.ns.cloudflare.com, emely.ns.cloudflare.com
+A     grimsbysprayfoaminsulation.com      -> 104.21.19.109, 172.67.185.249
+A     www.grimsbysprayfoaminsulation.com  -> 104.21.19.109, 172.67.185.249
+```
+
+Those two IPs are Cloudflare proxy addresses, so both hostnames are **proxied
+(orange cloud)** through Cloudflare to the SitePanda origin. Traffic is already
+flowing through Cloudflare; only the origin changes.
+
+**These records must survive. Do not "clear all records".**
+
+```
+MX   10 eforward1 / eforward2 / eforward3.registrar-servers.com
+MX   15 eforward4.registrar-servers.com
+MX   20 eforward5.registrar-servers.com
+TXT  v=spf1 include:spf.efwd.registrar-servers.com ~all
+TXT  google-site-verification=07huYt3-2fhh3A0hxVbb4Gs7I8AjHZ3-8GAxzZtA5cM
+```
+
+The MX and SPF rows are Namecheap email forwarding — deleting them kills email
+to the domain. The `google-site-verification` row is the Search Console
+verification for this property; delete it and you lose the account you need for
+submitting the new sitemap.
+
+### The error you will hit, and why
+
+Adding a custom domain from the Worker screen returns:
+
+> Hostname 'grimsbysprayfoaminsulation.com' already has externally managed DNS
+> records (A, CNAME, etc). Delete them first or try a different hostname.
+
+Cloudflare will not attach a Worker to a hostname that already has a
+conflicting record, and it will not delete that record for you from this
+screen. It is not a permissions or ownership problem.
+
+### Procedure
+
+1. **Wire up the lead form first (step 1).** Attaching the domain makes the new
+   site live the moment it succeeds. A live site whose contact form posts to a
+   placeholder is worse than the old site.
+2. Cloudflare dashboard → click the domain → **DNS → Records**.
+3. Find the row for `www`. **Screenshot it or write down its target first** —
+   that is your undo if anything goes wrong.
+4. Delete **only** that row. Leave every MX and TXT row alone.
+5. Worker → **Settings → Domains & Routes → Add custom domain**. Type `www` in
+   the **Subdomain** box.
+   - **www first, not the root.** `DOMAIN` in `build.py` is the www host, and
+     it feeds every canonical tag, Open Graph URL, the sitemap and the schema.
+     Leaving the Subdomain box empty targets the apex, which is the wrong
+     primary.
+   - Cloudflare recreates the DNS record itself, pointed at the Worker.
+6. Once www is serving the new site, repeat for the apex: delete the apex `A`
+   row, then create a **Redirect Rule** — apex →
+   `https://www.grimsbysprayfoaminsulation.com/$1`, 301 permanent, preserving
+   the path. Do not attach the apex to the Worker as a second custom domain.
+
+Because the zone is already on Cloudflare and proxied, the cutover is close to
+instant and is reversible by restoring the record you noted in step 3. There is
+no 24-hour nameserver propagation wait.
 
 ---
 

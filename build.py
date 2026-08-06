@@ -1846,7 +1846,6 @@ urls = "\n".join(
   </url>""" for p in all_pages)
 open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write(
 f"""<?xml version="1.0" encoding="UTF-8"?>
-<!-- PLACEHOLDER DOMAIN: replace {DOMAIN} with the live domain before submitting to Google Search Console -->
 <urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
 {urls}
 </urlset>
@@ -1856,8 +1855,37 @@ open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8").write(
 f"""User-agent: *
 Allow: /
 
-# PLACEHOLDER DOMAIN - update before launch
 Sitemap: {DOMAIN}/sitemap.xml
+""")
+
+# ---------------------------------------------------------------------------
+#  WEB APP MANIFEST
+#
+#  Every page carries <link rel="manifest" href="site.webmanifest">, but this
+#  file used to be hand-maintained in site/ rather than generated. When this
+#  project was copied from the Windsor build only style.css and script.js came
+#  across from site/, so the manifest did not - and every page 404'd on it,
+#  live, until a network trace caught it.
+#
+#  Generating it here means it cannot be lost in a copy again, and theme_color
+#  cannot drift away from THEME_COLOR and --color-primary.
+# ---------------------------------------------------------------------------
+_manifest_short = "%s Spray Foam" % CITY
+open(os.path.join(OUT, "site.webmanifest"), "w", encoding="utf-8").write(
+f"""{{
+  "name": "{BUSINESS}",
+  "short_name": "{_manifest_short}",
+  "description": "{INDUSTRY_BLURB} in {CITY_PROV}.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "{THEME_COLOR}",
+  "icons": [
+    {{ "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" }},
+    {{ "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png" }},
+    {{ "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }}
+  ]
+}}
 """)
 
 
