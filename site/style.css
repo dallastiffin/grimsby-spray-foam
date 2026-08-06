@@ -1424,3 +1424,48 @@ h1, h2, h3, h4,
   letter-spacing: 0.02em;
   text-transform: none;
 }
+
+/* --------------------------------------------------------------------------
+   Footer service-area map
+
+   Google's embed code hands you a fixed 600x450 box. That overflows on a
+   phone and leaves a gap on a wide screen, so build.py strips the width and
+   height attributes and the sizing is done here instead.
+
+   aspect-ratio keeps the frame proportional with no padding-top hack. The
+   min-height is a floor for very narrow screens, where a 21:9 band would
+   collapse to something useless.
+   -------------------------------------------------------------------------- */
+.footer-map {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, .14);
+}
+
+.footer-map h3 {
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+}
+
+.footer-map__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 6;
+  min-height: 220px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-primary-light);   /* holds the space while lazy-loading */
+}
+
+.footer-map__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .footer-map__frame { aspect-ratio: 4 / 3; min-height: 260px; }
+}

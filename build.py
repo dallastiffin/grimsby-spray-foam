@@ -178,6 +178,18 @@ SERVICE_AREA = [
 ]
 TOPBAR_AREA = "Grimsby, Beamsville, Vineland, Smithville &amp; across west Niagara"
 
+# --- footer map ------------------------------------------------------------
+# The src of a Google Maps "Embed a map" iframe, centred on the service area.
+# Get a new one per city: maps.google.com -> Share -> Embed a map -> copy the
+# src value out of the iframe it gives you. Set to "" to drop the map.
+#
+# Deliberately not the whole <iframe> tag. build.py owns the width, height,
+# loading and title attributes so the map stays responsive and accessible
+# rather than the 600x450 fixed box Google hands you.
+MAP_EMBED_URL = ("https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11634.397796191022"
+                 "!2d-79.56173837985783!3d43.19691477956117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768"
+                 "!4f13.1!5e0!3m2!1sen!2sca!4v1785984840343!5m2!1sen!2sca")
+
 # ==========================================================================
 #  END CONFIG
 # ==========================================================================
@@ -752,6 +764,24 @@ SIDEBAR = f"""
 
 def footer():
     svc = "".join(f'<li><a href="{s}">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)
+
+    # Service-area map. loading="lazy" matters here - this sits on all 14
+    # pages, and an eagerly loaded Google Maps frame is a few hundred KB of
+    # third-party script on every single one. title= gives the frame an
+    # accessible name; without it a screen reader announces "iframe".
+    map_block = ""
+    if MAP_EMBED_URL:
+        map_block = f"""
+    <div class="footer-map">
+      <h3>Where We Work</h3>
+      <div class="footer-map__frame">
+        <iframe src="{MAP_EMBED_URL}"
+                title="Map of the {BUSINESS} service area around {CITY_PROV}"
+                loading="lazy" allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>"""
+
     return f"""
 <!-- ============================= FOOTER ============================= -->
 <footer class="site-footer">
@@ -799,6 +829,7 @@ def footer():
       </div>
 
     </div>
+{map_block}
 
     <div class="footer-bottom">
       <p style="margin:0;">&copy; <span data-year>2026</span> {BUSINESS}. All rights reserved.</p>
