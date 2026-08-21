@@ -1322,12 +1322,17 @@ home += f"""
     </picture>
   </div>
 
+  <!-- Single centred column. The estimate form used to sit in the right half
+       of this hero; it now lives in the #quote section further down the page,
+       which is what the hero buttons point at. One column means the scrim can
+       be even rather than weighted to the left, and the headline is not
+       competing with a form card for attention above the fold. -->
   <div class="container hero__inner">
 
-    <!-- Business name as a masthead across the top of the hero.
-         Deliberately a paragraph, not a heading, so the page keeps exactly
-         one top-level heading - the search term line directly beneath it. -->
+    <!-- Business name and service area above the h1. Both are paragraphs, not
+         headings, so the page keeps exactly one top-level heading. -->
     <p class="hero__brand">{BUSINESS}</p>
+    <p class="hero__eyebrow">{CITY_PROV} &middot; and across {REGION}</p>
 
     <div class="hero__intro">
       <h1 id="hero-heading">{esc(h1)}</h1>
@@ -1337,11 +1342,10 @@ home += f"""
       </ul>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-        <a class="btn btn--ghost btn--lg" href="#services">See Our Services</a>
+        <a class="btn btn--ghost btn--lg" href="#quote">Get a Free Quote</a>
       </div>
     </div>
 
-{hero_form("Home Page")}
   </div>
 </section>
 

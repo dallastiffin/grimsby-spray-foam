@@ -47,7 +47,7 @@
 <link rel="preload" as="image" href="images/hero-grimsby-1200.jpg"
       imagesrcset="images/hero-grimsby-800.webp 800w, images/hero-grimsby-1200.webp 1200w"
       imagesizes="100vw" type="image/webp">
-<link rel="stylesheet" href="style.css?v=24335d16">
+<link rel="stylesheet" href="style.css?v=9c606a81">
 <script src="script.js?v=19e0003b" defer></script>
 
 <!-- ===== Schema.org: Local Business ===== -->
@@ -223,10 +223,10 @@
     },
     {
       "@type": "Question",
-      "name": "How long does the smell last?",
+      "name": "How long does the spray foam insulation smell last?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Properly mixed and properly applied foam is effectively odourless once cured, and cure takes hours rather than weeks. A smell that persists means something went wrong, usually an off-ratio mix or foam sprayed too thick in one pass. It is not something to wait out."
+        "text": "Properly mixed and properly applied foam is effectively odourless once cured, and cure takes hours rather than weeks. A smell that persists means something went wrong, usually an off-ratio mix or spray foam applied too thick in one pass. It is not something to wait out."
       }
     },
     {
@@ -316,102 +316,33 @@
     </picture>
   </div>
 
+  <!-- Single centred column. The estimate form used to sit in the right half
+       of this hero; it now lives in the #quote section further down the page,
+       which is what the hero buttons point at. One column means the scrim can
+       be even rather than weighted to the left, and the headline is not
+       competing with a form card for attention above the fold. -->
   <div class="container hero__inner">
 
-    <!-- Business name as a masthead across the top of the hero.
-         Deliberately a paragraph, not a heading, so the page keeps exactly
-         one top-level heading - the search term line directly beneath it. -->
+    <!-- Business name and service area above the h1. Both are paragraphs, not
+         headings, so the page keeps exactly one top-level heading. -->
     <p class="hero__brand">Grimsby Spray Foam Insulation</p>
+    <p class="hero__eyebrow">Grimsby, Ontario &middot; and across Niagara Region</p>
 
     <div class="hero__intro">
       <h1 id="hero-heading">Spray Foam Insulation In Grimsby, Ontario</h1>
       <p>Spray foam does two jobs in one pass. It insulates, and it stops air moving through the gaps that batt and blown-in leave behind. That is why a house sealed with foam feels different rather than just measuring better.</p>
-      <p>We install open cell and closed cell foam in attics, basements, crawl spaces, garages and new builds. Every space gets looked at before it gets a number, and the number we write down is the number you pay.</p>
+      <p>We install open cell and closed cell spray foam in attics, basements, crawl spaces, garages and new builds. Every space gets looked at before it gets a number, and the number we write down is the number you pay.</p>
       <ul class="hero__badges">
-        <li>Installed to CAN/ULC S705.2</li>
-        <li>Attics, garages, basements and crawl spaces</li>
-        <li>Fixed written quotes</li>
+        <li>Free on-site insulation assessment</li>
+        <li>Attic, garage, basement and crawl space spray foam</li>
+        <li>Fixed written spray foam quotes</li>
       </ul>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="tel:+12896724160">Call Now: (289) 672-4160</a>
-        <a class="btn btn--ghost btn--lg" href="#services">See Our Services</a>
+        <a class="btn btn--ghost btn--lg" href="#quote">Get a Free Quote</a>
       </div>
     </div>
 
-      <div class="hero-form" id="hero-quote">
-        <h2 class="hero-form__title" id="hero-form-heading">Get Your Home Looked At</h2>
-        <p class="hero-form__sub">Tell us the space, roughly how big it is, and what it is doing wrong. We will come out and see it.
-          Or call <a href="tel:+12896724160">(289) 672-4160</a>.</p>
-
-      <div class="form-success" role="status" aria-live="polite">
-        <div>
-          <strong>Thanks &mdash; your request has been received.</strong>
-          Someone from Grimsby Spray Foam Insulation will be in touch within one business day.
-          For anything urgent, call <a href="tel:+12896724160">(289) 672-4160</a>.
-        </div>
-      </div>
-
-        <form class="lead-form" action="#" method="post" novalidate
-              data-source="Home Page hero" aria-labelledby="hero-form-heading">
-          <div class="form-grid">
-
-          <div class="field">
-            <label for="hf-name">Name <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="hf-name" name="name" autocomplete="name"
-                   data-label="Name" placeholder="Your full name" required>
-            <span class="field__error" aria-live="polite"></span>
-          </div>
-
-          <div class="field">
-            <label for="hf-phone">Phone <span class="req" aria-hidden="true">*</span></label>
-            <input type="tel" id="hf-phone" name="phone" autocomplete="tel"
-                   data-label="Phone" placeholder="226-000-0000" required>
-            <span class="field__error" aria-live="polite"></span>
-          </div>
-
-          <div class="field">
-            <label for="hf-email">Email <span class="req" aria-hidden="true">*</span></label>
-            <input type="email" id="hf-email" name="email" autocomplete="email"
-                   data-label="Email" placeholder="you@example.com" required>
-            <span class="field__error" aria-live="polite"></span>
-          </div>
-
-          <div class="field field--full">
-            <label for="hf-service">Service Interested In <span class="req" aria-hidden="true">*</span></label>
-            <select id="hf-service" name="service" data-label="Service interested in" required>
-            <option value="">Please choose a service</option>
-            <option value="Attic">Attic</option>
-            <option value="Basement or Crawl Space">Basement or Crawl Space</option>
-            <option value="Garage">Garage</option>
-            <option value="New Construction">New Construction</option>
-            <option value="Whole Home">Whole Home</option>
-            <option value="Other">Other</option>
-            </select>
-            <span class="field__error" aria-live="polite"></span>
-          </div>
-
-          <div class="field field--full">
-            <label for="hf-message">Message</label>
-            <textarea id="hf-message" name="message" data-label="Message"
-                      rows="3"
-                      placeholder="Rough size of the space, what it is used for, and whether water has ever come in."></textarea>
-            <span class="field__error" aria-live="polite"></span>
-          </div>
-
-          <!-- Honeypot: hidden from people, filled in by bots. Not a real field. -->
-          <div class="field field--full" aria-hidden="true"
-               style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
-            <label for="hf-botcheck">Leave this field empty</label>
-            <input type="text" id="hf-botcheck" name="botcheck" tabindex="-1" autocomplete="off">
-          </div>
-
-            <div class="field field--full">
-              <button class="btn btn--primary btn--block" type="submit">Request an Estimate</button>
-              <p class="form-note">Photos of ice dams, damp walls or failed foam save us both a visit.</p>
-            </div>
-          </div>
-        </form>
-      </div>
   </div>
 </section>
 
@@ -437,7 +368,7 @@
     <span class="eyebrow">Why Us</span>
     <h2 id="why-heading">Why Choose Grimsby Spray Foam Insulation?</h2>
     <p>We are local, and small on purpose. The person who quotes your house is the person who sprays it.</p>
-    <p>We install to CAN/ULC S705.2, the Canadian standard covering how foam is applied rather than what it is made of. Ratio, substrate temperature, lift thickness and cure all sit inside that standard, and every one of them is a place a job goes wrong quietly.</p>
+    <p>Spray foam is mixed on site out of two components, and the ratio, the substrate temperature and the thickness of each pass all decide whether the insulation performs. We take those readings and work to them, because every one of them is a place a spray foam job goes wrong quietly.</p>
     <p>We quote in writing with the product and the installed thickness stated. Not "spray foam the attic" — the specification, so you can hold us to it and compare us honestly against anyone else.</p>
     <p>We will tell you when foam is the wrong answer. Plenty of attics need air sealing and blown-in over the top, not a full foam roof deck. Saying so costs us a bigger invoice and saves you a few thousand dollars, and we would rather have the referral.</p>
     <div class="btn-row">
@@ -454,7 +385,7 @@
     <div class="section-head is-centered">
       <span class="eyebrow">What We Install</span>
       <h2 id="services-heading">What We Insulate In Grimsby</h2>
-      <p class="lead">Attics through to new builds. Every space specified against what it is actually doing rather than off a price list.</p>
+      <p class="lead">Attic insulation through to new build spray foam. Every space is specified against what it is actually doing rather than priced off a list.</p>
     </div>
     <div class="grid grid--3">
       <article class="service-card">
@@ -490,7 +421,7 @@
           <picture>
             <source type="image/webp" srcset="images/service-basement-insulation-640.webp 640w, images/service-basement-insulation-960.webp 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px">
             <img src="images/service-basement-insulation-640.jpg" srcset="images/service-basement-insulation-640.jpg 640w, images/service-basement-insulation-960.jpg 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px"
-                 alt="Installer spraying closed cell foam along a basement foundation wall" width="640" height="400" loading="lazy" decoding="async">
+                 alt="Installer spraying closed cell spray foam along a basement foundation wall" width="640" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
         <div class="service-card__body">
@@ -509,7 +440,7 @@
         </div>
         <div class="service-card__body">
           <h3><a href="/crawl-space-insulation" style="text-decoration:none;color:inherit;">Crawl Space Insulation</a></h3>
-          <p>A crawl space is the part of the house nobody looks at and everybody feels. Cold floors in the rooms above, a musty smell that comes and goes with the weather, and humidity that will not settle usually trace back down there.</p>
+          <p>A crawl space is the part of the house nobody looks at and everybody feels. Cold floors in the rooms above, a musty smell that comes and goes with the weather, and humidity that will not settle usually trace back to crawl space insulation that was never there or never worked.</p>
           <a class="service-card__link" href="/crawl-space-insulation">View Crawl Space Insulation</a>
         </div>
       </article>
@@ -560,15 +491,15 @@
     <div class="grid grid--3">
       <article class="feature">
         <div class="feature__icon" aria-hidden="true">&#10003;</div>
-        <p>It insulates and air seals in one pass. Batt slows heat but does nothing about air moving around it, which is why a well-stuffed wall can still feel draughty.</p>
+        <p>Spray foam insulation insulates and air seals in one pass. Batt insulation slows heat but does nothing about air moving around it, which is why a well-stuffed wall can still feel draughty.</p>
       </article>
       <article class="feature">
         <div class="feature__icon" aria-hidden="true">&#10003;</div>
-        <p>It goes where cut material cannot. Foam expands into awkward corners, around wiring, over odd framing and into the gaps a rectangle of fibreglass was never going to fill.</p>
+        <p>Spray foam insulation goes where cut insulation cannot. It expands into awkward corners, around wiring, over odd framing and into the gaps a rectangle of fibreglass insulation was never going to fill.</p>
       </article>
       <article class="feature">
         <div class="feature__icon" aria-hidden="true">&#10003;</div>
-        <p>Closed cell foam controls vapour as well as heat, so below-grade walls do not need a separate poly layer to do the same job.</p>
+        <p>Closed cell spray foam controls vapour as well as heat, so below-grade walls do not need a separate poly layer to do the same job.</p>
       </article>
       <article class="feature">
         <div class="feature__icon" aria-hidden="true">&#10003;</div>
@@ -576,11 +507,11 @@
       </article>
       <article class="feature">
         <div class="feature__icon" aria-hidden="true">&#10003;</div>
-        <p>It stiffens what it is sprayed onto. Closed cell foam bonded to sheathing measurably adds racking strength, which matters on older framing.</p>
+        <p>It stiffens what it is sprayed onto. Closed cell spray foam bonded to sheathing measurably adds racking strength, which matters on older framing.</p>
       </article>
       <article class="feature">
         <div class="feature__icon" aria-hidden="true">&#10003;</div>
-        <p>It cuts sound. Open cell foam in interior walls and floors noticeably reduces what you hear between rooms and from the road.</p>
+        <p>Spray foam insulation cuts sound. Open cell insulation in interior walls and floors noticeably reduces what you hear between rooms and from the road.</p>
       </article>
     </div>
   </div>
@@ -590,8 +521,8 @@
 <!-- ============================= CTA BAND ============================= -->
 <section class="cta-band" aria-label="Contact call to action">
   <div class="container">
-    <h2>Not Sure Which Foam You Need?</h2>
-    <p>Tell us what the space does wrong in January and what it does in July. That usually settles which foam it wants.</p>
+    <h2>Not Sure Which Spray Foam Insulation You Need?</h2>
+    <p>Tell us what the space does wrong in January and what it does in July. That usually settles which spray foam insulation it wants.</p>
     <div class="btn-row is-centered">
         <a class="btn btn--primary btn--lg" href="#quote">Book Your Consultation</a>
         <a class="btn btn--ghost btn--lg" href="/contact-us">Contact Us Today</a>
@@ -607,13 +538,13 @@
     <div class="layout-split">
       <div class="prose">
       <section class="content-block">
-        <h2>Why Air Sealing Matters More Than R-Value Alone</h2>
-        <p>Most people shop for insulation by R-value. It is the number on the bag, so it is the number that gets compared.</p>
-        <p>The trouble is that R-value describes how well a material resists heat moving through it, and says nothing about air moving around it. A wall stuffed full of batt can still be draughty, because the batt was cut to fit a rectangle and the cavity is not one. Air finds the gap at the edge, the notch cut for a wire, the space behind the electrical box.</p>
-        <p>Foam expands into all of that as it goes on. There is no edge for air to slip past, because there is no edge. You get the insulating value and the air seal from one product in one visit, and the air seal is usually where the comfort you notice actually comes from.</p>
+        <h2>Why Spray Foam Air Sealing Matters More Than R-Value Alone</h2>
+        <p>Most people shop for insulation by R-value. It is the number on the insulation bag, so it is the number that gets compared.</p>
+        <p>The trouble is that R-value describes how well insulation resists heat moving through it, and says nothing about air moving around it. A wall stuffed full of batt insulation can still be draughty, because the insulation was cut to fit a rectangle and the cavity is not one. Air finds the gap at the edge, the notch cut for a wire, the space behind the electrical box.</p>
+        <p>Spray foam expands into all of that as it goes on. There is no edge for air to slip past, because there is no edge. You get the insulating value and the air seal from one product in one visit, and the air seal is usually where the comfort you notice actually comes from.</p>
       </section>
       <section class="content-block">
-        <h2>Closed Cell Or Open Cell? Here Is The Short Rule</h2>
+        <h2>Closed Cell Or Open Cell Spray Foam? Here Is The Short Rule</h2>
         <p>Below grade, against masonry, or anywhere moisture could reach it, use closed cell. Foundation walls, crawl space walls, rim joists, garage walls facing the weather.</p>
         <p>Above grade, dry, and mainly about air sealing or sound, open cell is usually the better buy. Interior partitions, floors between storeys, many attic applications.</p>
         <p>Closed cell runs roughly R-6 to R-7 per inch and acts as a vapour retarder at the right thickness. Open cell runs roughly R-3.5 to R-4 per inch, expands far more from the same material, and costs considerably less per square foot covered.</p>
@@ -622,80 +553,80 @@
       </section>
       <section class="content-block">
         <h2>Attic Insulation</h2>
-        <p>The attic is where most houses lose the most heat, and where the loss is easiest to fix.</p>
+        <p>The attic is where most houses lose the most heat, and where poor insulation is easiest to fix.</p>
         <p>There are two approaches and they are not interchangeable. Insulating the attic floor keeps the roof space cold and ventilated, which suits most houses with a straightforward roof. Insulating the roof deck brings the attic inside the heated envelope, which is the answer when there is ducting or an air handler up there, or when dormers and valleys make a continuous ceiling plane impossible.</p>
-        <p>Either way, air sealing comes first. Pot lights, bath fan housings, plumbing stacks, wiring holes and the attic hatch all leak, and depth over the top of an unsealed ceiling is money wasted.</p>
-        <p>Sometimes the honest answer is to seal the penetrations and blow in cellulose rather than foam the whole roof deck. We will tell you when that is the case.</p>
+        <p>Either way, air sealing comes first. Pot lights, bath fan housings, plumbing stacks, wiring holes and the attic hatch all leak, and insulation depth over an unsealed ceiling is money wasted.</p>
+        <p>Sometimes the honest answer is to seal the penetrations and blow in cellulose insulation rather than spray foam the whole roof deck. We will tell you when that is the case.</p>
       </section>
       <section class="content-block">
         <h2>Basement Insulation</h2>
-        <p>A bare foundation wall is a large, cold, permanently damp surface sitting inside your house. It pulls heat out all winter and feeds moisture into the air all year.</p>
-        <p>Closed cell foam sprayed straight onto the concrete handles both. It insulates, and because it is a vapour retarder in its own right it stops ground moisture moving through the wall into the room.</p>
-        <p>The thing we are most often asked to undo is a stud wall framed against the foundation and filled with batt. That gives moisture a cold surface to condense on, an air gap to circulate in, and paper facing to grow on. Foam leaves no gap and no cold surface for water to find. Studs go up in front of it afterwards, dry and out of trouble.</p>
+        <p>A basement with no insulation on the foundation wall has a large, cold, permanently damp surface sitting inside the house. It pulls heat out all winter and feeds moisture into the air all year.</p>
+        <p>Closed cell spray foam sprayed straight onto the concrete handles both. It insulates, and because it is a vapour retarder in its own right it stops ground moisture moving through the wall into the room.</p>
+        <p>The insulation job we are most often asked to undo is a stud wall framed against the foundation and filled with batt insulation. That gives moisture a cold surface to condense on, an air gap to circulate in, and paper facing to grow on. Foam leaves no gap and no cold surface for water to find. Studs go up in front of it afterwards, dry and out of trouble.</p>
       </section>
       <section class="content-block">
         <h2>Crawl Space Insulation</h2>
-        <p>Crawl spaces cause more trouble than their size suggests. Cold floors above, a musty smell that comes and goes, humidity that will not settle.</p>
-        <p>The old approach was to vent them and insulate the floor above. In this climate that backfires for much of the year, because warm humid summer air comes in through the vents, meets cool surfaces and condenses on them.</p>
-        <p>Sealing the crawl space and bringing it inside the building envelope is what we recommend for almost every house. Vents closed, a lapped and taped sheet across the ground, closed cell foam on the perimeter walls and rim joist.</p>
+        <p>Crawl spaces cause more insulation trouble than their size suggests. Cold floors above, a musty smell that comes and goes, humidity that will not settle.</p>
+        <p>The old approach was to vent them and put the insulation in the floor above. In this climate that backfires for much of the year, because warm humid summer air comes in through the vents, meets cool surfaces and condenses on them.</p>
+        <p>Sealing the crawl space and bringing it inside the building envelope is what we recommend for almost every house. Vents closed, a lapped and taped sheet across the ground, closed cell spray foam on the perimeter walls and rim joist.</p>
         <p>Access drives the price here more than material does. A crawl space with a proper hatch and reasonable headroom is straightforward. One you reach through a hole in a closet floor is not.</p>
       </section>
       <section class="content-block">
         <h2>Garage Insulation</h2>
-        <p>An uninsulated attached garage drags down every room it touches. It is usually why the bedroom over the garage never gets warm and why the shared wall feels cold to the hand in February.</p>
+        <p>An attached garage with no insulation drags down every room it touches. Missing garage insulation is usually why the bedroom above never gets warm and why the shared wall feels cold to the hand in February.</p>
         <p>The wall between the garage and the house matters most, and it also has to work as a fire separation, so any work there has to keep that intact. The garage ceiling matters where there is living space above. The header above the overhead door is a reliable weak point that gets missed because it is awkward to reach once the door track is in.</p>
-        <p>Detached garages and shops are worth doing if you use them. A sealed garage sits well above outside temperature with no heat running at all.</p>
+        <p>Detached garages and shops are worth insulating if you use them. A garage sealed with spray foam insulation sits well above outside temperature with no heat running at all.</p>
       </section>
       <section class="content-block">
-        <h2>Rim Joists Are The Cheapest Real Win In Most Houses</h2>
+        <h2>Rim Joist Spray Foam Insulation Is The Cheapest Win In Most Houses</h2>
         <p>Where the floor framing lands on the foundation there is a band of timber running right around the house. In most houses it is thin, has a scrap of fibreglass shoved against it, and shows daylight at the corners.</p>
-        <p>It is a small area that leaks disproportionately. Warm air rises, finds that gap and leaves. Cold air comes in low to replace it. That is the draught you feel across the floor in the room above.</p>
+        <p>It is a small area that leaks disproportionately, and it is the cheapest insulation upgrade in most houses. Warm air rises, finds that gap and leaves. Cold air comes in low to replace it. That is the draught you feel across the floor in the room above.</p>
         <p>Sealing it is a few hours of work and a small amount of material. On plenty of houses it is the single best value item on the list, and we will quote it on its own without trying to sell you the whole basement.</p>
       </section>
 
       <!-- Mid-content conversion prompt -->
       <aside class="cta-inline" aria-label="Estimate call to action">
-        <p>Free written estimates across Grimsby, Beamsville, Vineland, Smithville and west Niagara.</p>
+        <p>Free written spray foam insulation estimates across Grimsby, Beamsville, Vineland, Smithville and west Niagara.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="#quote">Request an Estimate</a>
           <a class="btn btn--outline" href="tel:+12896724160">Call Now</a>
         </div>
       </aside>
       <section class="content-block">
-        <h2>New Construction And Renovations</h2>
-        <p>Framing stage is the cheapest and cleanest time to do this. Every cavity is open, nothing has to be cut out, and nothing finished has to be protected.</p>
-        <p>Filling every cavity solid with closed cell is rarely the best value. A common assembly is one to two inches of closed cell against the sheathing to establish air and vapour control, then batt in front of it to build the rest of the R-value. You get the sealing performance of foam at the cost per R of mineral wool.</p>
+        <h2>New Construction Spray Foam Insulation And Renovations</h2>
+        <p>Framing stage is the cheapest and cleanest time to install insulation. Every cavity is open, nothing has to be cut out, and nothing finished has to be protected.</p>
+        <p>Filling every cavity solid with closed cell spray foam insulation is rarely the best value. A common assembly is one to two inches of closed cell against the sheathing to establish air and vapour control, then batt insulation in front of it to build the rest of the R-value. You get the sealing performance of spray foam at the cost per R of mineral wool insulation.</p>
         <p>We come in after the mechanical rough-in is inspected and before drywall. That sequence is not negotiable, and booking early is the difference between a clean install and one squeezed between two other trades.</p>
       </section>
       <section class="content-block">
-        <h2>Signs Your Insulation Is Not Doing Its Job</h2>
-        <p>Rooms that never match the rest of the house, particularly above a garage or over a crawl space.</p>
+        <h2>Signs Your Insulation Is Failing And Needs Spray Foam</h2>
+        <p>Rooms that never match the rest of the house, particularly above a garage or over a crawl space, usually point at failed insulation.</p>
         <p>Draughts across the floor rather than from windows, which usually means the rim joist.</p>
         <p>Ice building along the roof edge in winter. Heat escaping through the ceiling melts snow high on the roof, the water runs to the cold overhang and refreezes.</p>
-        <p>Bills climbing while your habits have not changed.</p>
+        <p>Heating bills climbing while your habits have not changed, which is what tired insulation looks like on paper.</p>
         <p>Frost or damp staining on the underside of roof sheathing, which means warm moist air is reaching a cold surface.</p>
-        <p>A musty smell that gets stronger in humid weather, usually from a crawl space or basement.</p>
+        <p>A musty smell that gets stronger in humid weather, usually from a crawl space or basement with no insulation sealing it.</p>
       </section>
       <section class="content-block">
-        <h2>What It Costs And What Moves The Number</h2>
-        <p>Across Ontario in 2026, open cell generally runs somewhere around one and a half to two and a half dollars a square foot, and closed cell roughly three to seven. Those are market ranges, not a quote for your house.</p>
+        <h2>What Spray Foam Insulation Costs And What Moves The Number</h2>
+        <p>Across Ontario in 2026, open cell spray foam insulation generally runs somewhere around one and a half to two and a half dollars a square foot, and closed cell insulation roughly three to seven. Those are market ranges, not a quote for your house.</p>
         <p>Access moves the number more than material does. A walk-in basement and an eighteen-inch crawl space can take similar material and cost very differently, because most of what you are paying for is a crew working in that space for a day.</p>
-        <p>Like most installers we have a minimum job size covering travel, equipment setup and the material we have to open regardless of how small the area is. We will tell you that number up front, and we will not quote a house over the phone.</p>
+        <p>Like most insulation installers we have a minimum job size covering travel, equipment setup and the spray foam we have to open regardless of how small the area is. We will tell you that number up front, and we will not quote insulation over the phone.</p>
       </section>
       <section class="content-block">
-        <h2>Foam Has To Be Covered, And That Changes Your Budget</h2>
+        <h2>Spray Foam Insulation Has To Be Covered, And That Changes Your Budget</h2>
         <p>Spray foam is combustible and Ontario does not let you leave it exposed in most occupied spaces. It normally needs a thermal barrier over it, and half-inch drywall is the usual answer.</p>
-        <p>This catches people out on basements. The foam goes on, the basement looks finished, and then there is a drywall bill nobody budgeted for.</p>
+        <p>This catches people out on basements. The spray foam goes on, the basement looks finished, and then there is a drywall bill nobody budgeted for.</p>
         <p>There are limited exemptions for spaces like unoccupied attics and crawl spaces with restricted access. We tell you which side of that line your job falls on at the quote, because finding out afterwards is a bad day for everyone.</p>
       </section>
       <section class="content-block">
-        <h2>What The Ontario Building Code Asks For Now</h2>
-        <p>The 2024 Ontario Building Code came into force on 1 January 2025 and SB-12 moved up. For a new build on a high-efficiency gas furnace in this climate zone, the headline numbers went to roughly R-50 for a ceiling with an attic, around R-24 for above-grade walls and about R-20 for basement walls. The previous figures were R-40, R-19 and R-12.</p>
-        <p>Basement walls nearly doubled. There is also far more weight on airtightness testing and whole-building energy modelling than there used to be, which is the part foam is genuinely good at.</p>
+        <h2>What The Ontario Building Code Asks Of Insulation Now</h2>
+        <p>The 2024 Ontario Building Code came into force on 1 January 2025 and the SB-12 insulation levels moved up. For a new build on a high-efficiency gas furnace in this climate zone, the headline insulation numbers went to roughly R-50 for a ceiling with an attic, around R-24 for above-grade walls and about R-20 for basement walls. The previous figures were R-40, R-19 and R-12.</p>
+        <p>Basement wall insulation nearly doubled. There is also far more weight on airtightness testing and whole-building energy modelling than there used to be, which is the part spray foam insulation is genuinely good at.</p>
         <p>These are compliance-package figures and they shift with your heating equipment and the path your designer chose. Your building department has the final say, and we will build to whatever number is on your drawings.</p>
       </section>
       <section class="content-block">
-        <h2>The Rebate That Is Live Right Now</h2>
+        <h2>The Insulation Rebate That Is Live Right Now</h2>
         <p>Ontario's Home Renovation Savings Program runs to the end of November 2026, and insulation qualifies. There are two routes and the difference matters.</p>
         <p>The standalone attic rebate does not need an energy assessment. You do the attic, it has to reach R-50 or better, and you claim. That is the simple one, and it is open to Enbridge Gas customers who own their home.</p>
         <p>The multi-measure route pays more for doing several things at once, but it does need an energy assessment before the work starts and another after it finishes. Start the work first and you have disqualified yourself.</p>
@@ -707,7 +638,7 @@
       <aside class="sidebar" aria-labelledby="sidebar-heading">
         <div class="card">
           <h3 id="sidebar-heading">Talk To The Installer</h3>
-          <p>One visit, moisture and substrate readings taken, and a number that has the product and the depth attached to it.</p>
+          <p>One visit, moisture and substrate readings taken, and a spray foam insulation price with the product and the installed depth attached to it.</p>
           <p><a class="footer-phone" style="color:var(--color-accent-dark) !important;" href="tel:+12896724160">(289) 672-4160</a></p>
           <div class="btn-row">
             <a class="btn btn--primary btn--block" href="#quote">Get a Free Quote</a>
@@ -741,7 +672,7 @@
         <p>We mask and protect everything staying, and set up ventilation. You will not be in the house while we spray.</p>
       </li>
       <li class="step">
-        <p>The foam goes on in controlled lifts rather than one thick pass. Rushing depth builds heat inside the foam, which is how you get shrinkage, poor adhesion and at the extreme, scorching.</p>
+        <p>The spray foam goes on in controlled lifts rather than one thick pass. Rushing depth builds heat inside the spray foam, which is how you get shrinkage, poor adhesion and at the extreme, scorching.</p>
       </li>
       <li class="step">
         <p>It rises and firms within seconds and reaches working cure in hours. We trim anything proud of the framing so drywall sits flat, clean up, and walk the job with you against the written specification.</p>
@@ -763,7 +694,7 @@
     <div class="section-head is-centered">
       <span class="eyebrow">Our Work</span>
       <h2 id="gallery-heading">Recent Work</h2>
-      <p class="lead">Jobs from around Grimsby, Lincoln and up on the escarpment, mostly below grade and up in the roof.</p>
+      <p class="lead">Spray foam insulation jobs from around Grimsby, Lincoln and up on the escarpment, mostly below grade and up in the roof.</p>
     </div>
     <ul class="gallery">
       <li class="gallery__item">
@@ -919,8 +850,8 @@
 <!-- ============================= CTA BAND ============================= -->
 <section class="cta-band" aria-label="Contact call to action">
   <div class="container">
-    <h2>Get Your Grimsby Home Quoted</h2>
-    <p>We look, we specify it in writing, and the number does not move. Call (289) 672-4160.</p>
+    <h2>Get Your Grimsby Spray Foam Insulation Quoted</h2>
+    <p>We look at the space, specify the insulation in writing, and the number does not move. Call (289) 672-4160 for spray foam in Grimsby.</p>
     <div class="btn-row is-centered">
         <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
         <a class="btn btn--ghost btn--lg" href="tel:+12896724160">Call Now: (289) 672-4160</a>
@@ -978,12 +909,12 @@
         <h3 class="faq__question">
           <button class="faq__trigger" type="button" id="home-faq-q4"
                   aria-expanded="false" aria-controls="home-faq-a4">
-            <span>How long does the smell last?</span>
+            <span>How long does the spray foam insulation smell last?</span>
             <span class="faq__icon" aria-hidden="true"></span>
           </button>
         </h3>
         <div class="faq__panel" id="home-faq-a4" role="region" aria-labelledby="home-faq-q4">
-          <p>Properly mixed and properly applied foam is effectively odourless once cured, and cure takes hours rather than weeks. A smell that persists means something went wrong, usually an off-ratio mix or foam sprayed too thick in one pass. It is not something to wait out.</p>
+          <p>Properly mixed and properly applied foam is effectively odourless once cured, and cure takes hours rather than weeks. A smell that persists means something went wrong, usually an off-ratio mix or spray foam applied too thick in one pass. It is not something to wait out.</p>
         </div>
       </div>
       <div class="faq__item">
@@ -1013,7 +944,7 @@
     <div class="section-head is-centered">
       <span class="eyebrow">Free Estimate</span>
       <h2 id="quote-heading">Tell Us About The Space</h2>
-      <p class="lead">What the space is, roughly how big, and whether water has ever come into it.
+      <p class="lead">What the space is, roughly how big, and whether water has ever come into it. That is enough to start an insulation quote.
         Prefer to talk it through? Call <a href="tel:+12896724160">(289) 672-4160</a>.</p>
     </div>
 
@@ -1022,7 +953,7 @@
       <div class="form-success" role="status" aria-live="polite">
         <div>
           <strong>Thanks &mdash; your request has been received.</strong>
-          Someone from Grimsby Spray Foam Insulation will be in touch within one business day.
+          Someone from Grimsby Spray Foam Insulation will be in touch about your insulation within one business day.
           For anything urgent, call <a href="tel:+12896724160">(289) 672-4160</a>.
         </div>
       </div>
@@ -1085,7 +1016,7 @@
           <div class="field field--full">
             <button class="btn btn--primary btn--lg btn--block" type="submit">Request an Estimate</button>
             <p class="form-note">Fields marked <span class="req" aria-hidden="true">*</span> are required.
-              Send pictures if you have them. Half the time they tell us more than the phone call does.</p>
+              Send pictures of the space if you have them. Half the time they tell us more about the insulation job than the phone call does.</p>
           </div>
 
         </div>
@@ -1106,7 +1037,7 @@
           <img src="images/wordmark-light-300.png"
                alt="Grimsby Spray Foam Insulation" width="300" height="310" loading="lazy">
         </a>
-        <p>Spray foam insulation for attics, garages, basements, crawl spaces, rim joists and new construction throughout Grimsby, Lincoln and west Niagara, Ontario.</p>
+        <p>Spray foam insulation for attics, garages, basements, crawl spaces, rim joists and new construction throughout Grimsby, Lincoln and west Niagara. Open cell and closed cell spray foam insulation, quoted in writing.</p>
         <a class="footer-phone" href="tel:+12896724160">(289) 672-4160</a>
       </div>
 

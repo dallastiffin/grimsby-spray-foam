@@ -1469,3 +1469,79 @@ h1, h2, h3, h4,
 @media (max-width: 900px) {
   .footer-map__frame { aspect-ratio: 4 / 3; min-height: 260px; }
 }
+
+/* --------------------------------------------------------------------------
+   22. CENTRED HOME HERO
+
+   Replaces the split "copy left, form right" hero. The estimate form moved to
+   the #quote section further down, so this is a single centred column over a
+   full-bleed photograph.
+
+   The old scrim was a 100deg gradient weighted to the left, which was correct
+   when the text sat on the left. Centred text needs an even scrim, so this is
+   a flat wash plus a vertical darkening at top and bottom. Contrast is
+   verified numerically against the actual hero image, not eyeballed.
+   -------------------------------------------------------------------------- */
+.hero--home .hero__inner {
+  display: block;
+  max-width: 880px;
+  margin-inline: auto;
+  text-align: center;
+  padding-block: var(--space-7);
+}
+
+.hero--home .hero__bg::after {
+  background:
+    linear-gradient(180deg, rgba(20,18,16,.72) 0%, rgba(20,18,16,.60) 45%, rgba(20,18,16,.78) 100%),
+    rgba(20, 18, 16, .34);
+}
+
+.hero--home .hero__brand {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--color-accent-on-dark);
+  margin: 0 0 var(--space-2);
+}
+
+.hero--home .hero__eyebrow {
+  font-size: var(--fs-sm);
+  letter-spacing: .04em;
+  color: #e6ded6;
+  margin: 0 0 var(--space-5);
+}
+
+.hero--home .hero__intro { max-width: none; }
+
+.hero--home h1 {
+  font-size: clamp(2rem, 5.2vw, 3.25rem);
+  margin-bottom: var(--space-5);
+  text-wrap: balance;
+}
+
+.hero--home .hero__intro p {
+  max-width: 62ch;
+  margin-inline: auto;
+  color: #f0eae4;
+}
+
+/* Badges become a centred trust list rather than a left-aligned row */
+.hero--home .hero__badges {
+  justify-content: center;
+  gap: var(--space-3) var(--space-6);
+  margin-top: var(--space-6);
+  color: #f0eae4;
+}
+
+.hero--home .btn-row {
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 700px) {
+  .hero--home .hero__inner { padding-block: var(--space-6); }
+  .hero--home .hero__badges { flex-direction: column; align-items: center; gap: var(--space-2); }
+  .hero--home .btn-row { flex-direction: column; align-items: stretch; }
+}
