@@ -4,9 +4,9 @@
 
 ## Spray Foam Insulation That Seals The House As Well As Insulates It
 
-Spray foam does two jobs in one pass. It insulates, and it stops air moving through the gaps that batt and blown-in leave behind. That is why a house sealed with foam feels different rather than just measuring better.
+Grimsby Spray Foam Insulation provides attic insulation, basement insulation, crawl space insulation, garage insulation and new construction insulation to the Grimsby area. Every space gets looked at before it gets a number, and the number we write down is the number you pay.
 
-We install open cell and closed cell spray foam in attics, basements, crawl spaces, garages and new builds. Every space gets looked at before it gets a number, and the number we write down is the number you pay.
+Spray foam does two jobs in one pass. It insulates, and it stops air moving through the gaps that batt and blown-in leave behind. That is why a house sealed with foam feels different rather than just measuring better.
 
 ## Why Spray Foam Air Sealing Matters More Than R-Value Alone
 
@@ -34,13 +34,13 @@ Spray foam insulation cuts sound. Open cell insulation in interior walls and flo
 
 Below grade, against masonry, or anywhere moisture could reach it, use closed cell. Foundation walls, crawl space walls, rim joists, garage walls facing the weather.
 
-Above grade, dry, and mainly about air sealing or sound, open cell is usually the better buy. Interior partitions, floors between storeys, many attic applications.
+Above grade, dry, and mainly about air sealing or sound, open cell is usually the better buy. Interior partitions, floors between stories, many attic applications.
 
 Closed cell runs roughly R-6 to R-7 per inch and acts as a vapour retarder at the right thickness. Open cell runs roughly R-3.5 to R-4 per inch, expands far more from the same material, and costs considerably less per square foot covered.
 
 Worth saying plainly, because people assume the opposite: open cell air seals just as well as closed cell. You are paying the difference for vapour control and R-value per inch, not for a better seal.
 
-Most houses want both, in different places. Anyone who only ever quotes one of them is quoting what is on their truck.
+Most houses want both, in different places. Anyone who only ever quotes one of them is quoting what is on their truck. Our [closed cell and open cell spray foam](close-and-open-cell-spray-foam.html) page goes through the differences in more detail.
 
 ## Attic Insulation
 
@@ -50,13 +50,13 @@ There are two approaches and they are not interchangeable. Insulating the attic 
 
 Either way, air sealing comes first. Pot lights, bath fan housings, plumbing stacks, wiring holes and the attic hatch all leak, and insulation depth over an unsealed ceiling is money wasted.
 
-Sometimes the honest answer is to seal the penetrations and blow in cellulose insulation rather than spray foam the whole roof deck. We will tell you when that is the case.
+Sometimes the honest answer is to seal the penetrations and blow in cellulose insulation rather than spray foam the whole roof deck. We will tell you when that is the case. Our [attic insulation](attic-insulation.html) page covers the floor-versus-roof-deck decision in more detail.
 
 ## Basement Insulation
 
 A basement with no insulation on the foundation wall has a large, cold, permanently damp surface sitting inside the house. It pulls heat out all winter and feeds moisture into the air all year.
 
-Closed cell spray foam sprayed straight onto the concrete handles both. It insulates, and because it is a vapour retarder in its own right it stops ground moisture moving through the wall into the room.
+Closed cell spray foam sprayed straight onto the concrete handles both. It insulates, and because it is a vapour retarder in its own right it stops ground moisture moving through the wall into the room. Our [basement insulation](basement-insulation.html) page explains why we avoid framing a stud wall against bare concrete.
 
 The insulation job we are most often asked to undo is a stud wall framed against the foundation and filled with batt insulation. That gives moisture a cold surface to condense on, an air gap to circulate in, and paper facing to grow on. Foam leaves no gap and no cold surface for water to find. Studs go up in front of it afterwards, dry and out of trouble.
 
@@ -68,7 +68,7 @@ The old approach was to vent them and put the insulation in the floor above. In 
 
 Sealing the crawl space and bringing it inside the building envelope is what we recommend for almost every house. Vents closed, a lapped and taped sheet across the ground, closed cell spray foam on the perimeter walls and rim joist.
 
-Access drives the price here more than material does. A crawl space with a proper hatch and reasonable headroom is straightforward. One you reach through a hole in a closet floor is not.
+Access drives the price here more than material does. A crawl space with a proper hatch and reasonable headroom is straightforward. One you reach through a hole in a closet floor is not. Our [crawl space insulation](crawl-space-insulation.html) page covers access, cost and the older cottages near the lake.
 
 ## Garage Insulation
 
@@ -76,13 +76,13 @@ An attached garage with no insulation drags down every room it touches. Missing 
 
 The wall between the garage and the house matters most, and it also has to work as a fire separation, so any work there has to keep that intact. The garage ceiling matters where there is living space above. The header above the overhead door is a reliable weak point that gets missed because it is awkward to reach once the door track is in.
 
-Detached garages and shops are worth insulating if you use them. A garage sealed with spray foam insulation sits well above outside temperature with no heat running at all.
+Detached garages and shops are worth insulating if you use them. A garage sealed with spray foam insulation sits well above outside temperature with no heat running at all. Our [garage insulation](garage-insulation.html) page breaks the wall, ceiling and header pricing down separately.
 
 ## Rim Joist Spray Foam Insulation Is The Cheapest Win In Most Houses
 
 Where the floor framing lands on the foundation there is a band of timber running right around the house. In most houses it is thin, has a scrap of fibreglass shoved against it, and shows daylight at the corners.
 
-It is a small area that leaks disproportionately, and it is the cheapest insulation upgrade in most houses. Warm air rises, finds that gap and leaves. Cold air comes in low to replace it. That is the draught you feel across the floor in the room above.
+It is a small area that leaks disproportionately, and it is the cheapest insulation upgrade in most houses. Warm air rises, finds that gap and leaves. Cold air comes in low to replace it. That is the draft you feel across the floor in the room above.
 
 Sealing it is a few hours of work and a small amount of material. On plenty of houses it is the single best value item on the list, and we will quote it on its own without trying to sell you the whole basement.
 
@@ -92,13 +92,13 @@ Framing stage is the cheapest and cleanest time to install insulation. Every cav
 
 Filling every cavity solid with closed cell spray foam insulation is rarely the best value. A common assembly is one to two inches of closed cell against the sheathing to establish air and vapour control, then batt insulation in front of it to build the rest of the R-value. You get the sealing performance of spray foam at the cost per R of mineral wool insulation.
 
-We come in after the mechanical rough-in is inspected and before drywall. That sequence is not negotiable, and booking early is the difference between a clean install and one squeezed between two other trades.
+We come in after the mechanical rough-in is inspected and before drywall. That sequence is not negotiable, and booking early is the difference between a clean install and one squeezed between two other trades. Our [new construction insulation](new-construction-insulation.html) page covers the code numbers and the build schedule in more detail.
 
 ## Signs Your Insulation Is Failing And Needs Spray Foam
 
 Rooms that never match the rest of the house, particularly above a garage or over a crawl space, usually point at failed insulation.
 
-Draughts across the floor rather than from windows, which usually means the rim joist.
+Drafts across the floor rather than from windows usually mean the rim joist.
 
 Ice building along the roof edge in winter. Heat escaping through the ceiling melts snow high on the roof, the water runs to the cold overhang and refreezes.
 
@@ -116,7 +116,7 @@ Spray foam is mixed on site out of two components, and the ratio, the substrate 
 
 We quote in writing with the product and the installed thickness stated. Not "spray foam the attic" — the specification, so you can hold us to it and compare us honestly against anyone else.
 
-We will tell you when foam is the wrong answer. Plenty of attics need air sealing and blown-in over the top, not a full foam roof deck. Saying so costs us a bigger invoice and saves you a few thousand dollars, and we would rather have the referral.
+We will tell you when foam is the wrong answer. Plenty of attics need air sealing and blown-in over the top, not a full foam roof deck. Saying so costs us a bigger invoice and saves you a few thousand dollars, and we would rather have the referral. Read more about [how we work](about.html) and the jobs we say no to.
 
 ## What Happens During A Spray Foam Install
 
@@ -170,7 +170,7 @@ Grimsby, from the lakeshore and Grimsby Beach up through the older streets aroun
 
 Through the Town of Lincoln — Beamsville, Vineland, Jordan and Campden. These are neighbourhoods of one municipality rather than separate towns, and we cover all of them.
 
-Smithville, Caistor Centre and Grassie to the south, Winona and Stoney Creek to the west, and out to St. Catharines and Hamilton. If you are just outside that, phone and ask.
+Smithville, Caistor Centre and Grassie to the south, Winona and Stoney Creek to the west, and out to St. Catharines and Hamilton. If you are just outside that, [contact us](contact.html) and ask.
 
 ## Frequently Asked Questions
 
@@ -239,7 +239,7 @@ Attic insulation is one of the measures covered by Ontario's Home Renovation Sav
 
 ## Book An Attic Insulation Assessment
 
-We will go up, take a look, photograph the insulation that is there and tell you what is worth doing. If your attic mostly needs air sealing and topping up rather than spray foam, we will say so.
+We will go up, take a look, photograph the insulation that is there and tell you what is worth doing. If your attic mostly needs air sealing and topping up rather than spray foam, we will say so. Browse our full [spray foam insulation](index.html) services if you are not sure where to start.
 
 ---
 
@@ -285,7 +285,7 @@ If it is unheated storage only, we will usually tell you to spend the money else
 
 ## Get Your Garage Insulation Quoted
 
-Tell us whether the garage is attached or detached, whether there is a room above it, and what you use it for. We will price the wall, ceiling and header insulation separately so you can see where the value in the spray foam is.
+Tell us whether the garage is attached or detached, whether there is a room above it, and what you use it for. We will price the wall, ceiling and header insulation separately so you can see where the value in the spray foam is. See our full [spray foam insulation](index.html) lineup for the rest of the house.
 
 ---
 
@@ -335,7 +335,7 @@ If your basement takes water, sort the grading, the downspouts and the drainage 
 
 ## Book A Basement Insulation Assessment
 
-We will look at the walls, read the moisture, check for anything active, and put a thickness and a product in writing.
+We will look at the walls, read the moisture, check for anything active, and put a thickness and a product in writing. Our full [spray foam insulation](index.html) services cover the rest of the house too.
 
 ---
 
@@ -355,7 +355,7 @@ The old approach was to vent a crawl space and insulate the floor above it. The 
 
 In this climate it does the opposite for a good part of the year. Warm humid summer air comes in through the vents, meets the cool surfaces down there, and condenses on them. You have built a dehumidifier that runs backwards, and everything above it — joists, subfloor, ducting — sits in it.
 
-Sealing the crawl space with spray foam and bringing it inside the building envelope is what we recommend for almost every Grimsby house. The vents get closed, the perimeter walls get spray foam insulation, the ground gets a proper vapour barrier, and the space stops making weather of its own.
+Sealing the crawl space with spray foam and bringing it inside the building envelope is what we recommend for almost every Grimsby house. The vents get closed, the perimeter walls get spray foam insulation, the ground gets a proper vapour barrier, and the space stops making weather of its own. It follows the same closed cell logic as our [basement insulation](basement-insulation.html) work against a foundation wall.
 
 ## What Crawl Space Insulation Work Involves
 
@@ -385,7 +385,7 @@ It is not a dramatic-looking job. It is one of the ones people notice most.
 
 ## Book A Crawl Space Insulation Visit
 
-Tell us roughly how you get in, how much headroom there is, and whether it has ever been wet. We will come and see it.
+Tell us roughly how you get in, how much headroom there is, and whether it has ever been wet. We will come and see it. Our [spray foam insulation](index.html) page lists everywhere else we work in a house.
 
 ---
 
@@ -417,7 +417,7 @@ We will quote it both ways if you want to see the difference. On a big envelope 
 
 ## Where Spray Foam Insulation Earns Its Place Outright
 
-Below-grade walls, before any framing goes up. Rim joists at every floor level. Cathedral and vaulted ceilings where there is no room for a vented assembly. Cantilevers and bay projections. Around rough openings, where a lot of assemblies quietly leak.
+Below-grade walls, before any framing goes up, using the same closed cell approach as our [basement insulation](basement-insulation.html) work. Rim joists at every floor level. Cathedral and vaulted ceilings where there is no room for a vented assembly. Cantilevers and bay projections. Around rough openings, where a lot of assemblies quietly leak.
 
 Those are the details that decide a blower door result, and they are the ones that get rushed when the schedule is tight.
 
@@ -429,7 +429,7 @@ Booking early matters. We would rather be in your schedule six weeks out than sq
 
 ## Talk To Us About Insulation At Framing Stage
 
-Send the drawings and the compliance path your designer is using. We will price the assemblies and tell you where the money is best spent.
+Send the drawings and the compliance path your designer is using. We will price the assemblies and tell you where the money is best spent. Visit our [spray foam insulation](index.html) home page for our retrofit services too.
 
 ---
 
@@ -457,7 +457,7 @@ Light and soft. Roughly R-3.5 to R-4 per inch. Its cells stay open, so it stays 
 
 It expands enormously from the same amount of material, which is why it covers far more area per dollar. It seals air just as effectively as closed cell does — that is worth saying, because people assume the cheaper product seals less well, and it does not.
 
-It belongs above grade and dry: interior partitions, floor systems between storeys, and many attic applications.
+It belongs above grade and dry: interior partitions, floor systems between stories, and many attic applications. See our [attic insulation](attic-insulation.html) page for how that plays out at the roof.
 
 ## The Sound Difference Between The Two Insulations
 
@@ -481,7 +481,7 @@ We put the product and the thickness for each area in the written quote, so you 
 
 ## Ask Which Spray Foam Insulation Your Job Needs
 
-Describe the space and what it is doing wrong. We will tell you which foam belongs there, including the times the cheaper one is genuinely the better buy.
+Describe the space and what it is doing wrong. We will tell you which foam belongs there, including the times the cheaper one is genuinely the better buy. See our full [spray foam insulation](index.html) services for every part of the house we cover.
 
 ---
 
@@ -535,7 +535,7 @@ We say all of this before you have paid us anything, because the alternative is 
 
 ## Get In Touch
 
-Call, or send a note with the space and what it is doing. We will come and look, and tell you honestly what is worth doing.
+Call, or send a note with the space and what it is doing. We will come and look, and tell you honestly what is worth doing. Our [spray foam insulation](index.html) home page has the full list of services we cover.
 
 ---
 
@@ -567,7 +567,7 @@ Grimsby, from the lakeshore and Grimsby Beach up through the older streets aroun
 
 Through the Town of Lincoln — Beamsville, Vineland, Jordan and Campden. Smithville, Caistor Centre and Grassie to the south. Winona and Stoney Creek to the west, and out as far as St. Catharines and Hamilton.
 
-If you are just past the edge of that, phone and ask. We will tell you straight if it is too far to be worth your money.
+If you are just past the edge of that, phone and ask. We will tell you straight if it is too far to be worth your money. Our [spray foam insulation](index.html) home page lists everything we cover if you want the full picture first.
 
 ## Contact Information
 
@@ -656,7 +656,7 @@ Meta Description: Attic air sealing and spray foam insulation in Grimsby, ON. St
 
 SEO Title: Spray Foam Garage Insulation | Grimsby, Ontario
 
-Meta Description: Garage spray foam insulation in Grimsby, ON. Warmer garage, warmer room above it, fewer draughts through the shared wall. Call (289) 672-4160.
+Meta Description: Garage spray foam insulation in Grimsby, ON. Warmer garage, warmer room above it, fewer drafts through the shared wall. Call (289) 672-4160.
 
 ## Basement Insulation
 
@@ -846,7 +846,7 @@ Still Have A Question?
 
 ## FAQ Page CTA Text
 
-Ring (289) 672-4160. If your answer turns out to be air sealing and blown-in insulation rather than spray foam, that is what we will tell you.
+Call (289) 672-4160. If your answer turns out to be air sealing and blown-in insulation rather than spray foam, that is what we will tell you.
 
 ## Contact Page CTA Heading
 
@@ -876,7 +876,7 @@ service-basement-insulation: Installer spraying closed cell spray foam along a b
 
 service-crawl-space-insulation: Crawl space wall being sealed over a taped ground sheet
 
-service-new-construction-insulation: Open stud bays in a new two storey build filled before drywall
+service-new-construction-insulation: Open stud bays in a new two-story build filled before drywall
 
 service-close-and-open-cell-spray-foam: Close up of spray foam expanding out of the gun into a stud bay
 
@@ -898,4 +898,4 @@ basement-wall-in-progress: Closed cell spray foam going onto a basement foundati
 
 roof-deck-between-rafters: Roof deck being sprayed between the rafters
 
-new-build-stud-bays: Stud bays in a new two storey build filled before drywall
+new-build-stud-bays: Stud bays in a new two-story build filled before drywall

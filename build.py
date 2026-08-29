@@ -260,6 +260,59 @@ def public_url(slug):
 def esc(s):
     return html.escape(s, quote=False)
 
+# ---------------------------------------------------------------------------
+#  INLINE LINKS IN PROSE
+#
+#  The markdown parser escapes everything and supports no inline markup, which
+#  is deliberate - it means nothing in the copy can inject HTML. Body prose
+#  supports exactly one piece of markdown syntax: [text](url). Nothing else.
+#  Escaping still happens first, so a stray bracket or ampersand in the copy
+#  cannot inject markup.
+#
+#  External links get target="_blank" plus rel="noopener" - without noopener
+#  the opened page gets a handle on this one through window.opener. If any of
+#  these turn out to be PAID placements, Google's guidance is that they should
+#  carry rel="sponsored" - add "sponsored" to EXTERNAL_REL below and every one
+#  of them changes at once.
+#
+#  Links to the owner's OWN other city sites (bradfordsprayfoaminsulation.com,
+#  sprayfoaminsulationwindsor.com, miltonsprayfoaminsulation.com,
+#  chathamsprayfoaminsulation.com, leamingtonsprayfoaminsulation.com,
+#  capebretonsprayfoaminsulation.com, saintjohnsprayfoaminsulation.com,
+#  caledonsprayfoaminsulation.com) must NEVER appear in this markdown. Ten
+#  sites linking to each other is the single most recognisable doorway-network
+#  pattern there is.
+# ---------------------------------------------------------------------------
+EXTERNAL_REL = "noopener"
+
+_MD_LINK = re.compile(r'\[([^\]]+)\]\(([^\s)]+)\)')
+
+
+def rich(s):
+    """Escape prose, then turn [text](url) into a real anchor.
+
+    External (http/https) targets get target="_blank", rel=EXTERNAL_REL and
+    the ext-link class. Internal targets (slug.html, index.html) render as a
+    plain anchor with no target/rel - rewrite_links() turns the .html
+    reference into the extensionless served path and applies SLUG_ALIAS, same
+    as every other internal link on the site. This is what lets body copy
+    carry the required internal cross-links between services, about and
+    contact without a second markup syntax."""
+    out = esc(s)
+    def repl(m):
+        label, url = m.group(1), m.group(2)
+        if url.startswith("http://") or url.startswith("https://"):
+            return ('<a class="ext-link" href="%s" target="_blank" rel="%s">%s</a>'
+                    % (html.escape(url, quote=True), EXTERNAL_REL, label))
+        return '<a href="%s">%s</a>' % (html.escape(url, quote=True), label)
+    return _MD_LINK.sub(repl, out)
+
+
+def plain(s):
+    """Strip [text](url) down to text. For meta descriptions and card blurbs,
+    where an anchor would be wrong or would leak raw markdown."""
+    return esc(_MD_LINK.sub(lambda m: m.group(1), s))
+
 # ---------------------------------------------------------------- parse md
 raw = open(SRC, encoding="utf-8").read()
 blocks = [b.strip() for b in re.split(r'\n---\n', raw) if b.strip()]
@@ -862,7 +915,7 @@ def nodes_html(nodes, indent="        "):
     out = []
     for kind, text in nodes:
         if kind == "p":
-            out.append(f"{indent}<p>{esc(text)}</p>")
+            out.append(f"{indent}<p>{rich(text)}</p>")
         else:
             out.append(f"{indent}<h3>{esc(text)}</h3>")
     return "\n".join(out)
@@ -889,7 +942,7 @@ def faq_accordion(sec, id_prefix):
 
     items = []
     for i, (question, answers) in enumerate(pairs, start=1):
-        body = "\n".join(f"          <p>{esc(a)}</p>" for a in answers)
+        body = "\n".join(f"          <p>{rich(a)}</p>" for a in answers)
         items.append(f"""      <div class="faq__item">
         <h3 class="faq__question">
           <button class="faq__trigger" type="button" id="{id_prefix}-q{i}"
@@ -942,7 +995,7 @@ def services_grid(exclude=None, heading=None, intro=None):
         </div>
         <div class="service-card__body">
           <h3><a href="{slug}" style="text-decoration:none;color:inherit;">{esc(title)}</a></h3>
-          <p>{esc(blurb)}</p>
+          <p>{plain(blurb)}</p>
           <a class="service-card__link" href="{slug}">View {esc(title)}</a>
         </div>
       </article>""")
@@ -1101,7 +1154,7 @@ GALLERY_PHOTOS = [
  ("Spray Foam on Roof.png", "roof-deck-between-rafters",
   "Roof deck sprayed between the rafters"),
  ("Two Storey Great Room.png", "new-build-stud-bays",
-  "Stud bays in a new two storey build filled before drywall"),
+  "Stud bays in a new two-story build filled before drywall"),
 ]
 
 
@@ -1272,17 +1325,17 @@ special = {hero_sec["title"], faq_sec["title"], benefits["title"],
            process["title"], why["title"], areas["title"]}
 body_sections = [s for s in secs if s["title"] not in special]
 
-hero_paras = "\n".join(f"      <p>{esc(t)}</p>" for k, t in hero_sec["nodes"] if k == "p")
+hero_paras = "\n".join(f"      <p>{rich(t)}</p>" for k, t in hero_sec["nodes"] if k == "p")
 
 # Benefit cards - one card per source paragraph (no text removed)
 benefit_cards = "\n".join(f"""      <article class="feature">
         <div class="feature__icon" aria-hidden="true">&#10003;</div>
-        <p>{esc(t)}</p>
+        <p>{rich(t)}</p>
       </article>""" for k, t in benefits["nodes"] if k == "p")
 
 # Process steps - one step per source paragraph
 step_cards = "\n".join(f"""      <li class="step">
-        <p>{esc(t)}</p>
+        <p>{rich(t)}</p>
       </li>""" for k, t in process["nodes"] if k == "p")
 
 mid = len(body_sections) // 2
@@ -1469,7 +1522,7 @@ for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
     }
     extra_ld = crumb_ld + "\n<script type=\"application/ld+json\">\n" + json.dumps(service_ld, indent=2) + "\n</script>"
 
-    over_paras = "\n".join(f"      <p>{esc(t)}</p>" for k, t in overview["nodes"] if k == "p")
+    over_paras = "\n".join(f"      <p>{rich(t)}</p>" for k, t in overview["nodes"] if k == "p")
 
     blocks_html = []
     for i, s in enumerate(middle):
@@ -1782,7 +1835,7 @@ def legal_page(slug, title, meta, h1, eyebrow, crumb_label, sections):
     crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), (crumb_label, None)])
     body = "".join(f"""      <section class="content-block">
         <h2>{esc(t)}</h2>
-{chr(10).join(f'        <p>{esc(p)}</p>' for p in ps)}
+{chr(10).join(f'        <p>{rich(p)}</p>' for p in ps)}
       </section>
 """ for t, ps in sections)
     page = head(title, meta, slug, crumb_ld)
