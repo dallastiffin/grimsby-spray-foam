@@ -1545,3 +1545,55 @@ h1, h2, h3, h4,
   .hero--home .hero__badges { flex-direction: column; align-items: center; gap: var(--space-2); }
   .hero--home .btn-row { flex-direction: column; align-items: stretch; }
 }
+
+/* --------------------------------------------------------------------------
+   23. QUOTE BAND
+
+   Compact estimate form sitting directly beneath the centred hero. Two
+   columns on desktop - a short intro on the left, the form on the right -
+   collapsing to a single stack on tablet and phone.
+
+   Sits on --color-bg-alt rather than the charcoal so it reads as page
+   content rather than a continuation of the hero, and so the form inputs
+   keep their normal light-background styling and contrast.
+   -------------------------------------------------------------------------- */
+.quote-band {
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-7);
+}
+
+.quote-band__inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-6) var(--space-7);
+  align-items: start;
+}
+
+.quote-band__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  margin-bottom: var(--space-3);
+}
+
+.quote-band__intro p { color: var(--color-text-muted); }
+
+.quote-band__phone {
+  font-weight: 700;
+  color: var(--color-text);
+}
+.quote-band__phone a { color: var(--color-accent-dark); }
+
+.quote-band__form {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 900px) {
+  .quote-band__inner { grid-template-columns: 1fr; }
+  .quote-band { padding-block: var(--space-6); }
+}

@@ -47,7 +47,7 @@
 <link rel="preload" as="image" href="images/hero-grimsby-1200.jpg"
       imagesrcset="images/hero-grimsby-800.webp 800w, images/hero-grimsby-1200.webp 1200w"
       imagesizes="100vw" type="image/webp">
-<link rel="stylesheet" href="style.css?v=abc16236">
+<link rel="stylesheet" href="style.css?v=dea94a70">
 <script src="script.js?v=19e0003b" defer></script>
 
 <!-- ===== Schema.org: Local Business ===== -->
@@ -339,8 +339,92 @@
       </ul>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="tel:+12896724160">Call Now: (289) 672-4160</a>
-        <a class="btn btn--ghost btn--lg" href="#quote">Get a Free Quote</a>
+        <a class="btn btn--ghost btn--lg" href="#hero-quote">Get a Free Quote</a>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== QUOTE BAND (directly under hero) ===================== -->
+<section class="quote-band" id="hero-quote" aria-labelledby="hero-form-heading">
+  <div class="container quote-band__inner">
+
+    <div class="quote-band__intro">
+      <h2 class="quote-band__title" id="hero-form-heading">Get Your Home Looked At</h2>
+      <p>Tell us the space, roughly how big it is, and what it is doing wrong. We will come out and see it before we quote your spray foam insulation.</p>
+      <p class="quote-band__phone">Or call <a href="tel:+12896724160">(289) 672-4160</a>.</p>
+    </div>
+
+    <div class="quote-band__form">
+      <div class="form-success" role="status" aria-live="polite">
+        <div>
+          <strong>Thanks &mdash; your request has been received.</strong>
+          Someone from Grimsby Spray Foam Insulation will be in touch about your insulation within one business day.
+          For anything urgent, call <a href="tel:+12896724160">(289) 672-4160</a>.
+        </div>
+      </div>
+
+      <form class="lead-form" action="#" method="post" novalidate
+            data-source="Home Page hero band">
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="hf-name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="hf-name" name="name" autocomplete="name"
+                   data-label="Name" placeholder="Your full name" required>
+            <span class="field__error" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="hf-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+            <input type="tel" id="hf-phone" name="phone" autocomplete="tel"
+                   data-label="Phone" placeholder="226-000-0000" required>
+            <span class="field__error" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="hf-email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="hf-email" name="email" autocomplete="email"
+                   data-label="Email" placeholder="you@example.com" required>
+            <span class="field__error" aria-live="polite"></span>
+          </div>
+
+          <div class="field field--full">
+            <label for="hf-service">Service Interested In <span class="req" aria-hidden="true">*</span></label>
+            <select id="hf-service" name="service" data-label="Service interested in" required>
+            <option value="">Please choose a service</option>
+            <option value="Attic">Attic</option>
+            <option value="Basement or Crawl Space">Basement or Crawl Space</option>
+            <option value="Garage">Garage</option>
+            <option value="New Construction">New Construction</option>
+            <option value="Whole Home">Whole Home</option>
+            <option value="Other">Other</option>
+            </select>
+            <span class="field__error" aria-live="polite"></span>
+          </div>
+
+          <div class="field field--full">
+            <label for="hf-message">Message</label>
+            <textarea id="hf-message" name="message" data-label="Message"
+                      rows="3"
+                      placeholder="Rough size of the space, what it is used for, and whether water has ever come in."></textarea>
+            <span class="field__error" aria-live="polite"></span>
+          </div>
+
+          <!-- Honeypot: hidden from people, filled in by bots. Not a real field. -->
+          <div class="field field--full" aria-hidden="true"
+               style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="hf-botcheck">Leave this field empty</label>
+            <input type="text" id="hf-botcheck" name="botcheck" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field field--full">
+            <button class="btn btn--primary btn--block" type="submit">Request an Estimate</button>
+            <p class="form-note">Photos of ice dams, damp walls or failed spray foam insulation save us both a visit.</p>
+          </div>
+        </div>
+      </form>
     </div>
 
   </div>
@@ -583,6 +667,12 @@
         <p>It is a small area that leaks disproportionately, and it is the cheapest insulation upgrade in most houses. Warm air rises, finds that gap and leaves. Cold air comes in low to replace it. That is the draft you feel across the floor in the room above.</p>
         <p>Sealing it is a few hours of work and a small amount of material. On plenty of houses it is the single best value item on the list, and we will quote it on its own without trying to sell you the whole basement.</p>
       </section>
+      <section class="content-block">
+        <h2>New Construction Spray Foam Insulation And Renovations</h2>
+        <p>Framing stage is the cheapest and cleanest time to install insulation. Every cavity is open, nothing has to be cut out, and nothing finished has to be protected.</p>
+        <p>Filling every cavity solid with closed cell spray foam insulation is rarely the best value. A common assembly is one to two inches of closed cell against the sheathing to establish air and vapour control, then batt insulation in front of it to build the rest of the R-value. You get the sealing performance of spray foam at the cost per R of mineral wool insulation.</p>
+        <p>We come in after the mechanical rough-in is inspected and before drywall. That sequence is not negotiable, and booking early is the difference between a clean install and one squeezed between two other trades. Our <a href="/new-construction-insulation">new construction insulation</a> page covers the code numbers and the build schedule in more detail.</p>
+      </section>
 
       <!-- Mid-content conversion prompt -->
       <aside class="cta-inline" aria-label="Estimate call to action">
@@ -592,12 +682,6 @@
           <a class="btn btn--outline" href="tel:+12896724160">Call Now</a>
         </div>
       </aside>
-      <section class="content-block">
-        <h2>New Construction Spray Foam Insulation And Renovations</h2>
-        <p>Framing stage is the cheapest and cleanest time to install insulation. Every cavity is open, nothing has to be cut out, and nothing finished has to be protected.</p>
-        <p>Filling every cavity solid with closed cell spray foam insulation is rarely the best value. A common assembly is one to two inches of closed cell against the sheathing to establish air and vapour control, then batt insulation in front of it to build the rest of the R-value. You get the sealing performance of spray foam at the cost per R of mineral wool insulation.</p>
-        <p>We come in after the mechanical rough-in is inspected and before drywall. That sequence is not negotiable, and booking early is the difference between a clean install and one squeezed between two other trades. Our <a href="/new-construction-insulation">new construction insulation</a> page covers the code numbers and the build schedule in more detail.</p>
-      </section>
       <section class="content-block">
         <h2>Signs Your Insulation Is Failing And Needs Spray Foam</h2>
         <p>Rooms that never match the rest of the house, particularly above a garage or over a crawl space, usually point at failed insulation.</p>
@@ -631,6 +715,10 @@
         <p>The standalone attic rebate does not need an energy assessment. You do the attic, it has to reach R-50 or better, and you claim. That is the simple one, and it is open to Enbridge Gas customers who own their home.</p>
         <p>The multi-measure route pays more for doing several things at once, but it does need an energy assessment before the work starts and another after it finishes. Start the work first and you have disqualified yourself.</p>
         <p>We are not the program administrator and we will not promise you a number. What we will do is tell you which of the two routes your job fits, so you do not book an audit you never needed.</p>
+      </section>
+      <section class="content-block">
+        <h2>How Other Spray Foam Insulation Crews Handle Different Regions</h2>
+        <p>We pay attention to how other independent spray foam crews handle the seasonal and substrate challenges specific to their own regions, since the same chemistry behaves differently depending on where the truck parks. <a class="ext-link" href="https://www.leamingtonsprayfoaminsulation.com" target="_blank" rel="noopener">Spray foam insulation in Leamington</a> works a longer, more humid growing-season climate than Grimsby's Niagara Escarpment location, while <a class="ext-link" href="https://www.miltonsprayfoaminsulation.com" target="_blank" rel="noopener">insulation services contractors in Milton</a> deal with a drier inland climate with a shorter, sharper heating-season rush. Further afield, <a class="ext-link" href="https://saintjohnsprayfoaminsulation.com" target="_blank" rel="noopener">Saint John attic insulation specialists</a> handle coastal Atlantic humidity that changes cure timing entirely, and <a class="ext-link" href="https://sprayfoaminsulationwindsor.com" target="_blank" rel="noopener">spray foam contractors services in Windsor</a> work a flatter, more industrial substrate profile at the far western end of the province. None of it changes the underlying product, but it's a reminder that a generic quote rarely accounts for what the local climate is actually doing.</p>
       </section>
       </div>
 
@@ -1049,6 +1137,16 @@
           <li><a href="/about-us">About Us</a></li>
           <li><a href="/faq">FAQ</a></li>
           <li><a href="/contact-us">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="footer-guides-heading">
+        <h3 id="footer-guides-heading">Guides</h3>
+        <ul class="footer-list">
+          <li><a href="/spray-foam-performance-across-climate-zones">Regional Guide</a></li>
+          <li><a href="/heating-season-pricing-timelines">Seasonal Pricing Guide</a></li>
+          <li><a href="/property-overhaul-planning">Property Project Planning</a></li>
+          <li><a href="/protecting-fresh-insulation-during-exterior-work">Protecting Your Insulation</a></li>
         </ul>
       </nav>
 

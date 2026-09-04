@@ -55,4 +55,24 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.grimsbysprayfoaminsulation.com/spray-foam-performance-across-climate-zones</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.grimsbysprayfoaminsulation.com/heating-season-pricing-timelines</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.grimsbysprayfoaminsulation.com/property-overhaul-planning</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.grimsbysprayfoaminsulation.com/protecting-fresh-insulation-during-exterior-work</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
