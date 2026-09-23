@@ -889,6 +889,7 @@ def footer():
           <li><a href="heating-season-pricing-timelines.html">Seasonal Pricing Guide</a></li>
           <li><a href="property-overhaul-planning.html">Property Project Planning</a></li>
           <li><a href="protecting-fresh-insulation-during-exterior-work.html">Protecting Your Insulation</a></li>
+          <li><a href="insulation-home-envelope-partners.html">Insulation & Home-Envelope Partners</a></li>
         </ul>
       </nav>
 
@@ -1956,6 +1957,7 @@ GUIDE_PAGES = [
     ("heating-season-pricing-timelines.html", COPY_BLOCK_INDEX + 2, "Seasonal Pricing Guide"),
     ("property-overhaul-planning.html", COPY_BLOCK_INDEX + 3, "Property Project Planning"),
     ("protecting-fresh-insulation-during-exterior-work.html", COPY_BLOCK_INDEX + 4, "Protecting Your Insulation"),
+    ("insulation-home-envelope-partners.html", COPY_BLOCK_INDEX + 5, "Insulation & Home-Envelope Partners"),
 ]
 
 def guide_page(slug, block_index, nav_label):
