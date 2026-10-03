@@ -19,7 +19,7 @@ SPINNING UP A NEW CITY
 Everything city-specific lives in the CONFIG block below. See NEW-CITY.md for
 the full runbook, or run:  python tools/new-city.py --help
 """
-import os, re, json, html, sys, hashlib
+import os, re, json, html, sys, hashlib, datetime
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT  = os.path.join(ROOT, "site")            # <- this folder is what deploys
@@ -117,6 +117,18 @@ SLUG_ALIAS = {
 # ==========================================================================
 #  END CONFIG
 # ==========================================================================
+
+# Freshness signal. This is the date the pages were last generated, which is
+# literally true and verifiable, rather than an invented publish date. Only
+# modified_time is emitted: the original publish date of this content is not
+# something the generator knows, and guessing it would be a false claim.
+BUILD_DATE = datetime.date.today().isoformat()
+
+# The date this version of the site was published. Set ONCE, by hand, and
+# left alone. It must never be wired to today's date: a publish date that
+# moves every time the generator runs is a false freshness signal, and a
+# crawler that notices will trust the rest of the markup less.
+SITE_PUBLISHED = "2026-10-03"
 
 SRC = os.path.join(ROOT, CONTENT_FILE)
 
@@ -432,6 +444,8 @@ def head(title, meta, slug, extra_ld=""):
 
 <!-- ===== Open Graph / social sharing ===== -->
 <meta property="og:type" content="website">
+<meta property="article:published_time" content="{SITE_PUBLISHED}">
+<meta property="article:modified_time" content="{BUILD_DATE}">
 <meta property="og:site_name" content="{BUSINESS}">
 <meta property="og:locale" content="en_CA">
 <meta property="og:title" content="{esc(title)}">
