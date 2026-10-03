@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- PLACEHOLDER DOMAIN: replace https://www.grimsbysprayfoaminsulation.com with the live domain before submitting to Google Search Console -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.grimsbysprayfoaminsulation.com/</loc>
@@ -52,31 +53,6 @@
   </url>
   <url>
     <loc>https://www.grimsbysprayfoaminsulation.com/contact-us</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.grimsbysprayfoaminsulation.com/spray-foam-performance-across-climate-zones</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.grimsbysprayfoaminsulation.com/heating-season-pricing-timelines</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.grimsbysprayfoaminsulation.com/property-overhaul-planning</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.grimsbysprayfoaminsulation.com/protecting-fresh-insulation-during-exterior-work</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.grimsbysprayfoaminsulation.com/insulation-home-envelope-partners</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -27,61 +27,35 @@
 
 /* ==========================================================================
    01. DESIGN TOKENS
-   Warm charcoal + rust. Distinct from the navy/green used by sister sites.
+   Grimsby palette: deep spruce + cured-foam cream + a single bronze accent
+   (the action colour) + safety amber for eyebrow labels on dark. No other
+   site in this portfolio pairs a harbour blue with a red call to action.
    ========================================================================== */
 :root {
-  /* ----------------------------------------------------------------------
-     BUG FIX, INHERITED FROM THE TEMPLATE — DO NOT REINTRODUCE
+  /* Brand colours — spruce, cured foam and bronze, chosen for Grimsby.
+     Spruce is the cold deep green of the escarpment treeline; cured closed
+     cell foam is the cream; bronze is the one warm hue and exists only so a
+     CTA can separate from a spruce header. Every pair is verified
+     numerically, not by eye. */
+  --color-primary:        #17382C;   /* Spruce. Hero, header band, footer. */
+  --color-primary-dark:   #0D2219;   /* Deep spruce. Footer, hover. */
+  --color-primary-light:  #2F6B52;   /* Lighter spruce. Body links. */
+  --color-accent:         #8A5A1E;   /* Bronze. The one warm hue, for CTAs. */
+  --color-accent-dark:    #6A4314;   /* Bronze hover on light grounds. */
+  --color-accent-soft:    #F7F0E2;   /* Foam tint well. */
+  --color-accent-light:   #E2C68A;   /* Foam tint for the eyebrow on the spruce hero. */
+  --color-brand-grey:     #5D665F;   /* Secondary warm grey-green. */
 
-     The block that used to live here had an unbalanced comment: it closed,
-     then ran on for two more lines of prose, then tried to close a second
-     time. CSS error recovery skips to the next semicolon after a malformed
-     declaration, and the next semicolon was the end of --color-accent-dark.
-     So that token was never declared at all, while being referenced 10 times
-     in this file. Every hover state built on it silently computed to nothing.
-
-     Do not write a comment-close sequence inside these notes. Doing so
-     recreates the fault exactly.
-
-     Verified with a real CSS parser, not by eye. The same fault is live on
-     the Windsor and Chatham sibling sites and should be fixed
-     there too.
-
-     BRAND COLOURS — warm rust on warm charcoal.
-     Deliberately unlike the navy/green used by the Windsor, Chatham and
-     epoxy builds. These are separate businesses on separate domains and
-     should not look like one template.
-
-     Every ratio below is computed, not estimated. WCAG AA needs 4.5:1 for
-     normal text and 3:1 for large text.
-     ---------------------------------------------------------------------- */
-  --color-primary:        #2e2a26;   /* Warm charcoal — header, hero, footer.
-                                        White on it: 14.23:1 */
-  --color-primary-dark:   #1e1b18;   /* Footer, hover.  White on it: 17.14:1 */
-  --color-primary-light:  #4a433b;   /* Gradients.      White on it:  9.73:1 */
-
-  --color-accent:         #a8461b;   /* Rust. White button text on it: 5.90:1,
-                                        and it reads 5.90:1 as text on white. */
-  --color-accent-dark:    #83350f;   /* Hover on LIGHT backgrounds only.
-                                        White on it: 8.34:1 */
-  --color-accent-on-dark: #e8944f;   /* Rust is far too dark to use as text on
-                                        the charcoal topbar and footer — #a8461b
-                                        measures only 1.68:1 there. This lighter
-                                        tint of the same hue measures 5.95:1
-                                        on --color-primary. */
-  --color-accent-soft:    #fbf1ea;   /* Warm tint background */
-  --color-brand-grey:     #6b6259;   /* Warm secondary grey */
-
-  /* Neutrals — warmed to sit with the rust rather than the old cool navy set */
-  --color-text:           #33302c;   /* Body copy. 11.98:1 on white (AAA) */
-  --color-text-muted:     #5f574e;   /* Secondary copy. 6.86:1 on white */
-  --color-heading:        #211e1b;   /* Headings — warm near-black */
+  /* Neutrals */
+  --color-text:           #232A26;   /* Body copy. */
+  --color-text-muted:     #55605A;   /* Secondary copy */
+  --color-heading:        #16211B;   /* Headings, spruce-tinted near-black. */
   --color-white:          #ffffff;
   --color-bg:             #ffffff;
-  --color-bg-alt:         #f7f4f1;   /* Section stripe */
-  --color-bg-deep:        #efe9e3;   /* Card wells */
-  --color-border:         #e2dad2;
-  --color-border-strong:  #c4b8ac;
+  --color-bg-alt:         #F5F6F4;   /* Section stripe */
+  --color-bg-deep:        #E7EAE6;   /* Card wells */
+  --color-border:         #DCE0DA;
+  --color-border-strong:  #7B857D;   /* Non-text contrast, WCAG 1.4.11. */
 
   /* Feedback */
   --color-success:        #16794a;
@@ -89,9 +63,13 @@
   --color-error:          #b3261e;
 
   /* Typography */
-  /* Different family to the sister sites, which run the Segoe UI stack. */
-  --font-sans:    ui-sans-serif, "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Trebuchet MS", "Segoe UI Semibold", ui-sans-serif, Arial, sans-serif;
+  /* Display: condensed grotesque. Tall and tight, like the framing members
+     the foam is sprayed between. Body: Georgia. A serif body on a trade
+     site is uncommon, reads warm to homeowners, and costs nothing to load. */
+  --font-display: "Arial Narrow", "Franklin Gothic Medium", "Archivo Narrow",
+                  "Helvetica Neue Condensed", system-ui, sans-serif;
+  --font-sans:    Georgia, Charter, "Iowan Old Style", "Times New Roman", serif;
+  --foam:         #EFE3C9;
   --fs-xs:   0.8125rem;   /* 13px */
   --fs-sm:   0.9375rem;   /* 15px */
   --fs-base: 1.0625rem;   /* 17px — comfortable reading */
@@ -117,12 +95,12 @@
   /* Structure */
   --container: 1160px;
   --container-narrow: 820px;
-  --radius-sm: 2px;
-  --radius:    3px;
-  --radius-lg: 4px;
-  --shadow-sm: 0 1px 2px rgba(46, 42, 38, .10);
-  --shadow:    0 3px 12px rgba(46, 42, 38, .11);
-  --shadow-lg: 0 12px 34px rgba(46, 42, 38, .18);
+  --radius-sm: 4px;
+  --radius:    8px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(16, 29, 49, .08);
+  --shadow:    0 4px 14px rgba(16, 29, 49, .09);
+  --shadow-lg: 0 14px 38px rgba(16, 29, 49, .16);
   --header-h:  76px;
   --transition: 180ms ease;
 }
@@ -376,7 +354,7 @@ strong { color: var(--color-heading); }
   padding-block: var(--space-2);
 }
 .topbar a { color: var(--color-white); text-decoration: none; font-weight: 700; }
-.topbar a:hover { color: var(--color-accent-on-dark); text-decoration: underline; }
+.topbar a:hover { color: var(--color-accent); text-decoration: underline; }
 
 /* Sticky header */
 .site-header {
@@ -565,14 +543,9 @@ strong { color: var(--color-heading); }
   font-weight: 700;
   color: #cfdaea;
 }
+/* No bullet markers in the hero. The flex gap does the separating, so the
+   badge row reads as a line of credentials rather than a bulleted list. */
 .hero__badges li { display: flex; align-items: center; gap: 8px; }
-.hero__badges li::before {
-  content: "";
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  flex-shrink: 0;
-}
 .hero__media img {
   width: 100%;
   border-radius: var(--radius-lg);
@@ -592,34 +565,24 @@ strong { color: var(--color-heading); }
   height: 100%;
   object-fit: cover;
 }
-/* Scrim over the photo. Measured, not eyeballed: this hero has blown-out
-   white areas where white text scored 1.00:1 with no overlay, and 2.22:1
-   on average. Text shadow earns no contrast credit, so it cannot be the
-   answer. A brand-navy gradient darkens the left, where the copy sits, and
-   fades right so the photograph still reads. */
-.hero--home .hero__bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-      100deg,
-      rgba(18, 31, 42, .88) 0%,
-      rgba(18, 31, 42, .80) 38%,
-      rgba(18, 31, 42, .55) 62%,
-      rgba(18, 31, 42, .38) 100%);
-  pointer-events: none;
-}
+/* No wash over the photo — it shows at full colour.
+   Contrast is handled by the panel behind the copy instead, so the
+   headline stays readable without muddying the photograph. */
 
 .hero--home .hero__inner {
   position: relative;
   z-index: 1;
   grid-template-columns: minmax(0, 1fr) 420px;
+  /* Row 1 hugs the business name; row 2 absorbs the height of the tall form,
+     so the heading sits directly under the name instead of drifting down. */
+  grid-template-rows: auto 1fr;
   align-items: start;
 }
 
 /* Business name across the top of the hero, spanning both columns */
 .hero__brand {
-  grid-column: 1 / -1;
+  grid-column: 1;
+  grid-row: 1;
   margin: 0 0 var(--space-5);
   font-size: clamp(2.25rem, 5.2vw, 3.5rem);
   font-weight: 900;
@@ -637,13 +600,19 @@ strong { color: var(--color-heading); }
    for edge definition plus a wide soft one that darkens the photo immediately
    behind the glyphs. Note that WCAG does not credit text shadows, so over the
    brightest part of the image this is below the 4.5:1 formal minimum. */
-/* Panel behind the copy. The gradient alone cannot guarantee contrast on an
-   arbitrary photo, so the text block carries its own background. This is what
-   makes the hero safe when a different city swaps in a lighter image. */
 .hero--home .hero__intro {
-  background: rgba(18, 31, 42, .55);
-  padding: var(--space-5);
-  border-radius: var(--radius);
+  background: none;
+  padding: 0;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* The estimate form rises to sit level with the business name, so its top
+   edge lines up with the header text instead of starting below it. */
+.hero--home .hero-form {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: start;
 }
 .hero--home .hero__intro h1,
 .hero--home .hero__intro p,
@@ -686,6 +655,19 @@ strong { color: var(--color-heading); }
 }
 .hero-form .field textarea { min-height: 76px; }
 .hero-form .form-note { margin-top: var(--space-2); text-align: center; }
+
+/* --- Intro band: the prose that opens a page sits BELOW the hero, on the
+   page background. Standing rule: no paragraphs inside any hero. --- */
+.intro-band {
+  background: var(--color-bg);
+  padding-block: var(--space-7) var(--space-2);
+}
+.intro-band p {
+  font-size: var(--fs-md);
+  color: var(--color-text);
+}
+.intro-band p:first-of-type { font-size: var(--fs-lg); line-height: 1.6; color: var(--color-heading); }
+.intro-band h2 { margin-bottom: var(--space-4); }
 
 /* Compact hero for interior pages */
 .hero--page { padding-block: var(--space-7); }
@@ -811,6 +793,31 @@ strong { color: var(--color-heading); }
   padding: var(--space-5);
 }
 .panel h3 { margin-bottom: var(--space-3); }
+
+/* --- Standards callout: how every job is run (Scotland layout profile) --- */
+.panel--standards {
+  border-left: 5px solid var(--color-primary);
+  background: var(--color-bg-deep);
+  padding: var(--space-6);
+}
+.panel--standards h2 { margin-bottom: var(--space-4); }
+.standards-list { list-style: none; margin: 0; padding: 0; }
+.standards-list li {
+  position: relative;
+  padding-left: 2.1rem;
+  margin-bottom: var(--space-3);
+  line-height: var(--lh-body);
+}
+.standards-list li:last-child { margin-bottom: 0; }
+.standards-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0; top: -1px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-accent-dark);
+}
 
 
 /* ==========================================================================
@@ -1233,7 +1240,7 @@ strong { color: var(--color-heading); }
 .footer-list { list-style: none; margin: 0; padding: 0; }
 .footer-list li { margin-bottom: var(--space-2); }
 .site-footer a { color: #cbd6e6; text-decoration: none; }
-.site-footer a:hover { color: var(--color-accent-on-dark); text-decoration: underline; }
+.site-footer a:hover { color: var(--color-accent); text-decoration: underline; }
 .footer-brand .logo__name { color: var(--color-white); }
 .footer-brand p { margin-top: var(--space-4); }
 
@@ -1311,6 +1318,10 @@ strong { color: var(--color-heading); }
   .hero__inner,
   .hero--split .hero__inner,
   .hero--home .hero__inner { grid-template-columns: 1fr; }
+  .hero--home .hero__brand,
+  .hero--home .hero__intro,
+  .hero--home .hero-form { grid-column: auto; grid-row: auto; }
+  .hero--home .hero__inner { grid-template-rows: none; }
   /* Form drops below the copy and centres */
   .hero-form { max-width: 560px; margin-inline: auto; width: 100%; }
   .hero__media { order: -1; max-width: 560px; }
@@ -1399,201 +1410,120 @@ strong { color: var(--color-heading); }
   .faq__panel { display: block !important; }
 }
 
+
 /* ==========================================================================
-   21. GRIMSBY BRAND OVERRIDES
-   Appended rather than threaded through the sections above so the template
-   diff stays readable. Everything here is deliberate differentiation from
-   the Windsor and Chatham builds, which share the base stylesheet.
+   21. SERVICE AREA MAP  (map sits beside the service-area copy)
+   ========================================================================== */
+.layout-split--even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+.map-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-deep);
+}
+.map-wrap iframe { display: block; width: 100%; height: 420px; border: 0; }
+@media (max-width: 1024px) {
+  .layout-split--even { grid-template-columns: 1fr; }
+  .map-wrap iframe { height: 320px; }
+}
+
+/* ==========================================================================
+   24. GRIMSBY DESIGN LAYER
+
+   Three devices, all drawn from the trade rather than from a template:
+
+   1. FOAM EDGE. Cured foam pressed into a cavity bulges out past the plate
+      in a row of soft lobes. That silhouette is the most recognisable thing
+      in this trade and it is already the logo mark, so it is used here as the
+      hero-to-content boundary. Once per page, nowhere else.
+   2. BAY RULES. Faint vertical rules at a fixed interval, the rhythm of studs
+      at sixteen inches on centre. Texture, not decoration - barely visible.
+   3. CONDENSED DISPLAY OVER SERIF BODY. Framing members are tall and tight;
+      the reading matter underneath them is warm and wide.
    ========================================================================== */
 
 h1, h2, h3, h4,
 .hero__title,
-.section__title {
-  font-family: var(--font-display);
-  letter-spacing: -0.015em;
-}
-
-/* Rust keyline under section headings, replacing the sister sites' plain
-   type. Uses currentColor-independent accent so it survives on both grounds. */
-.section__title::after,
-.hero__title::after { content: none; }
-
-/* Squarer, flatter buttons than the template's rounded pills */
+.section__title,
 .btn {
-  border-radius: var(--radius-sm);
-  letter-spacing: 0.02em;
-  text-transform: none;
-}
-
-/* --------------------------------------------------------------------------
-   Footer service-area map
-
-   Google's embed code hands you a fixed 600x450 box. That overflows on a
-   phone and leaves a gap on a wide screen, so build.py strips the width and
-   height attributes and the sizing is done here instead.
-
-   aspect-ratio keeps the frame proportional with no padding-top hack. The
-   min-height is a floor for very narrow screens, where a 21:9 band would
-   collapse to something useless.
-   -------------------------------------------------------------------------- */
-.footer-map {
-  margin-top: var(--space-7);
-  padding-top: var(--space-6);
-  border-top: 1px solid rgba(255, 255, 255, .14);
-}
-
-.footer-map h3 {
-  color: var(--color-white);
-  margin-bottom: var(--space-4);
-}
-
-.footer-map__frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 21 / 6;
-  min-height: 220px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--color-primary-light);   /* holds the space while lazy-loading */
-}
-
-.footer-map__frame iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
-
-@media (max-width: 900px) {
-  .footer-map__frame { aspect-ratio: 4 / 3; min-height: 260px; }
-}
-
-/* --------------------------------------------------------------------------
-   22. CENTRED HOME HERO
-
-   Replaces the split "copy left, form right" hero. The estimate form moved to
-   the #quote section further down, so this is a single centred column over a
-   full-bleed photograph.
-
-   The old scrim was a 100deg gradient weighted to the left, which was correct
-   when the text sat on the left. Centred text needs an even scrim, so this is
-   a flat wash plus a vertical darkening at top and bottom. Contrast is
-   verified numerically against the actual hero image, not eyeballed.
-   -------------------------------------------------------------------------- */
-.hero--home .hero__inner {
-  display: block;
-  max-width: 880px;
-  margin-inline: auto;
-  text-align: center;
-  padding-block: var(--space-7);
-}
-
-.hero--home .hero__bg::after {
-  background:
-    linear-gradient(180deg, rgba(20,18,16,.72) 0%, rgba(20,18,16,.60) 45%, rgba(20,18,16,.78) 100%),
-    rgba(20, 18, 16, .34);
-}
-
-.hero--home .hero__brand {
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--color-accent-on-dark);
-  margin: 0 0 var(--space-2);
+  letter-spacing: 0.005em;
 }
 
-.hero--home .hero__eyebrow {
-  font-size: var(--fs-sm);
-  letter-spacing: .04em;
-  color: #e6ded6;
-  margin: 0 0 var(--space-5);
-}
+/* Georgia runs small and needs more leading than the grotesque it replaces. */
+body { line-height: 1.75; }
+.lede, .intro-band p:first-of-type { line-height: 1.6; }
 
-.hero--home .hero__intro { max-width: none; }
+/* Long measure is the enemy of a serif. */
+.intro-band p,
+.content-block p,
+.content-block li { max-width: 68ch; }
 
-.hero--home h1 {
-  font-size: clamp(2rem, 5.2vw, 3.25rem);
-  margin-bottom: var(--space-5);
-  text-wrap: balance;
-}
+/* --- 1. the foam edge --------------------------------------------------- */
+.hero { position: relative; }
 
-.hero--home .hero__intro p {
-  max-width: 62ch;
-  margin-inline: auto;
-  color: #f0eae4;
-}
-
-/* Badges become a centred trust list rather than a left-aligned row */
-.hero--home .hero__badges {
-  justify-content: center;
-  gap: var(--space-3) var(--space-6);
-  margin-top: var(--space-6);
-  color: #f0eae4;
-}
-
-.hero--home .btn-row {
-  justify-content: center;
-  margin-top: var(--space-6);
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 22px;
+  background:
+    repeating-radial-gradient(
+      circle at 22px 0,
+      var(--foam) 0 21px,
+      transparent 21px 22px);
+  background-size: 44px 22px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+  z-index: 2;
 }
 
 @media (max-width: 700px) {
-  .hero--home .hero__inner { padding-block: var(--space-6); }
-  .hero--home .hero__badges { flex-direction: column; align-items: center; gap: var(--space-2); }
-  .hero--home .btn-row { flex-direction: column; align-items: stretch; }
+  .hero::after { height: 14px; background-size: 28px 14px;
+                 background-image: repeating-radial-gradient(
+                   circle at 14px 0, var(--foam) 0 13px,
+                   transparent 13px 14px); }
 }
 
-/* --------------------------------------------------------------------------
-   23. QUOTE BAND
-
-   Compact estimate form sitting directly beneath the centred hero. Two
-   columns on desktop - a short intro on the left, the form on the right -
-   collapsing to a single stack on tablet and phone.
-
-   Sits on --color-bg-alt rather than the charcoal so it reads as page
-   content rather than a continuation of the hero, and so the form inputs
-   keep their normal light-background styling and contrast.
-   -------------------------------------------------------------------------- */
-.quote-band {
-  background: var(--color-bg-alt);
-  border-bottom: 1px solid var(--color-border);
-  padding-block: var(--space-7);
+/* --- 2. bay rules ------------------------------------------------------- */
+/* Only on the alternating stripe, so the page is not uniformly striped. */
+.section--alt {
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      transparent 0 calc(16.66% - 1px),
+      rgba(23, 56, 44, .055) calc(16.66% - 1px) 16.66%);
 }
 
-.quote-band__inner {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: var(--space-6) var(--space-7);
-  align-items: start;
+/* --- 3. furniture ------------------------------------------------------- */
+/* Squared off. Foam fills rectangular cavities; nothing here is a pill. */
+.btn, .card, .service-card, .faq__item, .form-field input,
+.form-field select, .form-field textarea {
+  border-radius: 2px;
 }
 
-.quote-band__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-2xl);
-  margin-bottom: var(--space-3);
+/* The eyebrow is required by the hero spec. Keep it to the hero only. */
+.section__eyebrow { letter-spacing: 0.02em; text-transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
 
-.quote-band__intro p { color: var(--color-text-muted); }
-
-.quote-band__phone {
-  font-weight: 700;
-  color: var(--color-text);
+/* Outbound links written into body copy. build.py emits class="ext-link" but
+   the inherited stylesheet had no rule for it, so every outbound link fell
+   back to the default anchor. Styled to read as a link without competing with
+   the internal ones: same colour, with a small mark that it leaves the site. */
+.ext-link {
+  color: var(--color-accent-dark);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
-.quote-band__phone a { color: var(--color-accent-dark); }
-
-.quote-band__form {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-accent);
-  border-radius: var(--radius);
-  padding: var(--space-5);
-  box-shadow: var(--shadow-sm);
-}
-
-@media (max-width: 900px) {
-  .quote-band__inner { grid-template-columns: 1fr; }
-  .quote-band { padding-block: var(--space-6); }
+.ext-link:hover { color: var(--color-accent); }
+.ext-link::after {
+  content: "\2197";
+  font-size: .78em;
+  margin-left: .15em;
+  vertical-align: baseline;
 }

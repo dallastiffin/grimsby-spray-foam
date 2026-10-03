@@ -37,113 +37,41 @@ BUILD_IMAGES = "--images" in sys.argv
 # --- business identity ----------------------------------------------------
 BUSINESS      = "Grimsby Spray Foam Insulation"
 CITY          = "Grimsby"
+CITY_SLUG     = "grimsby"
 PROVINCE      = "Ontario"
 PROVINCE_CODE = "ON"
 REGION        = "Niagara Region"
 CITY_PROV     = "%s, %s" % (CITY, PROVINCE)
 
-# Format matches the number already printed on the live site and in existing
-# citations. Do not "normalise" this to +1 289-672-4160 - NAP consistency with
-# the directory listings matters more than matching the Windsor build's style.
-#
-# The old SitePanda site had CTA buttons that displayed (289) 672-4160 but
-# linked to tel:2262426614. 289-672-4160 is the correct number; that second
-# number does not appear anywhere in this build.
 PHONE_DISPLAY = "(289) 672-4160"
 PHONE_HREF    = "+12896724160"
-EMAIL         = "tiffindevelopments@gmail.com"
-
-# --- industry layer -------------------------------------------------------
-# Everything above is per-city. Everything here is per-INDUSTRY, and is the
-# only part that changes when this template is reused for a different trade.
-# See INDUSTRY.md in this folder for the researched facts behind the copy.
-#
-# SCHEMA_TYPE: the schema.org business type. HomeAndConstructionBusiness suits
-# insulation, roofing, concrete and most trades. A non-construction local
-# service would use LocalBusiness or a more specific subtype.
-SCHEMA_TYPE   = "HomeAndConstructionBusiness"
-OFFER_CATALOG = "Spray Foam Insulation Services"
-
-# Industry wording used in schema, meta and page furniture. The old template
-# had all of this hardcoded to epoxy flooring, which leaked "epoxy" onto a
-# spray foam site in the business description, og:image:alt, the hidden detail
-# heading, the services page title, the terms page and the 404.
-INDUSTRY_NOUN   = "spray foam insulation"
-# Carried over from Windsor this said "homes, garages and commercial
-# buildings". This site has no commercial page, so that was a claim with
-# nothing behind it. It also feeds the services page meta description, which
-# came out at 119 characters - just under the 120 minimum.
-INDUSTRY_BLURB  = ("Spray foam insulation for attics, garages, basements "
-                   "and crawl spaces")
-SERVICES_PAGE_H = "Spray Foam Insulation Services"
-
-# Browser UI colour. Must match --color-primary in site/style.css and
-# theme_color in site/site.webmanifest. It was hardcoded to the epoxy green
-# in three separate places, so a rebrand silently left the old colour in the
-# mobile browser chrome.
-# Warm charcoal. Deliberately unlike Windsor's navy (#1b2e3e) and the epoxy
-# sites' dark green - these are separate domains in the same trade and should
-# not look like one network. Must stay in sync with --color-primary in
-# site/style.css and theme_color in site/site.webmanifest.
-THEME_COLOR = "#2E2A26"
-
-# The service pages this industry runs: (slug, full title, short nav label).
-# Order here drives the nav, the block order in the content markdown, and the
-# "## " heading order in the SEO block. Use "and", not "&" - these strings
-# flow into HTML attributes, JSON-LD and form <option> values.
-# MIGRATION CONSTRAINT: these six slugs are already indexed by Google on the
-# old SitePanda site and are being carried over byte-for-byte so that no page
-# needs a 301. Do not "tidy" them.
-#
-#   close-and-open-cell-spray-foam    <- yes, "close", not "closed". That is
-#                                        what is live and indexed. Leave it.
-#   basement-insulation               <- kept separate from crawl space, even
-#   crawl-space-insulation               though the Windsor build merges them,
-#                                        because both rank independently.
-#
-# Nav order matches the old site's dropdown so returning visitors find the
-# same thing in the same place.
-SERVICE_PAGE_DEFS = [
-    ("attic-insulation.html",             "Attic Insulation",     "Attic"),
-    ("garage-insulation.html",            "Garage Insulation",    "Garage"),
-    ("basement-insulation.html",          "Basement Insulation",  "Basement"),
-    ("crawl-space-insulation.html",       "Crawl Space Insulation", "Crawl Space"),
-    ("new-construction-insulation.html",  "New Construction Insulation",
-     "New Construction"),
-    ("close-and-open-cell-spray-foam.html",
-     "Closed Cell and Open Cell Spray Foam", "Closed and Open Cell"),
-]
-
-# The contact form asks for a broad category, not a page name. A select
-# listing every service page was unusable on a phone, and the exact system is
-# worked out on the call anyway. The header dropdown still carries the full
-# list, since those links are what carry the content.
-FORM_SERVICE_OPTIONS = [
-    "Attic",
-    "Basement or Crawl Space",
-    "Garage",
-    "New Construction",
-    "Whole Home",
-    "Other",
-]
-
-# CITY_SLUG feeds the hero, about and services-page image basenames, so those
-# are derived rather than hardcoded to whichever city built the template.
-CITY_SLUG     = re.sub(r"[^a-z0-9]+", "-", CITY.lower()).strip("-")
-HERO_IMG      = "hero-%s" % CITY_SLUG
-ABOUT_IMG     = "about-%s" % CITY_SLUG
-SERVICES_IMG  = "services-%s" % CITY_SLUG
 
 # CANONICAL DOMAIN. Feeds canonical tags, Open Graph, sitemap.xml and schema.
 # Must match the hostname the site actually serves, with no redirect in
-# between, or Google indexes a URL that bounces.
-# NOTE THE www. The old site is indexed on the www host and its canonical tags
-# point there. Dropping it would point every canonical at a hostname Google has
-# not seen. Cloudflare will 301 the apex to www.
+# between, or Google indexes a URL that bounces. The www host is the one
+# is a new registration with nothing indexed against it, so the apex is
+# canonical and www redirects to it.
 DOMAIN = "https://www.grimsbysprayfoaminsulation.com"
 
 # The markdown file holding all copy, in this folder.
 CONTENT_FILE = "Grimsby-Spray-Foam-Insulation-Website-Content.md"
+
+# Colour stamped into <meta name="theme-color"> and site.webmanifest. Must
+# agree with --color-primary in site/style.css.
+THEME_COLOR = "#17382C"
+
+# Microsoft Clarity project ID. Leave "" until the owner creates the project;
+# an empty or placeholder ID would otherwise ship a broken script tag on every
+# page. The snippet is injected into <head> only when this is non-empty.
+CLARITY_ID = ""
+
+# Google Maps embed for the service-area section. A plain coordinate embed,
+# not a place-ID "pb=" embed, so the pin and zoom are under our control.
+# The zoom was checked by looking at the rendered map, not by reasoning
+# about the number - the pin sits on Grimsby and the zoom is set to hold
+# Beamsville, Vineland and Smithville in frame without losing the town
+# itself. Grimsby is small, so z=12 rather than the z=11 a region needs.
+MAP_EMBED = "https://maps.google.com/maps?q=43.1948,-79.5856&z=12&output=embed"
 
 # --- location details, for LocalBusiness schema ---------------------------
 STREET_ADDRESS = "PLACEHOLDER - add street address"
@@ -159,9 +87,6 @@ HOURS_TEXT     = "Monday to Saturday, 7:00am to 6:00pm"
 # --- service area ---------------------------------------------------------
 # Goes into schema areaServed. TOPBAR_AREA is the short version shown in the
 # thin bar above the header.
-# West Niagara and the Hamilton fringe. Beamsville, Vineland, Jordan and
-# Campden are all within the Town of Lincoln, not separate municipalities -
-# worth knowing before the copy calls them "nearby towns".
 SERVICE_AREA = [
     "Grimsby",
     "Beamsville",
@@ -178,17 +103,16 @@ SERVICE_AREA = [
 ]
 TOPBAR_AREA = "Grimsby, Beamsville, Vineland, Smithville &amp; across west Niagara"
 
-# --- footer map ------------------------------------------------------------
-# The src of a Google Maps "Embed a map" iframe, centred on the service area.
-# Get a new one per city: maps.google.com -> Share -> Embed a map -> copy the
-# src value out of the iframe it gives you. Set to "" to drop the map.
-#
-# Deliberately not the whole <iframe> tag. build.py owns the width, height,
-# loading and title attributes so the map stays responsive and accessible
-# rather than the 600x450 fixed box Google hands you.
-MAP_EMBED_URL = ("https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11634.397796191022"
-                 "!2d-79.56173837985783!3d43.19691477956117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768"
-                 "!4f13.1!5e0!3m2!1sen!2sca!4v1785984840343!5m2!1sen!2sca")
+# --- legacy URLs ----------------------------------------------------------
+# grimsbysprayfoaminsulation.com has indexed history on the www host, so
+# there is nothing to preserve and the template's own slugs are used as-is.
+# If a legacy URL ever has to be honoured, map it here: every URL passes
+# through one of three choke points below (write, public_url, rewrite_links)
+# and each of them applies this map, so no literal in this file has to change.
+SLUG_ALIAS = {
+    "about.html":   "about-us.html",
+    "contact.html": "contact-us.html",
+}
 
 # ==========================================================================
 #  END CONFIG
@@ -217,28 +141,6 @@ def asset_v(name):
     return "%s?v=%s" % (name, digest)
 
 
-# --- URL aliases (migration) ----------------------------------------------
-# This site replaces an existing SitePanda/Duda site whose pages are already
-# indexed. Two of them use slugs the template does not: /about-us and
-# /contact-us. Rather than 301 them and bleed equity, the pages keep their
-# live paths.
-#
-# build.py refers to these pages internally as about.html and contact.html in
-# roughly 25 places. Instead of chasing every string literal, the alias is
-# applied at the three choke points every URL passes through:
-#
-#   public_url()    - canonical, og:url, breadcrumbs, sitemap
-#   rewrite_links() - every internal href in the rendered HTML
-#   write()         - the filename on disk
-#
-# Add a mapping here and all three follow. Remove one and the page reverts to
-# the template default.
-SLUG_ALIAS = {
-    "about.html":   "about-us.html",
-    "contact.html": "contact-us.html",
-}
-
-
 def alias(slug):
     return SLUG_ALIAS.get(slug, slug)
 
@@ -246,10 +148,10 @@ def alias(slug):
 def public_url(slug):
     """The path Cloudflare actually serves a page at.
 
-    wrangler.toml uses html_handling = "auto-trailing-slash", so about-us.html
-    is served at /about-us and index.html at /. Canonical tags, Open Graph
-    URLs, breadcrumbs, the sitemap and every internal link all use this form,
-    so no link ever hits a redirect.
+    wrangler.toml uses html_handling = "auto-trailing-slash", so about.html is
+    served at /about and index.html at /. Canonical tags, Open Graph URLs,
+    breadcrumbs, the sitemap and every internal link all use this form, so no
+    link ever hits a redirect.
     """
     slug = alias(slug)
     if slug in ("index.html", ""):
@@ -257,62 +159,74 @@ def public_url(slug):
     return "/" + slug[:-5] if slug.endswith(".html") else "/" + slug
 
 
+def clarity_tag():
+    """Microsoft Clarity snippet, or nothing at all.
+
+    Returns "" when CLARITY_ID is empty so no broken <script> ships. Kept out
+    of the critical path with async.
+    """
+    if not CLARITY_ID:
+        return ""
+    return ("\n<script type=\"text/javascript\">\n"
+            "(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n"
+            "t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n"
+            "y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\n"
+            "})(window, document, \"clarity\", \"script\", \"%s\");\n"
+            "</script>" % CLARITY_ID)
+
+
 def esc(s):
     return html.escape(s, quote=False)
 
-# ---------------------------------------------------------------------------
-#  INLINE LINKS IN PROSE
-#
-#  The markdown parser escapes everything and supports no inline markup, which
-#  is deliberate - it means nothing in the copy can inject HTML. Body prose
-#  supports exactly one piece of markdown syntax: [text](url). Nothing else.
-#  Escaping still happens first, so a stray bracket or ampersand in the copy
-#  cannot inject markup.
-#
-#  External links get target="_blank" plus rel="noopener" - without noopener
-#  the opened page gets a handle on this one through window.opener. If any of
-#  these turn out to be PAID placements, Google's guidance is that they should
-#  carry rel="sponsored" - add "sponsored" to EXTERNAL_REL below and every one
-#  of them changes at once.
-#
-#  Links to the owner's OWN other city sites (bradfordsprayfoaminsulation.com,
-#  sprayfoaminsulationwindsor.com, miltonsprayfoaminsulation.com,
-#  chathamsprayfoaminsulation.com, leamingtonsprayfoaminsulation.com,
-#  capebretonsprayfoaminsulation.com, saintjohnsprayfoaminsulation.com,
-#  caledonsprayfoaminsulation.com) must NEVER appear in this markdown. Ten
-#  sites linking to each other is the single most recognisable doorway-network
-#  pattern there is.
-# ---------------------------------------------------------------------------
 EXTERNAL_REL = "noopener"
 
-_MD_LINK = re.compile(r'\[([^\]]+)\]\(([^\s)]+?)(?:\s+"([^"]*)")?\)')
+INLINE_LINK_RE = re.compile(r'\[([^\]]+)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)')
 
+def rich(text):
+    """Render prose, escaping normally but converting exactly [text](url)
+    into a real link. Internal targets use the same 'slug.html' / 'index.html'
+    convention as every other link in this file, so rewrite_links() turns them
+    into the extensionless form Cloudflare serves at write time.
 
-def rich(s):
-    """Escape prose, then turn [text](url) into a real anchor.
-
-    External (http/https) targets get target="_blank", rel=EXTERNAL_REL and
-    the ext-link class. Internal targets (slug.html, index.html) render as a
-    plain anchor with no target/rel - rewrite_links() turns the .html
-    reference into the extensionless served path and applies SLUG_ALIAS, same
-    as every other internal link on the site. This is what lets body copy
-    carry the required internal cross-links between services, about and
-    contact without a second markup syntax."""
-    out = esc(s)
-    def repl(m):
+    External links (http/https) open in a new tab with rel="noopener";
+    EXTERNAL_REL is one constant so a paid placement can become
+    rel="sponsored" with a one-line change. An optional quoted title of
+    "nf" adds nofollow to that one link."""
+    out = []
+    pos = 0
+    for m in INLINE_LINK_RE.finditer(text):
+        out.append(esc(text[pos:m.start()]))
         label, url, title = m.group(1), m.group(2), m.group(3)
         if url.startswith("http://") or url.startswith("https://"):
-            rel = EXTERNAL_REL if title != "nf" else EXTERNAL_REL + " nofollow"
-            return ('<a class="ext-link" href="%s" target="_blank" rel="%s">%s</a>'
-                    % (html.escape(url, quote=True), rel, label))
-        return '<a href="%s">%s</a>' % (html.escape(url, quote=True), label)
-    return _MD_LINK.sub(repl, out)
+            rel = EXTERNAL_REL + (" nofollow" if title == "nf" else "")
+            out.append('<a class="ext-link" href="%s" target="_blank" rel="%s">%s</a>'
+                       % (html.escape(url, quote=True), rel, esc(label)))
+        else:
+            rel = ' rel="nofollow"' if title == "nf" else ""
+            out.append('<a href="%s"%s>%s</a>' % (esc(url), rel, esc(label)))
+        pos = m.end()
+    out.append(esc(text[pos:]))
+    return "".join(out)
 
-
-def plain(s):
-    """Strip [text](url) down to text. For meta descriptions and card blurbs,
-    where an anchor would be wrong or would leak raw markdown."""
-    return esc(_MD_LINK.sub(lambda m: m.group(1), s))
+# ---------------------------------------------------------------- site map
+# Defined up here, before block parsing, so N_SERVICES can size the content
+# file's expected block count. Adding a page beyond the template's original
+# six means one new entry here and nothing else - SERVICE_IMG, SEO_LABELS,
+# EXPECTED_BLOCKS and the parsed-block indices all derive from this list.
+SERVICE_PAGES = [
+    # slug (legacy slugs from the old SitePanda site, kept exactly), title, short.
+    # "close-and-open-cell-spray-foam" is the live spelling - "close", not
+    # "closed". It is what Google has indexed. Do not tidy it.
+    ("attic-insulation.html",              "Attic Insulation",            "Attic"),
+    ("garage-insulation.html",             "Garage Insulation",           "Garage"),
+    ("basement-insulation.html",           "Basement Insulation",         "Basement"),
+    ("crawl-space-insulation.html",        "Crawl Space Insulation",      "Crawl Space"),
+    ("new-construction-insulation.html",   "New Construction Insulation", "New Construction"),
+    ("close-and-open-cell-spray-foam.html","Closed Cell and Open Cell Spray Foam",
+     "Closed and Open Cell"),
+]
+N_SERVICES = len(SERVICE_PAGES)
+SERVICE_IMG = {slug: "images/service-%s.jpg" % slug[:-5] for slug, _, _ in SERVICE_PAGES}
 
 # ---------------------------------------------------------------- parse md
 raw = open(SRC, encoding="utf-8").read()
@@ -359,18 +273,17 @@ def parse_block(block):
     flush_para()
     return h1, sections
 
-# Block layout: home, N service pages, about, contact, FAQ, SEO table,
-# SITE COPY. Every index is derived from N_SERVICES so the number of service
-# pages can change without hunting for hardcoded offsets.
-N_SERVICES = len(SERVICE_PAGE_DEFS)
+# A finished content file has N_SERVICES+6 blocks separated by "---": home
+# page, one per SERVICE_PAGES entry, about, contact, FAQ, the SEO table, and
+# SITE COPY. Fail with something readable rather than an IndexError deeper down.
 EXPECTED_BLOCKS = N_SERVICES + 6
 if len(blocks) < EXPECTED_BLOCKS:
     sys.exit(
         "\nContent file does not have the expected structure.\n"
         "  file:   %s\n"
         "  found:  %d section(s) separated by '---'\n"
-        "  needed: %d  (home, %d service pages, about, contact, FAQ, SEO\n"
-        "          table, SITE COPY)\n\n"
+        "  needed: %d  (home, %d service pages, about, contact, FAQ, SEO table,\n"
+        "          SITE COPY)\n\n"
         "If you have just scaffolded a new city, the real copy has not been\n"
         "written into that file yet. See NEW-CITY.md for the content prompt.\n"
         % (CONTENT_FILE, len(blocks), EXPECTED_BLOCKS, N_SERVICES))
@@ -385,7 +298,7 @@ SEO_BLOCK_INDEX  = 4 + N_SERVICES
 COPY_BLOCK_INDEX = 5 + N_SERVICES
 
 # ---------------------------------------------------------------- site copy
-# Block 11 holds every reusable string that used to be hardcoded in this file:
+# The SITE COPY block holds every reusable string that used to be hardcoded in this file:
 # CTA headings, form intros, badges, photo alt text. Keeping it in the markdown
 # means each city writes its own, instead of ten sites sharing one sentence.
 _sc_h1, _sc_secs = parsed[COPY_BLOCK_INDEX] if len(parsed) > COPY_BLOCK_INDEX else (None, [])
@@ -453,34 +366,36 @@ for ln in blocks[SEO_BLOCK_INDEX].split("\n"):
     elif ln.startswith("Meta Description:"):
         seo[cur_label]["meta"] = ln.split(":", 1)[1].strip()
 
-# ---------------------------------------------------------------- site map
-SERVICE_PAGES = SERVICE_PAGE_DEFS
-SERVICE_IMG = {slug: "images/service-%s.jpg" % slug[:-5] for slug, _t, _s in SERVICE_PAGES}
-
-
 # ---------------------------------------------------------------- partials
 def head(title, meta, slug, extra_ld=""):
     url = DOMAIN + public_url(slug)
     ld_local = {
         "@context": "https://schema.org",
-        "@type": SCHEMA_TYPE,
+        "@type": "HomeAndConstructionBusiness",
         "@id": DOMAIN + "/#business",
         "name": BUSINESS,
-        "description": "%s in %s and %s." % (INDUSTRY_BLURB, CITY_PROV, REGION),
+        "description": "Spray foam insulation for attics, garages, basements, crawl spaces, rim joists and new construction in %s and across %s." % (CITY_PROV, REGION),
         "url": DOMAIN + "/",
         "telephone": PHONE_DISPLAY,
-        "email": EMAIL,
         "image": DOMAIN + "/images/og-image.jpg",
         "logo": DOMAIN + "/images/logo.jpg",
         "priceRange": "$$",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": STREET_ADDRESS,
-            "addressLocality": CITY,
-            "addressRegion": PROVINCE_CODE,
-            "postalCode": POSTAL_CODE,
-            "addressCountry": COUNTRY
-        },
+        # Address is emitted ONLY when a real one has been supplied. The
+        # inherited version always emitted it, so every page carried
+        # "streetAddress": "PLACEHOLDER - add street address" in its JSON-LD.
+        # A service-area business with no address is valid structured data;
+        # one advertising a placeholder is not. Locality/region/country are
+        # still useful on their own, so they stay.
+        "address": dict(
+            {"@type": "PostalAddress",
+             "addressLocality": CITY,
+             "addressRegion": PROVINCE_CODE,
+             "addressCountry": COUNTRY},
+            **({"streetAddress": STREET_ADDRESS}
+               if not STREET_ADDRESS.startswith("PLACEHOLDER") else {}),
+            **({"postalCode": POSTAL_CODE}
+               if not POSTAL_CODE.startswith("PLACEHOLDER") else {})
+        ),
         "geo": {"@type": "GeoCoordinates", "latitude": LATITUDE, "longitude": LONGITUDE},
         "openingHoursSpecification": [{
             "@type": "OpeningHoursSpecification",
@@ -490,7 +405,7 @@ def head(title, meta, slug, extra_ld=""):
         "areaServed": [{"@type": "City", "name": n} for n in
             SERVICE_AREA],
         "hasOfferCatalog": {
-            "@type": "OfferCatalog", "name": OFFER_CATALOG,
+            "@type": "OfferCatalog", "name": "Spray Foam Insulation Services",
             "itemListElement": [
                 {"@type": "Offer", "itemOffered": {"@type": "Service", "name": t}}
                 for _, t, _ in SERVICE_PAGES
@@ -526,21 +441,16 @@ def head(title, meta, slug, extra_ld=""):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:alt" content="{BUSINESS} - {INDUSTRY_NOUN} in {CITY_PROV}">
+<meta property="og:image:alt" content="{BUSINESS} - spray foam insulation in {CITY_PROV}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(meta)}">
 <meta name="twitter:image" content="{DOMAIN}/images/og-image.jpg">
 
-<!-- Fingerprinted. _headers caches /images/* for a year as immutable, and
-     unlike the photographs these filenames never change - so without a
-     ?v=<hash> a rebranded favicon can never reach anyone who already
-     visited. Browsers ignore reloads for immutable assets; only a new URL
-     works. -->
-<link rel="icon" href="{asset_v('images/favicon.ico')}" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="{asset_v('images/icon-32.png')}">
-<link rel="icon" type="image/png" sizes="16x16" href="{asset_v('images/icon-16.png')}">
-<link rel="apple-touch-icon" sizes="180x180" href="{asset_v('images/icon-180.png')}">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="stylesheet" href="{asset_v("style.css")}">
 <script src="{asset_v("script.js")}" defer></script>
@@ -548,7 +458,7 @@ def head(title, meta, slug, extra_ld=""):
 <!-- ===== Schema.org: Local Business ===== -->
 <script type="application/ld+json">
 {json.dumps(ld_local, indent=2)}
-</script>{extra_ld}
+</script>{extra_ld}{clarity_tag()}
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -557,12 +467,9 @@ def head(title, meta, slug, extra_ld=""):
 def header(active):
     def cls(page):
         return ' aria-current="page"' if page == active else ''
-    # Every service page appears in the dropdown. These links are a large part
-    # of how the service pages get discovered and crawled, so the menu carries
-    # the full list rather than a trimmed selection.
     sub = "\n".join(
         f'            <li><a href="{slug}"{cls(slug)}>{esc(title)}</a></li>'
-        for slug, title, _short in SERVICE_PAGES)
+        for slug, title, _ in SERVICE_PAGES)
     services_open = ' aria-current="page"' if active in [s[0] for s in SERVICE_PAGES] + ["services.html"] else ''
     return f"""
 <!-- ============================= TOP UTILITY BAR ============================= -->
@@ -641,8 +548,7 @@ def breadcrumbs(trail):
     return nav, schema
 
 SERVICE_OPTIONS = "\n".join(
-    f'            <option value="{esc(o)}">{esc(o)}</option>'
-    for o in FORM_SERVICE_OPTIONS)
+    f'            <option value="{esc(t)}">{esc(t)}</option>' for _, t, _ in SERVICE_PAGES)
 
 def form_fields(pfx, compact=False):
     """The six intake fields. `pfx` keeps ids unique when a page carries
@@ -659,7 +565,7 @@ def form_fields(pfx, compact=False):
           <div class="field">
             <label for="{pfx}-phone">Phone <span class="req" aria-hidden="true">*</span></label>
             <input type="tel" id="{pfx}-phone" name="phone" autocomplete="tel"
-                   data-label="Phone" placeholder="226-000-0000" required>
+                   data-label="Phone" placeholder="782-000-0000" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -670,20 +576,28 @@ def form_fields(pfx, compact=False):
             <span class="field__error" aria-live="polite"></span>
           </div>
 
+          <div class="field">
+            <label for="{pfx}-city">City <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="{pfx}-city" name="city" autocomplete="address-level2"
+                   data-label="City" placeholder="{CITY}" required>
+            <span class="field__error" aria-live="polite"></span>
+          </div>
+
           <div class="field field--full">
             <label for="{pfx}-service">Service Interested In <span class="req" aria-hidden="true">*</span></label>
             <select id="{pfx}-service" name="service" data-label="Service interested in" required>
             <option value="">Please choose a service</option>
 {SERVICE_OPTIONS}
+            <option value="Not sure yet">Not sure yet - please advise</option>
             </select>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field field--full">
-            <label for="{pfx}-message">Message</label>
-            <textarea id="{pfx}-message" name="message" data-label="Message"
+            <label for="{pfx}-message">Message <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="{pfx}-message" name="message" data-label="Message" required
                       {'rows="3"' if compact else ''}
-                      placeholder="Rough size of the space, what it is used for, and whether water has ever come in."></textarea>
+                      placeholder="Tell us the approximate square footage, what the building is used for, and the current condition of the slab."></textarea>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -706,46 +620,26 @@ def success_message(pfx):
       </div>"""
 
 
-def quote_band(page_label):
-    """Compact estimate form in a full-width band directly beneath the hero.
+def hero_form(page_label):
+    """Compact estimate form that sits in the right of the hero."""
+    return f"""      <div class="hero-form" id="hero-quote">
+        <h2 class="hero-form__title" id="hero-form-heading">{esc(sc("Hero Form Heading"))}</h2>
+        <p class="hero-form__sub">{esc(sc("Hero Form Intro"))}
+          You can also call <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>.</p>
 
-    This used to sit inside the hero as a card in the right-hand column. The
-    hero is now a single centred column, so the form became its own band
-    immediately below it - still above the fold on most desktop screens and
-    the first thing after the headline on a phone.
-
-    Keeps id="hero-quote" because the hero's "Get a Free Quote" button and any
-    existing links point at it. The second, longer form further down the page
-    keeps id="quote"; the two must not collide.
-    """
-    return f"""
-<!-- ===================== QUOTE BAND (directly under hero) ===================== -->
-<section class="quote-band" id="hero-quote" aria-labelledby="hero-form-heading">
-  <div class="container quote-band__inner">
-
-    <div class="quote-band__intro">
-      <h2 class="quote-band__title" id="hero-form-heading">{esc(sc("Hero Form Heading"))}</h2>
-      <p>{esc(sc("Hero Form Intro"))}</p>
-      <p class="quote-band__phone">Or call <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>.</p>
-    </div>
-
-    <div class="quote-band__form">
 {success_message('hf')}
 
-      <form class="lead-form" action="#" method="post" novalidate
-            data-source="{esc(page_label)} hero band">
-        <div class="form-grid">
+        <form class="lead-form" action="#" method="post" novalidate
+              data-source="{esc(page_label)} hero" aria-labelledby="hero-form-heading">
+          <div class="form-grid">
 {form_fields('hf', compact=True)}
-          <div class="field field--full">
-            <button class="btn btn--primary btn--block" type="submit">{esc(sc("Hero Form Button"))}</button>
-            <p class="form-note">{esc(sc("Hero Form Note"))}</p>
+            <div class="field field--full">
+              <button class="btn btn--primary btn--block" type="submit">{esc(sc("Hero Form Button"))}</button>
+              <p class="form-note">{esc(sc("Hero Form Note"))}</p>
+            </div>
           </div>
-        </div>
-      </form>
-    </div>
-
-  </div>
-</section>"""
+        </form>
+      </div>"""
 
 
 def contact_form(page_label):
@@ -758,7 +652,7 @@ def contact_form(page_label):
       <span class="eyebrow">Free Estimate</span>
       <h2 id="quote-heading">{esc(sc("Form Section Heading"))}</h2>
       <p class="lead">{esc(sc("Form Section Intro"))}
-        Prefer to talk it through? Call <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>.</p>
+        If you would rather talk it through, call <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>.</p>
     </div>
 
     <div class="form-wrap">
@@ -772,7 +666,7 @@ def contact_form(page_label):
 {form_fields('lf')}
           <div class="field field--full">
             <button class="btn btn--primary btn--lg btn--block" type="submit">Request an Estimate</button>
-            <p class="form-note">Fields marked <span class="req" aria-hidden="true">*</span> are required.
+            <p class="form-note"><span class="req" aria-hidden="true">*</span>
               {esc(sc("Form Section Note"))}</p>
           </div>
 
@@ -828,7 +722,7 @@ SIDEBAR = f"""
           </div>
         </div>
         <div class="panel" style="margin-top:var(--space-5);">
-          <h3>Our Services</h3>
+          <h3>Industrial Flooring Services</h3>
           <ul class="footer-list" style="padding:0;">
             {"".join(f'<li><a href="{s}" style="color:var(--color-primary-light);">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)}
           </ul>
@@ -836,26 +730,21 @@ SIDEBAR = f"""
       </aside>
 """
 
+def intro_band(inner, label):
+    """Intro prose sits BELOW the hero, never on it. Owner's standing rule:
+    the hero carries the eyebrow, H1, badges, buttons and form only."""
+    return f"""
+<!-- ============================= INTRO (below the hero) ============================= -->
+<section class="intro-band" aria-label="{esc(label)}">
+  <div class="container container--narrow prose">
+{inner}
+  </div>
+</section>
+"""
+
+
 def footer():
     svc = "".join(f'<li><a href="{s}">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)
-
-    # Service-area map. loading="lazy" matters here - this sits on all 14
-    # pages, and an eagerly loaded Google Maps frame is a few hundred KB of
-    # third-party script on every single one. title= gives the frame an
-    # accessible name; without it a screen reader announces "iframe".
-    map_block = ""
-    if MAP_EMBED_URL:
-        map_block = f"""
-    <div class="footer-map">
-      <h3>Where We Work</h3>
-      <div class="footer-map__frame">
-        <iframe src="{MAP_EMBED_URL}"
-                title="Map of the {BUSINESS} service area around {CITY_PROV}"
-                loading="lazy" allowfullscreen
-                referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-    </div>"""
-
     return f"""
 <!-- ============================= FOOTER ============================= -->
 <footer class="site-footer">
@@ -865,7 +754,7 @@ def footer():
       <div class="footer-brand">
         <a class="footer-logo" href="index.html" aria-label="{BUSINESS} home page">
           <img src="images/wordmark-light-300.png"
-               alt="{BUSINESS}" width="300" height="310" loading="lazy">
+               alt="{BUSINESS}" width="300" height="300" loading="lazy">
         </a>
         <p>{esc(sc("Footer Description"))}</p>
         <a class="footer-phone" href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>
@@ -882,17 +771,6 @@ def footer():
         </ul>
       </nav>
 
-      <nav aria-labelledby="footer-guides-heading">
-        <h3 id="footer-guides-heading">Guides</h3>
-        <ul class="footer-list">
-          <li><a href="spray-foam-performance-across-climate-zones.html">Regional Guide</a></li>
-          <li><a href="heating-season-pricing-timelines.html">Seasonal Pricing Guide</a></li>
-          <li><a href="property-overhaul-planning.html">Property Project Planning</a></li>
-          <li><a href="protecting-fresh-insulation-during-exterior-work.html">Protecting Your Insulation</a></li>
-          <li><a href="insulation-home-envelope-partners.html">Insulation & Home-Envelope Partners</a></li>
-        </ul>
-      </nav>
-
       <nav aria-labelledby="footer-svc-heading">
         <h3 id="footer-svc-heading">Services</h3>
         <ul class="footer-list">{svc}</ul>
@@ -904,9 +782,8 @@ def footer():
           <li>{BUSINESS}</li>
           <li>{CITY_PROV}</li>
           <li>Phone: <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a></li>
-          <li>Email: <a href="mailto:{EMAIL}">{EMAIL}</a></li>
           <li>Hours: {HOURS_TEXT}</li>
-          <li><!-- PLACEHOLDER: add street address once confirmed --></li>
+          <li><!-- PLACEHOLDER: add street address and email once confirmed --></li>
         </ul>
         <div class="btn-row">
           <a class="btn btn--primary btn--sm" href="#quote">Get a Free Quote</a>
@@ -914,7 +791,6 @@ def footer():
       </div>
 
     </div>
-{map_block}
 
     <div class="footer-bottom">
       <p style="margin:0;">&copy; <span data-year>2026</span> {BUSINESS}. All rights reserved.</p>
@@ -974,7 +850,7 @@ def faq_accordion(sec, id_prefix):
 
     items = []
     for i, (question, answers) in enumerate(pairs, start=1):
-        body = "\n".join(f"          <p>{rich(a)}</p>" for a in answers)
+        body = "\n".join(f"          <p>{esc(a)}</p>" for a in answers)
         items.append(f"""      <div class="faq__item">
         <h3 class="faq__question">
           <button class="faq__trigger" type="button" id="{id_prefix}-q{i}"
@@ -1027,7 +903,7 @@ def services_grid(exclude=None, heading=None, intro=None):
         </div>
         <div class="service-card__body">
           <h3><a href="{slug}" style="text-decoration:none;color:inherit;">{esc(title)}</a></h3>
-          <p>{plain(blurb)}</p>
+          <p>{rich(blurb)}</p>
           <a class="service-card__link" href="{slug}">View {esc(title)}</a>
         </div>
       </article>""")
@@ -1036,7 +912,7 @@ def services_grid(exclude=None, heading=None, intro=None):
 <section class="section" id="services" aria-labelledby="services-heading">
   <div class="container">
     <div class="section-head is-centered">
-      <span class="eyebrow">What We Install</span>
+      <span class="eyebrow">Industrial Flooring</span>
       <h2 id="services-heading">{esc(heading)}</h2>
       <p class="lead">{esc(intro)}</p>
     </div>
@@ -1045,7 +921,7 @@ def services_grid(exclude=None, heading=None, intro=None):
     </div>
     <div class="btn-row is-centered">
       <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-      <a class="btn btn--outline btn--lg" href="services.html">See All Services</a>
+      <a class="btn btn--outline btn--lg" href="services.html">All Industrial Flooring Services</a>
     </div>
   </div>
 </section>
@@ -1056,26 +932,19 @@ def services_grid(exclude=None, heading=None, intro=None):
 # Real project photography, exported as WebP with a JPG fallback at two
 # widths each. width/height are always set so the browser reserves space
 # and the layout does not shift while images load (CLS).
-# Derived from PAGE_PHOTOS further down rather than hand-maintained. The old
-# template kept this table in sync by hand, and a missing entry threw KeyError
-# from deep inside rendering with no indication of the cause. Real alt text
-# still comes from the SITE COPY block; "alt" here is only the fallback.
-#
-# PAGE_PHOTOS lives with the image pipeline below, so this is populated by
-# _init_photos(), called immediately after that table is defined.
 PHOTOS = {}
 
 def _init_photos():
+    """Derive the width/height/fallback-alt table from PAGE_PHOTOS so the two
+    can never drift. Called right after PAGE_PHOTOS is defined below. A photo
+    missing here used to throw KeyError deep inside rendering."""
     for _src, base, aspect, widths, alt in PAGE_PHOTOS:
         if base == "og-image":
             continue
         w = widths[0]
-        PHOTOS[base] = {
-            "widths": widths,
-            "w": w,
-            "h": int(round(w * aspect[1] / float(aspect[0]))),
-            "alt": alt,
-        }
+        PHOTOS[base] = {"widths": widths, "w": w,
+                        "h": int(round(w * aspect[1] / aspect[0])), "alt": alt}
+
 
 def picture(base, sizes, eager=False, alt=None, indent="        "):
     """Responsive <picture>: WebP first, JPG fallback for older browsers.
@@ -1104,99 +973,64 @@ f'{i}</picture>')
 #  IMAGE PIPELINE  (only runs with --images; requires Pillow)
 #  Photos are centre-cropped, resized, then exported as WebP + JPG.
 # ==========================================================================
-# ---------------------------------------------------------------------------
-#  PHOTO SLOT ASSIGNMENT - READ BEFORE CHANGING
-#
-#  Every photo below is byte-identical to one already deployed on
-#  sprayfoaminsulationwindsor.com. That is unavoidable for now: the whole
-#  shared pool is on Windsor. What is avoidable is two sites in the same trade
-#  showing the same picture in the same position, which is the part that
-#  actually looks like a network.
-#
-#  So every photo here sits in a DIFFERENT slot than it does on Windsor:
-#
-#    Finished Attic Spray Foam  Windsor: unused          -> Grimsby hero + og
-#    Spray Foam on Roof         Windsor: commercial      -> attic
-#    Garage Wall with Foam      Windsor: about           -> garage
-#    Basement walls getting..   Windsor: services image  -> basement
-#    Crawlspace Spray Foam      Windsor: gallery         -> crawl space
-#    Two Storey Great Room      Windsor: HERO            -> new construction
-#    Spray Foam Close UP        Windsor: unused          -> open/closed cell
-#    Crawl Space Installation   Windsor: closed-cell     -> about
-#    Basement fully insulated   Windsor: basement svc    -> services image
-#
-#  Neither hero is reused as a hero. If new photography ever arrives, the two
-#  hero slots are the first things to replace.
-#
-#  DO NOT USE Caledon Storefront.png. It is a photograph of a different
-#  company's premises - the sign reads "Caledon Spray Foam Insulation" - and
-#  there is a dental practice's signage beside it. It is in the folder because
-#  it came with the shared pool.
-# ---------------------------------------------------------------------------
+HERO_IMG     = "hero-spray-foam-insulation-%s" % CITY_SLUG
+ABOUT_IMG    = "about-%s-spray-foam-insulation" % CITY_SLUG
+SERVICES_IMG = "services-spray-foam-insulation-%s" % CITY_SLUG
+
 PAGE_PHOTOS = [
   ("Finished Attic Spray Foam.png", HERO_IMG, (4,3), [800,1200],
-   f"Attic in a {CITY} home finished ridge to eaves in spray foam"),
+   f"Attic in a {CITY} home finished ridge to eaves in spray foam insulation"),
   ("Finished Attic Spray Foam.png", "og-image", (1200,630), [1200],
-   f"{BUSINESS} attic, basement and crawl space insulation"),
+   f"{BUSINESS} attic, garage, basement and crawl space spray foam insulation"),
   ("Spray Foam on Roof.png", "service-attic-insulation", (16,10), [640,960],
-   "Foam going onto the underside of a roof deck between the rafters"),
-  ("Garage Wall with Spray Foam Insulation.png", "service-garage-insulation",
+   f"Attic insulation going onto the underside of a roof deck between the rafters in {CITY}"),
+  ("Garage Wall with Spray Foam Insulation.png", "service-garage-insulation", (16,10), [640,960],
+   f"Garage insulation carried across the wall and up to the ceiling in a {CITY} home"),
+  ("Basement walls getting insulated with spray foam.png", "service-basement-insulation",
    (16,10), [640,960],
-   "Attached garage insulated across the wall and up to the ceiling"),
-  ("Basement walls getting insulated with spray foam.png",
-   "service-basement-insulation", (16,10), [640,960],
-   "Installer spraying closed-cell foam along a basement foundation wall"),
+   f"Closed cell spray foam basement insulation going onto a foundation wall in {CITY_PROV}"),
   ("Crawlspace Spray Foam.png", "service-crawl-space-insulation", (16,10), [640,960],
-   "Crawl space wall being sealed over a taped ground sheet"),
-  ("Two Storey Great Room.png", "service-new-construction-insulation",
-   (16,10), [640,960],
-   "Open stud bays in a new two storey build being filled before drywall"),
-  ("Spray Foam Close UP.png", "service-close-and-open-cell-spray-foam",
-   (16,10), [640,960],
-   "Close up of foam expanding out of the gun into a stud bay"),
+   f"Crawl space insulation sealing a perimeter wall over a taped ground sheet in {REGION}"),
+  ("Two Storey Great Room.png", "service-new-construction-insulation", (16,10), [640,960],
+   f"New construction insulation filling open stud bays before drywall in a {CITY} build"),
+  ("Spray Foam Close UP.png", "service-close-and-open-cell-spray-foam", (16,10), [640,960],
+   "Closed cell spray foam expanding out of the gun into a framed stud bay"),
   ("Crawl Space Installation.png", ABOUT_IMG, (4,3), [800,1200],
    f"A {BUSINESS} installer working a crawl space in full protective kit"),
   ("Basement fully insulated with spray foam.png", SERVICES_IMG, (4,3), [800,1200],
-   "Finished basement with every foundation wall sealed corner to corner"),
+   f"Finished basement with every foundation wall sealed in spray foam insulation in {CITY}"),
 ]
+_init_photos()
 
 
-# Gallery exports at 400 and 1000 wide, so every source here must be at least
-# 1000px across or the lightbox upscales it. That rules out Attic Rafters
-# Spray, Cutting Foam, Wall Stud Spray Installation, Wall Studs 2 and Subfloor
-# Spray, which are all under 600px in the shared pool.
-#
-# None of these slugs matches a Windsor gallery slot. Windsor's gallery holds
-# Basement walls with spray foam, Crawlspace Spray Foam, Attic Insulation,
-# garage roof, Shed, Spray Foam Close UP, Subfloor Spray, Man spraying, Wall
-# Studs 2 and Garage Wall - deliberately none of those are repeated here.
 GALLERY_PHOTOS = [
  ("Finished Attic Spray Foam.png", "attic-finished-ridge-to-eaves",
-  "Attic finished from the ridge down to the eaves"),
+  "Attic insulation finished from the ridge down to the eaves"),
  ("Basement fully insulated with spray foam.png", "basement-foundation-walls-sealed",
-  "Basement with every foundation wall sealed corner to corner"),
+  "Basement with every foundation wall sealed in closed cell spray foam"),
  ("Crawlspace Spray Foam 2.png", "crawl-space-sheeted-and-sealed",
-  "Crawl space sealed over a taped ground sheet"),
+  "Crawl space insulation sealed over a taped ground sheet"),
  ("Crawl Space Installation.png", "crawl-space-installer-at-work",
-  "Working a crawl space wall in full protective kit"),
+  "Installer spraying foam insulation along a crawl space wall"),
  ("Old Wall Re-insulation.png", "century-home-wall-stripped-back",
-  "Century home wall stripped back to bare framing before new foam"),
+  "Century home wall stripped back to bare framing before new insulation"),
  ("Basement walls getting insulated with spray foam.png", "basement-wall-in-progress",
-  "Closed-cell foam going onto a foundation wall"),
+  "Closed cell spray foam going onto a basement foundation wall"),
  ("Spray Foam on Roof.png", "roof-deck-between-rafters",
-  "Roof deck sprayed between the rafters"),
+  "Spray foam insulation applied to a roof deck between the rafters"),
  ("Two Storey Great Room.png", "new-build-stud-bays",
-  "Stud bays in a new two-story build filled before drywall"),
+  "Stud bays in a new two storey build filled with spray foam insulation"),
+ ("Attic Insulation.png", "attic-rafters-sprayed",
+  "Attic rafters sprayed with insulation from the ridge down"),
+ ("Garage Wall with Spray Foam Insulation.png", "garage-wall-finished",
+  "Garage wall insulation finished from the slab to the ceiling"),
 ]
-
 
 
 # og-image is the social share graphic, never rendered as an <img>, so it
 # needs no alt text.
-_init_photos()
-
-warn_missing_alt([x[1] for x in PAGE_PHOTOS if x[1] != "og-image"]
-                 + [x[1] for x in GALLERY_PHOTOS])
+warn_missing_alt([x[1] for x in PAGE_PHOTOS if x[1] != "og-image"] +
+                 ["gallery-" + x[1] for x in GALLERY_PHOTOS])
 
 
 def build_images():
@@ -1259,7 +1093,10 @@ GALLERY_ITEM = (
 def gallery_section():
     """Project gallery. Thumbnails are lazy-loaded; the 1000px version is only
     fetched when a visitor actually opens the lightbox."""
-    items = [GALLERY_ITEM.format(s=g["slug"], c=esc(g["caption"])) for g in GALLERY]
+    if not GALLERY:
+        return ""
+    items = [GALLERY_ITEM.format(s=g["slug"], c=esc(ALT_TEXT.get("gallery-" + g["slug"], g["caption"])))
+             for g in GALLERY]
     return """
 <!-- ============================= PROJECT GALLERY ============================= -->
 <section class="section" id="gallery" aria-labelledby="gallery-heading">
@@ -1303,7 +1140,7 @@ def rewrite_links(content):
     canonical tag ever lands on a 307 redirect."""
     def sub(m):
         name, tail = m.group(1), m.group(2) or ""
-        name = alias(name + ".html")[:-5]      # about -> about-us
+        name = alias(name + ".html")[:-5]
         target = "/" if name == "index" else "/" + name
         return 'href="%s%s"' % (target, tail)
     return LINK_RE.sub(sub, content)
@@ -1311,7 +1148,7 @@ def rewrite_links(content):
 
 def write(slug, content):
     content = rewrite_links(content)
-    slug = alias(slug)                          # about.html -> about-us.html
+    slug = alias(slug)
     with open(os.path.join(OUT, slug), "w", encoding="utf-8") as f:
         f.write(content)
     print("wrote", slug, len(content))
@@ -1330,31 +1167,31 @@ if BUILD_IMAGES:
 h1, secs = HOME
 by_title = {s["title"]: s for s in secs}
 hero_sec   = secs[0]
-
-# Every special home section is matched by PREFIX, never by exact text.
-# The old template matched two of these against literal epoxy wording
-# ("What Are The Benefits Of Epoxy Flooring?"), which meant the file could
-# not be reused for another trade without editing this line. Prefix matching
-# lets each industry phrase its own headings:
-#   "What Are The Benefits Of Spray Foam Insulation?"
-#   "What Happens During A Spray Foam Install?"
-def section_starting(prefix, required=True):
+faq_sec    = by_title["Frequently Asked Questions"]
+# Benefits and process are looked up by prefix too, further down, once
+# section_starting() exists.
+# Looked up by prefix, not exact text, so a different city's headings
+# ("Why Choose Grimsby Spray Foam Insulation?") still resolve.
+def section_starting(prefix):
     for sec in secs:
         if sec["title"].lower().startswith(prefix.lower()):
             return sec
-    if required:
-        raise SystemExit(
-            "Home page markdown needs a '## ' section starting: " + prefix)
-    return None
+    raise SystemExit("Home page markdown needs a section starting: " + prefix)
 
-faq_sec    = section_starting("Frequently Asked Questions")
+def section_containing(needle):
+    for sec in secs:
+        if needle.lower() in sec["title"].lower():
+            return sec
+    raise SystemExit("Home page markdown needs a section whose heading contains: " + needle)
+
+why        = section_starting("Why Choose")
+standards  = section_containing("Every")   # "What Every <trade> Job Gets"
+areas      = section_starting("Serving")
 benefits   = section_starting("What Are The Benefits")
 process    = section_starting("What Happens During")
-why        = section_starting("Why Choose")
-areas      = section_starting("Serving")
 
 special = {hero_sec["title"], faq_sec["title"], benefits["title"],
-           process["title"], why["title"], areas["title"]}
+           process["title"], why["title"], areas["title"], standards["title"]}
 body_sections = [s for s in secs if s["title"] not in special]
 
 hero_paras = "\n".join(f"      <p>{rich(t)}</p>" for k, t in hero_sec["nodes"] if k == "p")
@@ -1362,13 +1199,34 @@ hero_paras = "\n".join(f"      <p>{rich(t)}</p>" for k, t in hero_sec["nodes"] i
 # Benefit cards - one card per source paragraph (no text removed)
 benefit_cards = "\n".join(f"""      <article class="feature">
         <div class="feature__icon" aria-hidden="true">&#10003;</div>
-        <p>{rich(t)}</p>
+        <p>{esc(t)}</p>
       </article>""" for k, t in benefits["nodes"] if k == "p")
 
 # Process steps - one step per source paragraph
 step_cards = "\n".join(f"""      <li class="step">
-        <p>{rich(t)}</p>
+        <p>{esc(t)}</p>
       </li>""" for k, t in process["nodes"] if k == "p")
+
+# Standards callout - one commitment per source paragraph. Scotland layout
+# profile. An earlier version of this block listed four things the business
+# will NOT do; the owner asked for the same substance stated positively, so
+# each line is now a commitment rather than a refusal.
+standards_items = "\n".join(f"""        <li>{esc(t)}</li>"""
+                            for k, t in standards["nodes"] if k == "p")
+STANDARDS_BLOCK = f"""
+<!-- ============================= HOW WE WORK ============================= -->
+<section class="section" aria-labelledby="standards-heading">
+  <div class="container container--narrow">
+    <div class="panel panel--standards">
+      <span class="eyebrow">How We Work</span>
+      <h2 id="standards-heading">{esc(standards['title'])}</h2>
+      <ul class="standards-list">
+{standards_items}
+      </ul>
+    </div>
+  </div>
+</section>
+"""
 
 mid = len(body_sections) // 2
 main_blocks = []
@@ -1382,10 +1240,10 @@ faq_html, faq_ld = faq_accordion(faq_sec, "home-faq")
 home = head(seo["Home Page"]["title"], seo["Home Page"]["meta"], "index.html", faq_ld)
 home = home.replace('<link rel="stylesheet" href="%s">' % asset_v("style.css"),
     '<!-- Preload the LCP hero image so it starts downloading with the stylesheet -->\n'
-    '<link rel="preload" as="image" href="images/%s-1200.jpg"\n' % HERO_IMG +
-    '      imagesrcset="images/%s-800.webp 800w, images/%s-1200.webp 1200w"\n' % (HERO_IMG, HERO_IMG) +
+    '<link rel="preload" as="image" href="images/%s-1200.jpg"\n'
+    '      imagesrcset="images/%s-800.webp 800w, images/%s-1200.webp 1200w"\n'
     '      imagesizes="100vw" type="image/webp">\n'
-    '<link rel="stylesheet" href="%s">' % asset_v("style.css"))
+    '<link rel="stylesheet" href="%s">' % (HERO_IMG, HERO_IMG, HERO_IMG, asset_v("style.css")))
 home += header("index.html")
 home += f"""
 <main id="main">
@@ -1407,38 +1265,34 @@ home += f"""
     </picture>
   </div>
 
-  <!-- Single centred column. The estimate form used to sit in the right half
-       of this hero; it now lives in the #quote section further down the page,
-       which is what the hero buttons point at. One column means the scrim can
-       be even rather than weighted to the left, and the headline is not
-       competing with a form card for attention above the fold. -->
   <div class="container hero__inner">
 
-    <!-- Business name and service area above the h1. Both are paragraphs, not
-         headings, so the page keeps exactly one top-level heading. -->
+    <!-- Business name as a masthead across the top of the hero.
+         Deliberately a paragraph, not a heading, so the page keeps exactly
+         one top-level heading - the search term line directly beneath it. -->
     <p class="hero__brand">{BUSINESS}</p>
-    <p class="hero__eyebrow">{CITY_PROV} &middot; and across {REGION}</p>
 
     <div class="hero__intro">
       <h1 id="hero-heading">{esc(h1)}</h1>
-{hero_paras}
       <ul class="hero__badges">
 {chr(10).join('        <li>%s</li>' % esc(b) for b in sc_lines("Hero Badges"))}
       </ul>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-        <a class="btn btn--ghost btn--lg" href="#hero-quote">Get a Free Quote</a>
+        <a class="btn btn--ghost btn--lg" href="#services">Industrial Flooring Services</a>
       </div>
     </div>
 
+{hero_form("Home Page")}
   </div>
 </section>
-{quote_band("Home Page")}
+
+{intro_band(hero_paras, "Introduction")}
 
 <!-- ============================= TRUST STRIP ============================= -->
 <!-- Secondary service navigation. Built from SERVICE_PAGES so the labels and
      targets can never drift apart. -->
-<nav class="trust-strip" aria-label="Our services">
+<nav class="trust-strip" aria-label="Industrial flooring services">
   <div class="container">
     <ul>
 {chr(10).join('      <li><a href="%s">%s</a></li>' % (slug, esc(title)) for slug, title, _ in SERVICE_PAGES)}
@@ -1461,6 +1315,8 @@ home += f"""
 
 {services_grid()}
 
+{STANDARDS_BLOCK}
+
 <!-- ============================= BENEFITS ============================= -->
 <section class="section section--alt" aria-labelledby="benefits-heading">
   <div class="container">
@@ -1479,7 +1335,7 @@ home += f"""
 <!-- ============================= MAIN CONTENT ============================= -->
 <section class="section" aria-labelledby="detail-heading">
   <div class="container">
-    <h2 id="detail-heading" class="visually-hidden">{INDUSTRY_NOUN.capitalize()} information for {CITY} property owners</h2>
+    <h2 id="detail-heading" class="visually-hidden">Industrial flooring information for {CITY} facility managers</h2>
     <div class="layout-split">
       <div class="prose">
 {"".join(main_blocks)}      </div>
@@ -1506,23 +1362,33 @@ home += f"""
 
 {gallery_section()}
 
-<!-- ============================= SERVICE AREA ============================= -->
+{cta_band(sc("Closing CTA Heading"), sc("Closing CTA Text"))}
+
+<!-- ============================= SERVICE AREA + MAP ============================= -->
 <section class="section section--alt" aria-labelledby="areas-heading">
-  <div class="container container--narrow prose">
-    <span class="eyebrow">Service Area</span>
-    <h2 id="areas-heading">{esc(areas['title'])}</h2>
-{nodes_html(areas['nodes'], "    ")}
-    <div class="btn-row">
-      <a class="btn btn--primary" href="#quote">Get a Free Quote</a>
-      <a class="btn btn--outline" href="contact.html">Contact Us Today</a>
+  <div class="container">
+    <div class="layout-split layout-split--even">
+      <div class="prose">
+        <span class="eyebrow">Service Area</span>
+        <h2 id="areas-heading">{esc(areas['title'])}</h2>
+{nodes_html(areas['nodes'], "        ")}
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#quote">Get a Free Quote</a>
+          <a class="btn btn--outline" href="contact.html">Contact Us Today</a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="{MAP_EMBED}" title="Map of the {CITY_PROV} and {REGION} industrial flooring service area"
+                width="600" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </section>
 
-{cta_band(sc("Closing CTA Heading"), sc("Closing CTA Text"))}
+{contact_form("Home Page")}
 
 {faq_html}
-{contact_form("Home Page")}
 </main>
 """
 home += footer()
@@ -1531,8 +1397,8 @@ write("index.html", home)
 # ============================================================================
 #  SERVICE PAGES
 # ============================================================================
-# Must match the "## " headings in the SEO block of the markdown, in order.
-SEO_LABELS = [title for _slug, title, _short in SERVICE_PAGES]
+SEO_LABELS = [title for _, title, _ in SERVICE_PAGES]
+NUM_WORDS = {6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
 
 for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
     sh1, ssecs = SERVICES[idx]
@@ -1541,14 +1407,14 @@ for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
     closing  = ssecs[-1]
     middle   = ssecs[1:-1]
 
-    crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), ("Services", "services.html"), (title, None)])
+    crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), ("Industrial Flooring", "services.html"), (title, None)])
 
     service_ld = {
         "@context": "https://schema.org", "@type": "Service",
         "serviceType": title,
         "name": sh1,
         "description": seo[label]["meta"],
-        "provider": {"@type": SCHEMA_TYPE, "@id": DOMAIN + "/#business",
+        "provider": {"@type": "HomeAndConstructionBusiness", "@id": DOMAIN + "/#business",
                      "name": BUSINESS, "telephone": PHONE_DISPLAY},
         "areaServed": {"@type": "City", "name": CITY_PROV},
         "url": DOMAIN + "/" + slug
@@ -1573,9 +1439,8 @@ for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
 <section class="hero hero--page" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__intro">
-      <span class="eyebrow" style="color:#ffb37a;">{esc(title)}</span>
+      <span class="eyebrow" style="color:var(--color-accent-light);">{esc(title)}</span>
       <h1 id="hero-heading">{esc(sh1)}</h1>
-{over_paras}
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
         <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
@@ -1583,6 +1448,8 @@ for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
     </div>
   </div>
 </section>
+
+{intro_band(over_paras, title + " overview")}
 
 <!-- ============================= SERVICE DETAIL ============================= -->
 <section class="section" aria-labelledby="detail-heading">
@@ -1622,8 +1489,8 @@ for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
 #  SERVICES HUB PAGE
 # ============================================================================
 crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), ("Services", None)])
-svc_page = head(f"{SERVICES_PAGE_H} | {CITY_PROV}",
-                f"{INDUSTRY_BLURB} in {CITY_PROV}. Call us at {PHONE_DISPLAY} today.",
+svc_page = head(f"Spray Foam Insulation Services | {CITY_PROV}",
+                f"Attic, garage, basement, crawl space and new construction spray foam insulation in {CITY_PROV}. Free written quotes. Call {PHONE_DISPLAY}.",
                 "services.html", crumb_ld)
 svc_page += header("services.html")
 svc_page += crumbs
@@ -1633,9 +1500,8 @@ svc_page += f"""
 <section class="hero hero--page hero--split" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__intro">
-      <span class="eyebrow" style="color:#ffb37a;">Services</span>
+      <span class="eyebrow" style="color:var(--color-accent-light);">Services</span>
       <h1 id="hero-heading">{esc(sc("Services Page Heading"))}</h1>
-      <p>{esc(sc("Services Page Intro"))}</p>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
         <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
@@ -1646,6 +1512,8 @@ svc_page += f"""
     </div>
   </div>
 </section>
+
+{intro_band("    <p>%s</p>" % esc(sc("Services Page Intro")), "Introduction")}
 
 {services_grid(heading=sc("Services Page Grid Heading"), intro=sc("Services Page Grid Intro"))}
 
@@ -1681,10 +1549,8 @@ about += f"""
 <section class="hero hero--page hero--split" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__intro">
-      <span class="eyebrow" style="color:#ffb37a;">About Us</span>
+      <span class="eyebrow" style="color:var(--color-accent-light);">About Us</span>
       <h1 id="hero-heading">{esc(ah1)}</h1>
-      <h2 style="color:#fff;font-size:var(--fs-lg);">{esc(about_lead['title'])}</h2>
-{nodes_html([n for n in about_lead['nodes']], "      ")}
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
         <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
@@ -1695,6 +1561,8 @@ about += f"""
     </div>
   </div>
 </section>
+
+{intro_band(("    <h2>%s</h2>" + chr(10) + "%s") % (esc(about_lead['title']), nodes_html(about_lead['nodes'], "    ")), "Introduction")}
 
 <section class="section" aria-labelledby="about-heading">
   <div class="container">
@@ -1718,7 +1586,7 @@ about += f"""
   </div>
 </section>
 
-{services_grid(heading="Services We Install", intro=f"Attics, garages and below-grade {INDUSTRY_NOUN} across Grimsby, sprayed by the people who quoted it.")}
+{services_grid(heading="Everything We Insulate", intro=f"{NUM_WORDS.get(N_SERVICES, str(N_SERVICES))} spray foam insulation services for {CITY} homes, garages and new builds.")}
 
 {contact_form("About")}
 </main>
@@ -1740,25 +1608,14 @@ rest = other[1:]
 # "Contact Information" arrives as a single paragraph of label: value pairs
 info_pairs = []
 for k, t in info_sec["nodes"]:
-    for part in re.split(r'\s(?=(?:Company|Phone|Email|Location|Services):)', t):
+    for part in re.split(r'\s(?=(?:Company|Phone|Location|Services):)', t):
         if ":" in part:
             lab, val = part.split(":", 1)
             info_pairs.append((lab.strip(), val.strip()))
-
-
-def _info_value(label, value):
-    """Phone and email become links; everything else is plain text."""
-    if label.lower() == "phone":
-        return f'<a href="tel:{PHONE_HREF}">{esc(value)}</a>'
-    if label.lower() == "email":
-        return f'<a href="mailto:{esc(value)}">{esc(value)}</a>'
-    return esc(value)
-
-
 info_html = "\n".join(
     f'        <div><dt style="font-weight:800;color:var(--color-heading);">{esc(l)}</dt>'
     f'<dd style="margin:0 0 var(--space-3);">'
-    + _info_value(l, v)
+    + (f'<a href="tel:{PHONE_HREF}">{esc(v)}</a>' if l.lower() == "phone" else esc(v))
     + '</dd></div>'
     for l, v in info_pairs)
 
@@ -1773,10 +1630,8 @@ contact_page += f"""
 <section class="hero hero--page" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__intro">
-      <span class="eyebrow" style="color:#ffb37a;">Contact</span>
+      <span class="eyebrow" style="color:var(--color-accent-light);">Contact</span>
       <h1 id="hero-heading">{esc(ch1)}</h1>
-      <h2 style="color:#fff;font-size:var(--fs-lg);">{esc(lead_sec['title'])}</h2>
-{nodes_html(lead_sec['nodes'], "      ")}
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
         <a class="btn btn--ghost btn--lg" href="#quote">Request an Estimate</a>
@@ -1784,6 +1639,8 @@ contact_page += f"""
     </div>
   </div>
 </section>
+
+{intro_band(("    <h2>%s</h2>" + chr(10) + "%s") % (esc(lead_sec['title']), nodes_html(lead_sec['nodes'], "    ")), "Introduction")}
 
 <section class="section" aria-labelledby="contact-detail-heading">
   <div class="container">
@@ -1805,7 +1662,7 @@ contact_page += f"""
           </div>
         </div>
         <div class="panel" style="margin-top:var(--space-5);">
-          <h3>Our Services</h3>
+          <h3>Industrial Flooring Services</h3>
           <ul class="footer-list" style="padding:0;">
             {"".join(f'<li><a href="{s}" style="color:var(--color-primary-light);">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)}
           </ul>
@@ -1838,9 +1695,8 @@ faq_page += f"""
 <section class="hero hero--page" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__intro">
-      <span class="eyebrow" style="color:#ffb37a;">Answers</span>
+      <span class="eyebrow" style="color:var(--color-accent-light);">Answers</span>
       <h1 id="hero-heading">{esc(sc("FAQ Page Heading"))}</h1>
-      <p>{esc(sc("FAQ Page Intro"))}</p>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
         <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
@@ -1849,11 +1705,13 @@ faq_page += f"""
   </div>
 </section>
 
+{intro_band("    <p>%s</p>" % esc(sc("FAQ Page Intro")), "Introduction")}
+
 {cta_band(sc("FAQ Page CTA Heading"), sc("FAQ Page CTA Text"), 1)}
 
 {faq_body}
 
-{services_grid(heading="Services We Install", intro="Pick a service to see how we approach it, what it costs to do properly, and where it belongs.")}
+{services_grid(heading="Every System We Offer", intro=f"Each page below covers cost, cure times and upkeep for that system in {CITY}.")}
 
 {contact_form("FAQ")}
 </main>
@@ -1868,7 +1726,7 @@ def legal_page(slug, title, meta, h1, eyebrow, crumb_label, sections):
     crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), (crumb_label, None)])
     body = "".join(f"""      <section class="content-block">
         <h2>{esc(t)}</h2>
-{chr(10).join(f'        <p>{rich(p)}</p>' for p in ps)}
+{chr(10).join(f'        <p>{esc(p)}</p>' for p in ps)}
       </section>
 """ for t, ps in sections)
     page = head(title, meta, slug, crumb_ld)
@@ -1883,13 +1741,13 @@ def legal_page(slug, title, meta, h1, eyebrow, crumb_label, sections):
 <section class="hero hero--page" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__intro">
-      <span class="eyebrow" style="color:#ffb37a;">{esc(eyebrow)}</span>
+      <span class="eyebrow" style="color:var(--color-accent-light);">{esc(eyebrow)}</span>
       <h1 id="hero-heading">{esc(h1)}</h1>
-      <p>PLACEHOLDER DOCUMENT. This page is a working template for {BUSINESS} and should be
-         reviewed by a legal professional before the site goes live.</p>
     </div>
   </div>
 </section>
+
+{intro_band("    <p>PLACEHOLDER DOCUMENT. This page is a working template for %s and should be reviewed by a legal professional before the site goes live.</p>" % BUSINESS, "Introduction")}
 
 <section class="section">
   <div class="container container--narrow prose">
@@ -1934,7 +1792,7 @@ legal_page(
     "Terms & Conditions", "Legal", "Terms",
     sections=[
         ("Use Of This Website", [
-            "The content on this website is provided for general information about %s services in %s." % (INDUSTRY_NOUN, CITY_PROV)]),
+            "The content on this website is provided for general information about spray foam insulation and air sealing services in %s." % CITY_PROV]),
         ("Estimates And Pricing", [
             "Prices described on this website are general ranges only. A binding price is provided in a written estimate after an on-site measurement and slab assessment."]),
         ("Workmanship And Warranty", [
@@ -1948,55 +1806,6 @@ legal_page(
     ])
 
 # ============================================================================
-#  RESOURCE GUIDES  (added for the industry backlink program, Sep 2026)
-#  Four extra blocks appended to the end of the content file, after SITE
-#  COPY, so the original block indices above are untouched.
-# ============================================================================
-GUIDE_PAGES = [
-    ("spray-foam-performance-across-climate-zones.html", COPY_BLOCK_INDEX + 1, "Regional Guide"),
-    ("heating-season-pricing-timelines.html", COPY_BLOCK_INDEX + 2, "Seasonal Pricing Guide"),
-    ("property-overhaul-planning.html", COPY_BLOCK_INDEX + 3, "Property Project Planning"),
-    ("protecting-fresh-insulation-during-exterior-work.html", COPY_BLOCK_INDEX + 4, "Protecting Your Insulation"),
-    ("insulation-home-envelope-partners.html", COPY_BLOCK_INDEX + 5, "Insulation & Home-Envelope Partners"),
-]
-
-def guide_page(slug, block_index, nav_label):
-    h1, secs = parsed[block_index]
-    crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), (h1, None)])
-    blocks = "".join(content_block(s) for s in secs)
-    page = head(h1, f"{h1} - {BUSINESS}, {CITY_PROV}.", slug, crumb_ld)
-    page += header(slug)
-    page += crumbs
-    page += f"""
-<main id="main">
-<section class="hero hero--page" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:#ffb37a;">{esc(nav_label)}</span>
-      <h1 id="hero-heading">{esc(h1)}</h1>
-    </div>
-  </div>
-</section>
-<section class="section" aria-labelledby="guide-heading">
-  <div class="container">
-    <h2 id="guide-heading" class="visually-hidden">{esc(h1)}</h2>
-    <div class="layout-split">
-      <div class="prose">
-{blocks}      </div>
-{SIDEBAR}
-    </div>
-  </div>
-</section>
-{contact_form(h1)}
-</main>
-"""
-    page += footer()
-    write(slug, page)
-
-for slug, idx, label in GUIDE_PAGES:
-    guide_page(slug, idx, label)
-
-# ============================================================================
 #  PLACEHOLDER IMAGES  (lightweight inline SVG so the site is never broken)
 # ============================================================================
 # Logo, favicon and social images are all real artwork now, produced from
@@ -2007,7 +1816,7 @@ for slug, idx, label in GUIDE_PAGES:
 # ============================================================================
 # privacy-policy and terms are noindex, so they are deliberately absent here
 all_pages = ["index.html", "services.html"] + [s for s, _, _ in SERVICE_PAGES] + \
-            ["about.html", "faq.html", "contact.html"] + [s for s, _, _ in GUIDE_PAGES]
+            ["about.html", "faq.html", "contact.html"]
 urls = "\n".join(
     f"""  <url>
     <loc>{DOMAIN}{public_url(p)}</loc>
@@ -2016,47 +1825,76 @@ urls = "\n".join(
   </url>""" for p in all_pages)
 open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write(
 f"""<?xml version="1.0" encoding="UTF-8"?>
+<!-- PLACEHOLDER DOMAIN: replace {DOMAIN} with the live domain before submitting to Google Search Console -->
 <urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
 {urls}
 </urlset>
 """.replace("www.sitemap.org", "www.sitemaps.org"))
 
-open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8").write(
-f"""User-agent: *
-Allow: /
+# Search and answer-engine crawlers are allowed explicitly. Naming them is
+# not strictly required when User-agent: * already allows everything, but it
+# is what AEO checkers look for and it documents the intent.
+AI_CRAWLERS = ["OAI-SearchBot", "ChatGPT-User", "PerplexityBot",
+               "Google-Extended", "ClaudeBot", "Claude-SearchBot", "Bingbot"]
 
-Sitemap: {DOMAIN}/sitemap.xml
-""")
+open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8").write(
+"User-agent: *\nAllow: /\n\n"
++ "".join("User-agent: %s\nAllow: /\n\n" % b for b in AI_CRAWLERS)
++ "Sitemap: %s/sitemap.xml\n" % DOMAIN)
 
 # ---------------------------------------------------------------------------
 #  WEB APP MANIFEST
-#
-#  Every page carries <link rel="manifest" href="site.webmanifest">, but this
-#  file used to be hand-maintained in site/ rather than generated. When this
-#  project was copied from the Windsor build only style.css and script.js came
-#  across from site/, so the manifest did not - and every page 404'd on it,
-#  live, until a network trace caught it.
-#
-#  Generating it here means it cannot be lost in a copy again, and theme_color
-#  cannot drift away from THEME_COLOR and --color-primary.
+#  Every page carries <link rel="manifest" href="site.webmanifest">, but the
+#  inherited generator never wrote the file, so all 14 pages 404'd on it. Same
+#  fault exists on the Halifax build it came from. Generated here so it cannot
+#  go missing and theme_color cannot drift from THEME_COLOR.
 # ---------------------------------------------------------------------------
-_manifest_short = "%s Spray Foam" % CITY
 open(os.path.join(OUT, "site.webmanifest"), "w", encoding="utf-8").write(
-f"""{{
-  "name": "{BUSINESS}",
-  "short_name": "{_manifest_short}",
-  "description": "{INDUSTRY_BLURB} in {CITY_PROV}.",
-  "start_url": "/",
-  "display": "browser",
-  "background_color": "#ffffff",
-  "theme_color": "{THEME_COLOR}",
-  "icons": [
-    {{ "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" }},
-    {{ "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png" }},
-    {{ "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }}
-  ]
-}}
-""")
+    json.dumps({
+        "name": BUSINESS,
+        "short_name": "%s Spray Foam" % CITY,
+        "description": "Spray foam insulation in %s." % CITY_PROV,
+        "start_url": "/",
+        "display": "browser",
+        "background_color": "#ffffff",
+        "theme_color": THEME_COLOR,
+        "icons": [
+            {"src": "images/icon-192.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "images/icon-512.png", "sizes": "512x512", "type": "image/png"},
+            {"src": "images/icon-512.png", "sizes": "512x512",
+             "type": "image/png", "purpose": "maskable"},
+        ],
+    }, indent=2))
+
+# ---------------------------------------------------------------------------
+#  llms.txt - a plain-text map of the site for answer engines. Everything is
+#  derived from CONFIG and SERVICE_PAGES, so it cannot drift out of step with
+#  the pages that actually exist.
+# ---------------------------------------------------------------------------
+_llms = ["# %s" % BUSINESS, ""]
+_llms.append("> Spray foam insulation for attics, garages, basements, crawl "
+             "spaces, rim joists and new construction in %s and across %s."
+             % (CITY_PROV, REGION))
+_llms.append("")
+_llms.append("Phone: %s" % PHONE_DISPLAY)
+_llms.append("Service area: %s" % ", ".join(SERVICE_AREA))
+_llms.append("Hours: %s" % HOURS_TEXT)
+_llms.append("")
+_llms.append("## Pages")
+_llms.append("- [Home](%s/): spray foam insulation across %s." % (DOMAIN, REGION))
+_llms.append("- [Services](%s/services): every insulation service we install."
+             % DOMAIN)
+for _slug, _title, _short in SERVICE_PAGES:
+    _llms.append("- [%s](%s/%s): %s in %s."
+                 % (_title, DOMAIN, _slug[:-5], _title.lower(), CITY_PROV))
+_llms.append("- [About](%s/%s): who we are and how we quote."
+             % (DOMAIN, SLUG_ALIAS.get("about.html", "about.html")[:-5]))
+_llms.append("- [FAQ](%s/faq): costs, timelines and product questions." % DOMAIN)
+_llms.append("- [Contact](%s/%s): free written quotes."
+             % (DOMAIN, SLUG_ALIAS.get("contact.html", "contact.html")[:-5]))
+_llms.append("")
+open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8").write(
+    "\n".join(_llms))
 
 
 # ============================================================================
@@ -2087,7 +1925,7 @@ open(os.path.join(OUT, "_headers"), "w", encoding="utf-8").write(
 """)
 
 notfound = head(f"Page Not Found | {BUSINESS}",
-                f"That page could not be found. Browse our {INDUSTRY_NOUN} services in {CITY_PROV} or call us at {PHONE_DISPLAY}.",
+                f"That page could not be found. Browse our spray foam insulation services in {CITY_PROV}, or call {PHONE_DISPLAY}.",
                 "404.html")
 notfound = notfound.replace('<meta name="robots" content="index, follow, max-image-preview:large">',
                             '<meta name="robots" content="noindex, follow">')
@@ -2098,9 +1936,8 @@ notfound += f'''
 <section class="hero hero--page" aria-labelledby="hero-heading">
   <div class="container hero__inner">
     <div class="hero__intro">
-      <span class="eyebrow" style="color:#ffb37a;">Error 404</span>
+      <span class="eyebrow" style="color:var(--color-accent-light);">Error 404</span>
       <h1 id="hero-heading">{esc(sc("Not Found Heading"))}</h1>
-      <p>{esc(sc("Not Found Text"))}</p>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="index.html">Back To The Home Page</a>
         <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
@@ -2109,7 +1946,9 @@ notfound += f'''
   </div>
 </section>
 
-{services_grid(heading="Our Services", intro=f"{SERVICES_PAGE_H} across {CITY} and {REGION}.")}
+{intro_band("    <p>%s</p>" % esc(sc("Not Found Text")), "Page not found")}
+
+{services_grid(heading="Our Services", intro=f"Industrial flooring systems installed across {CITY} and {REGION}.")}
 
 {contact_form("404")}
 </main>

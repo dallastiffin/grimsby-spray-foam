@@ -1,14 +1,27 @@
 {
   "name": "Grimsby Spray Foam Insulation",
   "short_name": "Grimsby Spray Foam",
-  "description": "Spray foam insulation for attics, garages, basements and crawl spaces in Grimsby, Ontario.",
+  "description": "Spray foam insulation in Grimsby, Ontario.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#ffffff",
-  "theme_color": "#2E2A26",
+  "theme_color": "#17382C",
   "icons": [
-    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }

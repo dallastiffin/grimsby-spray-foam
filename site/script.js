@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Site Scripts (vanilla JS, no dependencies)
+   Grimsby Spray Foam Insulation — Site Scripts (vanilla JS, no dependencies)
    Modules:
      01. Mobile Navigation
      02. Services Dropdown
@@ -195,11 +195,16 @@
      message but nothing is delivered — which is what you want while
      previewing locally.
      ================================================================== */
-  // Set this to the /exec URL of THIS site's Apps Script deployment.
-  // It was carried over from Windsor when this folder was copied - leaving it
-  // would have posted every Grimsby lead into the Windsor spreadsheet.
-  // Rerun build.py after changing it so the cache fingerprint updates.
-  var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwQbWCFiw35BJTgLT1hyjrO1reXZFFdxLyLsqWg12KRzxyHeWyzNrGVSjo9qjkH4vNg/exec';
+  /* Portfolio-wide Lead Router endpoint (one Apps Script Web App for every
+     site, under tiffindevelopments@gmail.com). Every lead is posted here
+     with SITE_KEY below; the router files it to this site's own Google
+     Sheet and emails this site's notify address, both set in the
+     router's Config tab. Same URL on every site - only SITE_KEY differs.
+
+     After changing either value you MUST re-run build.py: _headers caches
+     this file hard and build.py stamps a content hash on the script URL. */
+  var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyUzWIbd-lu-Lbsx4iQWj0bLN1fqSG2pyzyhrR7O4clNP8Rx0wFUqknTYX8_Cjhx77fng/exec';
+  var SITE_KEY = 'grimsby-spray-foam';
 
   /* Fallback for CORS trouble. Leave false. If submissions are reaching
      the sheet but the page still shows an error, set this to true: the
@@ -218,7 +223,7 @@
   function submitLead(data) {
     if (!endpointIsSet()) {
       if (window.console && console.warn) {
-        console.warn('[site] No endpoint set — lead NOT delivered. ' +
+        console.warn('[Grimsby Spray Foam Insulation] No endpoint set — lead NOT delivered. ' +
                      'Set SHEET_ENDPOINT in script.js.', data);
       }
       return Promise.resolve();          // preview mode
@@ -297,6 +302,7 @@
         // Which form on which page produced this lead
         data.source = form.getAttribute('data-source') || document.title;
         data.pageUrl = window.location.href;
+        data.site = SITE_KEY;
 
         var button = form.querySelector('button[type="submit"]');
         var originalText = button ? button.textContent : '';
@@ -313,18 +319,9 @@
           })
           .catch(function () {
             if (success) {
-              // Pull this site's number out of the page rather than hardcoding
-              // it. A literal number here shipped the wrong city's phone to
-              // every site built from this template.
-              var telLink = document.querySelector('a[href^="tel:"]');
-              var telHref = telLink ? telLink.getAttribute('href') : '';
-              var telText = telLink ? telLink.textContent.trim() : '';
               success.classList.add('is-visible');
-              success.innerHTML = '<div><strong>Something went wrong.</strong> ' +
-                (telHref
-                  ? 'Please call us at <a href="' + telHref + '">' + telText + '</a> and we will take your details by phone.'
-                  : 'Please call us and we will take your details by phone.') +
-                '</div>';
+              success.innerHTML = '<div><strong>Something went wrong.</strong>' +
+                'Please call us at <a href="tel:+12896724160">(289) 672-4160</a> and we will take your details by phone.</div>';
             }
           })
           .then(function () {

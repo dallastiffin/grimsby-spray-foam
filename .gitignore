@@ -15,12 +15,21 @@ desktop.ini
 .wrangler/
 node_modules/
 
-# Note: the master *.png photos ARE tracked on purpose. They are the
-# originals that build.py --images reworks into site/images/. They are
-# never served to visitors because only site/ is deployed.
+# Credentials never enter a repo. The registration script reads secrets.env
+# off this machine, so it must not be committed either.
+_credentials/
+register-lead-router.ps1
 
-# Safety net. Caledon Storefront.png is a photograph of ANOTHER COMPANY's
-# premises - their sign is on the building. It shipped with the shared photo
-# pool. The master is kept in ..\..\Spray Foam Insulation\Spray Foam Photos\
-# but it must never enter this repo or this site.
-Caledon Storefront.png
+# Tool reports live in the folder root, never in site/, and never in the repo.
+aeotester-report.md
+*-report.md
+_to_delete/
+Claude outputs/
+*.xls
+
+# Build scratch
+patch_*.py
+
+# Note: the master *.png photos ARE tracked on purpose. They are the originals
+# that build.py --images reworks into site/images/, and they are never served
+# to visitors because only site/ is deployed.
