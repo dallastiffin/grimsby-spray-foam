@@ -287,7 +287,17 @@ h3 { font-size: var(--fs-h3); font-weight: 700; line-height: 1.2; }
   font-stretch: 115%;
   font-variation-settings: "wdth" 115;
 }
-.hero h1 { margin-bottom: 36px; max-width: 12ch; }
+.hero h1 { margin-bottom: 36px; max-width: 13ch; }
+/* Place name on its own line, about half the size of the service name. */
+.h1-place {
+  display: block;
+  margin-top: 0.3em;
+  font-size: 0.5em;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.page-hero .h1-place { font-size: 0.55em; }
 
 .hero__foam {
   --edge: var(--rust);

@@ -753,6 +753,15 @@ def intro_band(inner, label, media=""):
 """
 
 
+def h1_html(text):
+    """Set the place name ("In Grimsby, Ontario") on its own smaller line
+    under the service name. Same words, same order, still one <h1>."""
+    m = re.match(r"^(.*?\S)\s+(In\s+.+)$", text)
+    if not m:
+        return esc(text)
+    return '%s <span class="h1-place">%s</span>' % (esc(m.group(1)), esc(m.group(2)))
+
+
 def page_hero(h1_text, crumbs_nav, buttons, media_html=""):
     """Inner-page hero: breadcrumbs, H1, buttons, and optionally a photo that
     sits on the rust foam block. No paragraphs, per the hero rule."""
@@ -768,7 +777,7 @@ def page_hero(h1_text, crumbs_nav, buttons, media_html=""):
   <div class="container page-hero__grid">
     <div class="page-hero__text">
       {crumbs_nav}
-      <h1 id="hero-heading">{esc(h1_text)}</h1>
+      <h1 id="hero-heading">{h1_html(h1_text)}</h1>
       <div class="btn-row">
         {buttons}
       </div>
@@ -1295,7 +1304,7 @@ home += f"""
       <!-- Business name as a masthead. A paragraph, not a heading, so the page
            keeps exactly one top-level heading. -->
       <p class="hero__brand">{BUSINESS}</p>
-      <h1 id="hero-heading">{esc(h1)}</h1>
+      <h1 id="hero-heading">{h1_html(h1)}</h1>
       <div class="btn-row">
         <a class="btn btn--dark btn--lg" href="tel:{PHONE_HREF}">Call {PHONE_DISPLAY}</a>
         <a class="btn btn--line btn--lg" href="#services">See what we insulate</a>
