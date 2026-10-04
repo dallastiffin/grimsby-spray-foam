@@ -236,3 +236,46 @@ the HTML carries a content hash of each, and without a rebuild the change
 reaches nobody who has already visited.
 
 Never hand-edit anything in `site/` except `style.css` and `script.js`.
+
+---
+
+## October 3 2026 (evening) — visual redesign, frontend-design pass
+
+The earlier v2 rebuild changed the palette but kept the template's layout, so
+the site still read as the old format. This pass replaces the look entirely.
+**Copy is unchanged** — every page, slug, paragraph and FAQ comes from the same
+markdown. Not pushed yet.
+
+What changed (all in `build.py` templates, `site/style.css`, `tools/make-logo.py`):
+
+- **Palette from the logo**: charcoal `#2E2B27`, rust `#A84A1D`, cured-foam
+  `#EBD9A6` on dark grounds only, drywall grey `#EDEDE9` as the alternate
+  ground. `THEME_COLOR` now `#2E2B27`. 20 text/background pairs checked, lowest
+  body pair 4.89:1 (rust on grey), input borders 3.97:1.
+- **One signature device**: the logo's scalloped foam line. It rises behind the
+  form at the foot of the home hero (one load animation, off under reduced
+  motion), sits under every inner-page hero, and forms the top edge of the
+  rust/charcoal call-to-action bands and the footer.
+- **Type**: Archivo, self-hosted variable font (`site/fonts/`, SIL OFL, 90 KB),
+  expanded width for headings, normal width for reading. No Google Fonts call.
+- **Layout**: services shown as a ruled index with photos (not a card grid);
+  dark "why choose" section; "What every job gets" as a bordered spec sheet;
+  numbered steps only on the install process (the one real sequence); service
+  and about pages get a sticky "On this page" contents list beside the copy;
+  FAQ and quote form in two-column layouts. Top bar removed.
+- **Logo assets fixed**: the old script squashed the whole lockup into a square,
+  so the header logo and favicons were unreadable. Now a tight horizontal lockup
+  (`lockup-*.png`, plus a light version for the footer) and the house mark alone
+  for favicons. Old `wordmark-*.png` names still exist as aliases.
+- Hero rule still holds: no paragraphs in any hero.
+- `Service` schema `url` now uses the extensionless URL (was `.html`).
+- Two epoxy leftovers in the terms page ("slab") reworded.
+
+Audit after the change: 0 dead links, 0 duplicate ids, one h1 per page, 0 banned
+claims, 0 British spellings, all JSON-LD parses. Head-term density moved closer
+to band on most pages because template labels no longer repeat the head term:
+indexed pages in 3.9–4.4% went from 3 to 8 of 13. Still outside: index 4.49%,
+about 4.63%, faq 4.50%, services 5.26%, commercial 3.73%.
+
+Rollback for this pass only: `git checkout -- build.py site tools` before
+committing (nothing has been committed for it).

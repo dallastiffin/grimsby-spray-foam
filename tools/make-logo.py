@@ -4,99 +4,115 @@ Regenerate every logo asset from the master Logo.png.
 
     python tools/make-logo.py
 
-The Grimsby logo is a single round badge (the house-and-foam mark
-marking stripe, with the business name inside the ring) rather than a
-wordmark-plus-icon lockup, so there is nothing to split. The badge is used everywhere: header icon,
-favicons, schema logo and the footer mark. White outside the ring is knocked
-out so the badge sits cleanly on the dark footer.
+Logo.png is a horizontal lockup: the house-section mark (charcoal outline,
+rust foam fill with a scalloped top) on the left, "GRIMSBY / SPRAY FOAM
+INSULATION" on the right, on white.
+
+The previous version of this script padded the whole lockup into a square,
+which made the header logo and every favicon an unreadable smear. This one
+splits the lockup properly:
 
 Outputs into site/images/
-    icon-{16,32,48,64,96,180,192,512}.png   header logo + favicons
-    favicon.ico                             multi-resolution, legacy browsers
-    logo.png / logo.jpg                     512px badge, for schema.org
-    wordmark-{300,600}.png                  badge on transparent, light backgrounds
-    wordmark-light-{300,600}.png            same badge, used in the footer
+    lockup-{240,480}.png         tight-cropped full lockup, transparent, header
+    lockup-light-{240,480}.png   same, charcoal turned white, for the dark footer
+    icon-{16,32,48,64,96,180,192,512}.png   the house mark alone, favicons
+    favicon.ico                  multi-resolution, legacy browsers
+    logo.png / logo.jpg          512px mark on white, for schema.org
+    wordmark-*.png               kept as aliases of the lockup so nothing old 404s
 """
 from PIL import Image
-from collections import deque
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC  = os.path.join(ROOT, "Logo.png")
 IMG  = os.path.join(ROOT, "site", "images")
 
+CHARCOAL = (46, 43, 39)
 
-def clear_outside(img, thresh=225):
-    """Flood-fill transparency inward from the border. Only white that is
-    connected to an outside edge is removed, so the white lettering inside
-    the ring survives."""
+
+def knock_out_white(img, thresh=235):
+    """White to transparent, with a soft edge so anti-aliasing survives."""
     img = img.convert("RGBA")
-    w, h = img.size
     px = img.load()
-    seen = bytearray(w * h)
-    q = deque()
-
-    def is_white(x, y):
-        r, g, b, _ = px[x, y]
-        return r >= thresh and g >= thresh and b >= thresh
-
-    for x in range(w):
-        for y in (0, h - 1):
-            if is_white(x, y) and not seen[y * w + x]:
-                seen[y * w + x] = 1
-                q.append((x, y))
+    w, h = img.size
     for y in range(h):
-        for x in (0, w - 1):
-            if is_white(x, y) and not seen[y * w + x]:
-                seen[y * w + x] = 1
-                q.append((x, y))
-    while q:
-        x, y = q.popleft()
-        px[x, y] = (255, 255, 255, 0)
-        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            nx, ny = x + dx, y + dy
-            if 0 <= nx < w and 0 <= ny < h and not seen[ny * w + nx] and is_white(nx, ny):
-                seen[ny * w + nx] = 1
-                q.append((nx, ny))
-    return img.crop(img.getbbox())
+        for x in range(w):
+            r, g, b, a = px[x, y]
+            m = min(r, g, b)
+            if m >= thresh:
+                px[x, y] = (r, g, b, 0)
+            elif m > 190:
+                # partial: fade toward transparent as it approaches white
+                k = (m - 190) / float(thresh - 190)
+                px[x, y] = (r, g, b, int(a * (1 - k)))
+    return img
 
 
-def save_png(img, path, colors=128):
-    rgba = img.convert("RGBA")
-    alpha = rgba.split()[-1]
-    out = rgba.convert("RGB").quantize(colors=colors, method=Image.MEDIANCUT).convert("RGBA")
-    out.putalpha(alpha)
-    out.save(path, optimize=True)
+def bbox_of(img):
+    return img.getchannel("A").point(lambda v: 255 if v > 24 else 0).getbbox()
 
 
 def main():
     os.makedirs(IMG, exist_ok=True)
-    badge = clear_outside(Image.open(SRC))
-    side = max(badge.size) + 8
-    sq = Image.new("RGBA", (side, side), (0, 0, 0, 0))
-    sq.paste(badge, ((side - badge.width) // 2, (side - badge.height) // 2), badge)
+    src = knock_out_white(Image.open(SRC))
+    lock = src.crop(bbox_of(src))
 
-    for size in (512, 192, 180, 96, 64, 48, 32, 16):
-        save_png(sq.resize((size, size), Image.LANCZOS),
-                 os.path.join(IMG, "icon-%d.png" % size))
-        print("  icon-%d.png" % size)
+    # The mark is the left cluster: find the first fully empty column gap.
+    alpha = lock.getchannel("A")
+    w, h = lock.size
+    cols = [any(alpha.getpixel((x, y)) > 24 for y in range(0, h, 2)) for x in range(w)]
+    gap_start = None
+    for x in range(int(w * 0.1), w):
+        if not cols[x]:
+            gap_start = x
+            break
+    mark = lock.crop((0, 0, gap_start, h))
+    mark = mark.crop(bbox_of(mark))
 
+    # Lockups
+    for height in (240, 480):
+        ww = int(round(lock.width * height / lock.height))
+        lock.resize((ww, height), Image.LANCZOS).save(
+            os.path.join(IMG, "lockup-%d.png" % height), optimize=True)
+    light = lock.copy()
+    lp = light.load()
+    for y in range(light.height):
+        for x in range(light.width):
+            r, g, b, a = lp[x, y]
+            if a and abs(r - CHARCOAL[0]) < 40 and abs(g - CHARCOAL[1]) < 40 and abs(b - CHARCOAL[2]) < 40:
+                lp[x, y] = (255, 255, 255, a)
+            elif a and x > gap_start and r > g + 40:
+                # rust tagline is too dark to read on charcoal; cured-foam tone instead
+                lp[x, y] = (235, 217, 166, a)
+    for height in (240, 480):
+        ww = int(round(light.width * height / light.height))
+        light.resize((ww, height), Image.LANCZOS).save(
+            os.path.join(IMG, "lockup-light-%d.png" % height), optimize=True)
+
+    # Square mark for icons, with breathing room
+    side = int(max(mark.size) * 1.18)
+    # Opaque white tile: a transparent mark loses its charcoal outline on a
+    # dark browser tab or home screen.
+    sq = Image.new("RGBA", (side, side), (255, 255, 255, 255))
+    sq.paste(mark, ((side - mark.width) // 2, (side - mark.height) // 2), mark)
+    for s in (16, 32, 48, 64, 96, 180, 192, 512):
+        sq.resize((s, s), Image.LANCZOS).save(os.path.join(IMG, "icon-%d.png" % s), optimize=True)
+    sq.resize((48, 48), Image.LANCZOS).save(
+        os.path.join(IMG, "favicon.ico"), sizes=[(16, 16), (32, 32), (48, 48)])
+
+    on_white = Image.new("RGB", (512, 512), (255, 255, 255))
     big = sq.resize((512, 512), Image.LANCZOS)
-    save_png(big, os.path.join(IMG, "logo.png"))
-    flat = Image.new("RGB", big.size, (255, 255, 255))
-    flat.paste(big, mask=big.split()[-1])
-    flat.save(os.path.join(IMG, "logo.jpg"), "JPEG", quality=88, optimize=True)
-    sq.resize((256, 256), Image.LANCZOS).save(
-        os.path.join(IMG, "favicon.ico"),
-        sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
-    print("  favicon.ico, logo.png, logo.jpg")
+    on_white.paste(big, (0, 0), big)
+    big.save(os.path.join(IMG, "logo.png"), optimize=True)
+    on_white.save(os.path.join(IMG, "logo.jpg"), quality=90)
 
-    for w in (600, 300):
-        save_png(sq.resize((w, w), Image.LANCZOS), os.path.join(IMG, "wordmark-%d.png" % w))
-        save_png(sq.resize((w, w), Image.LANCZOS), os.path.join(IMG, "wordmark-light-%d.png" % w))
-        print("  wordmark-%d.png, wordmark-light-%d.png" % (w, w))
-
-    print("\nDone. Run 'python build.py' to refresh the cache fingerprints.")
+    # Legacy names, so any cached page or external reference still resolves
+    for n, src_name in (("wordmark-300.png", "lockup-240.png"),
+                        ("wordmark-600.png", "lockup-480.png"),
+                        ("wordmark-light-300.png", "lockup-light-240.png"),
+                        ("wordmark-light-600.png", "lockup-light-480.png")):
+        Image.open(os.path.join(IMG, src_name)).save(os.path.join(IMG, n), optimize=True)
+    print("logo assets written; lockup %dx%d, mark %dx%d" % (lock.width, lock.height, mark.width, mark.height))
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@
 # Images, CSS and JS are content-addressed by name, so they can cache hard.
 /images/*
   Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
 
 # Fingerprinted in the HTML as style.css?v=<hash>, so these can cache hard.
 # The hash changes whenever the file changes, which busts the cache instantly.

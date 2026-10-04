@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#17382C">
+<meta name="theme-color" content="#2E2B27">
 
 <!-- ===== SEO: unique title + description ===== -->
 <title>Attic Insulation Grimsby ON | Air Sealed First</title>
@@ -12,8 +12,6 @@
 <meta name="author" content="Grimsby Spray Foam Insulation">
 <meta name="geo.region" content="CA-ON">
 <meta name="geo.placename" content="Grimsby, Ontario">
-
-<!-- CANONICAL PLACEHOLDER - replace https://www.grimsbysprayfoaminsulation.com with the live domain before launch -->
 <link rel="canonical" href="https://www.grimsbysprayfoaminsulation.com/attic-insulation">
 
 <!-- ===== Open Graph / social sharing ===== -->
@@ -40,7 +38,10 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="style.css?v=42afd54c">
+
+<!-- Archivo (SIL OFL), self-hosted variable font: one file, width and weight axes. -->
+<link rel="preload" href="fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=768c045b">
 <script src="script.js?v=82926f68" defer></script>
 
 <!-- ===== Schema.org: Local Business ===== -->
@@ -239,47 +240,28 @@
     "@type": "City",
     "name": "Grimsby, Ontario"
   },
-  "url": "https://www.grimsbysprayfoaminsulation.com/attic-insulation.html"
+  "url": "https://www.grimsbysprayfoaminsulation.com/attic-insulation"
 }
 </script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- ============================= TOP UTILITY BAR ============================= -->
-<div class="topbar">
-  <div class="container topbar__inner">
-    <p style="margin:0;">Serving Grimsby, Beamsville, Vineland, Smithville &amp; across west Niagara</p>
-    <p style="margin:0;">Free written estimates &middot; <a href="tel:+12896724160">(289) 672-4160</a></p>
-  </div>
-</div>
-
-<!-- ============================= STICKY HEADER ============================= -->
+<!-- ============================= HEADER ============================= -->
 <header class="site-header">
   <div class="container site-header__inner">
 
     <a class="logo" href="/" aria-label="Grimsby Spray Foam Insulation home page">
-      <img src="images/icon-96.png" alt="Grimsby Spray Foam Insulation logo"
-           width="44" height="44" fetchpriority="high">
-      <span class="logo__text">
-        <span class="logo__name">Grimsby Spray Foam Insulation</span>
-        <span class="logo__tag">Grimsby, Ontario</span>
-      </span>
+      <img src="images/lockup-240.png" srcset="images/lockup-240.png 1x, images/lockup-480.png 2x"
+           alt="Grimsby Spray Foam Insulation" width="181" height="48">
     </a>
-
-    <button class="nav-burger" type="button" aria-expanded="false"
-            aria-controls="primary-nav" aria-label="Open main menu">
-      <span></span><span></span><span></span>
-    </button>
 
     <nav class="nav" id="primary-nav" aria-label="Main navigation">
       <ul class="nav__list">
-        <li><a class="nav__link" href="/">Home</a></li>
         <li class="nav__item--has-menu">
           <button class="nav__link nav__toggle" type="button"
-                  aria-expanded="false" aria-controls="services-menu" aria-current="page">Services</button>
+                  aria-expanded="false" aria-controls="services-menu" data-current="true">Services</button>
           <ul class="nav__submenu" id="services-menu">
-            <li><a href="/services">All Services</a></li>
             <li><a href="/attic-insulation" aria-current="page">Attic Insulation</a></li>
             <li><a href="/garage-insulation">Garage Insulation</a></li>
             <li><a href="/basement-insulation">Basement Insulation</a></li>
@@ -288,88 +270,97 @@
             <li><a href="/close-and-open-cell-spray-foam">Closed Cell and Open Cell Spray Foam</a></li>
             <li><a href="/agricultural-insulation">Agricultural Insulation</a></li>
             <li><a href="/commercial-insulation">Commercial Insulation</a></li>
+            <li class="nav__submenu-all"><a href="/services">All services</a></li>
           </ul>
         </li>
         <li><a class="nav__link" href="/about-us">About</a></li>
         <li><a class="nav__link" href="/faq">FAQ</a></li>
         <li><a class="nav__link" href="/contact-us">Contact</a></li>
       </ul>
-      <div class="header-cta">
-        <a class="btn btn--primary btn--sm" href="#quote">Get a Free Quote</a>
-      </div>
+      <a class="nav__quote" href="#quote">Get a free quote</a>
     </nav>
+
+    <a class="header-phone" href="tel:+12896724160" aria-label="Call Grimsby Spray Foam Insulation at (289) 672-4160">
+      <span class="header-phone__num">(289) 672-4160</span>
+    </a>
+
+    <button class="nav-burger" type="button" aria-expanded="false"
+            aria-controls="primary-nav" aria-label="Open main menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
-
-<!-- ============================= BREADCRUMBS ============================= -->
-<nav class="breadcrumbs" aria-label="Breadcrumb">
-  <div class="container">
-    <ol>
-      <li><a href="/">Home</a></li><li><a href="/services">Services</a></li><li><span aria-current="page">Attic Insulation</span></li>
-    </ol>
-  </div>
-</nav>
 
 <main id="main">
 
 <!-- ============================= HERO ============================= -->
-<section class="hero hero--page" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">Attic Insulation</span>
+<section class="page-hero page-hero--media" aria-labelledby="hero-heading">
+  <div class="container page-hero__grid">
+    <div class="page-hero__text">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/services">Services</a></li><li><span aria-current="page">Attic Insulation</span></li></ol></nav>
       <h1 id="hero-heading">Attic Insulation In Grimsby, Ontario</h1>
       <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-        <a class="btn btn--ghost btn--lg" href="tel:+12896724160">Call Now: (289) 672-4160</a>
+        <a class="btn btn--primary btn--lg" href="#quote">Get a free quote</a>
+        <a class="btn btn--line btn--lg" href="tel:+12896724160">Call (289) 672-4160</a>
       </div>
+    </div>
+    <div class="page-hero__media">
+      <picture>
+        <source type="image/webp" srcset="images/service-attic-insulation-640.webp 640w, images/service-attic-insulation-960.webp 960w" sizes="(max-width: 900px) 92vw, 540px">
+        <img src="images/service-attic-insulation-640.jpg" srcset="images/service-attic-insulation-640.jpg 640w, images/service-attic-insulation-960.jpg 960w" sizes="(max-width: 900px) 92vw, 540px"
+             alt="Attic insulation going onto the underside of a roof deck between the rafters" width="640" height="400" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+  </div>
+  <div class="page-hero__foam" aria-hidden="true"></div>
+</section>
+
+
+
+<!-- ============================= INTRO (below the hero) ============================= -->
+<section class="intro-band" aria-label="Attic Insulation overview">
+  <div class="container intro-band__grid">
+    <div class="intro-band__text prose">
+      <p>Grimsby Spray Foam Insulation installs attic insulation across Grimsby, Beamsville, Vineland and west Niagara, and every job is fully insured. The attic is where most houses lose the most heat, and attic insulation is the upgrade that pays back fastest when it is done in the right order.</p>
+      <p>That order matters more than the product. Air sealing comes first, attic insulation depth comes second, and attic insulation laid over an unsealed ceiling is money spent for a fraction of the result.</p>
     </div>
   </div>
 </section>
 
 
-<!-- ============================= INTRO (below the hero) ============================= -->
-<section class="intro-band" aria-label="Attic Insulation overview">
-  <div class="container container--narrow prose">
-      <p>Grimsby Spray Foam Insulation installs attic insulation across Grimsby, Beamsville, Vineland and west Niagara, and every job is fully insured. The attic is where most houses lose the most heat, and attic insulation is the upgrade that pays back fastest when it is done in the right order.</p>
-      <p>That order matters more than the product. Air sealing comes first, attic insulation depth comes second, and attic insulation laid over an unsealed ceiling is money spent for a fraction of the result.</p>
-  </div>
-</section>
-
-
 <!-- ============================= SERVICE DETAIL ============================= -->
-<section class="section" aria-labelledby="detail-heading">
+<section class="section article" aria-labelledby="detail-heading">
   <div class="container">
     <h2 id="detail-heading" class="visually-hidden">Attic Insulation details</h2>
     <div class="layout-split">
       <div class="prose">
-      <section class="content-block">
+      <section class="content-block" id="your-roof-tells-you-what-the-attic-insulation-is-doing">
         <h2>Your Roof Tells You What The Attic Insulation Is Doing</h2>
         <p>Go outside after the first real snow of the year, before the sun has been on the roof.</p>
         <p>Even snow cover means the attic insulation below is doing its job and the roof space is staying cold, which is what you want. Bare melted patches mean heat is coming through under them. Stripes of surviving snow over the truss lines mean the framing is doing more insulating than whatever sits between it.</p>
         <p>Icicles and a ridge of ice along the eaves are the end of the same story, and they point at attic insulation that is letting heat through. Heat melts snow high on the roof, the water runs to the cold overhang and refreezes, and the ice backs water up under the shingles. Houses on the upper Grimsby streets toward the escarpment hold their snow longer and see this more often.</p>
       </section>
-      <section class="content-block">
+      <section class="content-block" id="attic-floor-or-roof-deck-changes-the-whole-job">
         <h2>Attic Floor Or Roof Deck Changes The Whole Job</h2>
         <p>Attic insulation laid at the ceiling plane leaves the roof space cold and vented above it. That suits most Grimsby houses with an uncomplicated roof and an empty attic. Every hole through the ceiling gets sealed before any attic insulation depth goes back on.</p>
         <p>Attic insulation on the roof deck brings the space inside the heated envelope. That is the answer when there is ducting or an air handler in the attic, when dormers and valleys make a continuous ceiling plane impossible, or when the attic is being used. It costs more because there is more area to cover.</p>
         <p>We will tell you which one your roof is asking for. If the honest answer is to seal the penetrations and blow cellulose over the top, that is what we will quote, and it will be less than you came here expecting.</p>
       </section>
-      <section class="content-block">
+      <section class="content-block" id="air-sealing-is-most-of-what-attic-insulation-does">
         <h2>Air Sealing Is Most Of What Attic Insulation Does</h2>
         <p>Attic insulation depth without air sealing wastes the depth. Air moving through insulation carries heat straight past it, and it carries moisture too, which is how frost ends up on the underside of roof sheathing.</p>
         <p>The attic hatch is almost always the worst single item in a house's attic insulation, and almost always the cheapest to fix. Recessed lights, bathroom fans venting into the attic instead of outside, and the gap around a masonry chimney are the usual next three.</p>
         <p>We do that part first on every attic insulation job, whatever goes over it afterwards.</p>
       </section>
 
-      <!-- Mid-content conversion prompt -->
       <aside class="cta-inline" aria-label="Estimate call to action">
         <p>Free written estimates across Grimsby, Beamsville, Vineland, Smithville and west Niagara.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="#quote">Request an Estimate</a>
-          <a class="btn btn--outline" href="tel:+12896724160">Call Now</a>
+          <a class="btn btn--primary" href="#quote">Request an estimate</a>
+          <a class="btn btn--line" href="tel:+12896724160">(289) 672-4160</a>
         </div>
       </aside>
-      <section class="content-block">
+      <section class="content-block" id="depth-r-value-and-the-attic-insulation-rebate">
         <h2>Depth, R-Value And The Attic Insulation Rebate</h2>
         <p>Ontario's SB-12 asks for roughly R-50 in a ceiling with an attic on a new build in this climate zone, up from R-40 under the previous code. A retrofit is not held to new-build numbers, but it is a sensible target.</p>
         <p>Closed cell gives about R-6 to R-7 per inch and open cell around R-3.5 to R-4. Spray foam is rarely the cheapest way to reach a high number across a big open attic floor, which is why we often pair foam for the air seal with blown-in for the depth.</p>
@@ -377,22 +368,21 @@
       </section>
       </div>
 
-      <!-- Sticky conversion sidebar -->
-      <aside class="sidebar" aria-labelledby="sidebar-heading">
-        <div class="card">
-          <h3 id="sidebar-heading">Talk To The Installer</h3>
+      <aside class="sidebar">
+        <nav class="toc" aria-label="On this page">
+          <p class="toc__title">On this page</p>
+          <ol>
+            <li><a href="#your-roof-tells-you-what-the-attic-insulation-is-doing">Your Roof Tells You What The Attic Insulation Is Doing</a></li>
+            <li><a href="#attic-floor-or-roof-deck-changes-the-whole-job">Attic Floor Or Roof Deck Changes The Whole Job</a></li>
+            <li><a href="#air-sealing-is-most-of-what-attic-insulation-does">Air Sealing Is Most Of What Attic Insulation Does</a></li>
+            <li><a href="#depth-r-value-and-the-attic-insulation-rebate">Depth, R-Value And The Attic Insulation Rebate</a></li>
+          </ol>
+        </nav>
+        <div class="side-card">
+          <p class="side-card__title">Talk To The Installer</p>
           <p>One visit, moisture and substrate readings taken, and a price with the product and the installed depth attached to it.</p>
-          <p><a class="footer-phone" style="color:var(--color-accent-dark) !important;" href="tel:+12896724160">(289) 672-4160</a></p>
-          <div class="btn-row">
-            <a class="btn btn--primary btn--block" href="#quote">Get a Free Quote</a>
-            <a class="btn btn--outline btn--block" href="/contact-us">Contact Us Today</a>
-          </div>
-        </div>
-        <div class="panel" style="margin-top:var(--space-5);">
-          <h3>Spray Foam Insulation Services</h3>
-          <ul class="footer-list" style="padding:0;">
-            <li><a href="/attic-insulation" style="color:var(--color-primary-light);">Attic Insulation</a></li><li><a href="/garage-insulation" style="color:var(--color-primary-light);">Garage Insulation</a></li><li><a href="/basement-insulation" style="color:var(--color-primary-light);">Basement Insulation</a></li><li><a href="/crawl-space-insulation" style="color:var(--color-primary-light);">Crawl Space Insulation</a></li><li><a href="/new-construction-insulation" style="color:var(--color-primary-light);">New Construction Insulation</a></li><li><a href="/close-and-open-cell-spray-foam" style="color:var(--color-primary-light);">Closed Cell and Open Cell Spray Foam</a></li><li><a href="/agricultural-insulation" style="color:var(--color-primary-light);">Agricultural Insulation</a></li><li><a href="/commercial-insulation" style="color:var(--color-primary-light);">Commercial Insulation</a></li>
-          </ul>
+          <a class="side-card__phone" href="tel:+12896724160">(289) 672-4160</a>
+          <a class="btn btn--primary btn--block" href="#quote">Get a free quote</a>
         </div>
       </aside>
 
@@ -400,144 +390,145 @@
   </div>
 </section>
 
-<!-- ============================= CLOSING CTA (from source copy) ============================= -->
-<section class="cta-band" aria-labelledby="closing-heading">
-  <div class="container">
+
+<!-- ============================= CTA BAND ============================= -->
+<section class="cta-band cta-band--ink foam-top" aria-labelledby="closing-heading">
+  <div class="container cta-band__inner">
     <h2 id="closing-heading">Book An Attic Insulation Assessment</h2>
-    <p>We will go up, look at what is there, photograph it and tell you what is worth doing. If your attic mostly wants sealing and topping up rather than new attic insulation, we will say so. Start from our <a href="/">home page</a> for the rest of what we install, or <a href="/contact-us">contact us</a> to book a visit.</p>
-    <div class="btn-row is-centered">
-      <a class="btn btn--primary btn--lg" href="#quote">Request an Estimate</a>
-      <a class="btn btn--ghost btn--lg" href="tel:+12896724160">Call Now: (289) 672-4160</a>
+    <div class="cta-band__body">
+      <p>We will go up, look at what is there, photograph it and tell you what is worth doing. If your attic mostly wants sealing and topping up rather than new attic insulation, we will say so. Start from our <a href="/">home page</a> for the rest of what we install, or <a href="/contact-us">contact us</a> to book a visit.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary btn--lg" href="#quote">Get a free quote</a>
+        <a class="btn btn--light btn--lg" href="tel:+12896724160">Call (289) 672-4160</a>
+      </div>
     </div>
   </div>
 </section>
 
 
-<!-- ============================= SERVICES GRID ============================= -->
-<section class="section" id="services" aria-labelledby="services-heading">
+
+<!-- ============================= SERVICES INDEX ============================= -->
+<section class="section svc-index" id="services" aria-labelledby="services-heading">
   <div class="container">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Spray Foam Insulation</span>
+    <div class="split-head">
       <h2 id="services-heading">Other Work We Take On</h2>
-      <p class="lead">Attics, garages, basements, crawl spaces and new construction across Grimsby and west Niagara.</p>
+      <p>Attics, garages, basements, crawl spaces and new construction across Grimsby and west Niagara.</p>
     </div>
-    <div class="grid grid--3">
-      <article class="service-card">
-        <div class="service-card__media">
+    <ul class="svc-list">
+      <li class="svc-row">
+        <h3 class="svc-row__title"><a href="/garage-insulation">Garage Insulation</a></h3>
+        <div class="svc-row__body">
+          <p>Grimsby Spray Foam Insulation installs garage insulation throughout Grimsby and west Niagara, and every job is fully insured. An attached garage with nothing in its walls pulls heat out of every room it touches, and garage insulation is usually why the bedroom above it finally holds temperature.</p>
+          <a class="svc-row__link" href="/garage-insulation" aria-label="Read about garage insulation">Read more</a>
+        </div>
+        <div class="svc-row__media">
           <picture>
-            <source type="image/webp" srcset="images/service-garage-insulation-640.webp 640w, images/service-garage-insulation-960.webp 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px">
-            <img src="images/service-garage-insulation-640.jpg" srcset="images/service-garage-insulation-640.jpg 640w, images/service-garage-insulation-960.jpg 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px"
+            <source type="image/webp" srcset="images/service-garage-insulation-640.webp 640w, images/service-garage-insulation-960.webp 960w" sizes="(max-width: 760px) 92vw, 260px">
+            <img src="images/service-garage-insulation-640.jpg" srcset="images/service-garage-insulation-640.jpg 640w, images/service-garage-insulation-960.jpg 960w" sizes="(max-width: 760px) 92vw, 260px"
                  alt="Garage insulation carried across the wall and up to the ceiling" width="640" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
-        <div class="service-card__body">
-          <h3><a href="/garage-insulation" style="text-decoration:none;color:inherit;">Garage Insulation</a></h3>
-          <p>Grimsby Spray Foam Insulation installs garage insulation throughout Grimsby and west Niagara, and every job is fully insured. An attached garage with nothing in its walls pulls heat out of every room it touches, and garage insulation is usually why the bedroom above it finally holds temperature.</p>
-          <a class="service-card__link" href="/garage-insulation">View Garage Insulation</a>
+      </li>
+      <li class="svc-row">
+        <h3 class="svc-row__title"><a href="/basement-insulation">Basement Insulation</a></h3>
+        <div class="svc-row__body">
+          <p>Grimsby Spray Foam Insulation installs basement insulation across Grimsby and west Niagara, and every job is fully insured. A foundation wall with nothing on it is a large, cold, permanently damp surface inside your house, pulling heat out all winter and feeding moisture into the air all year.</p>
+          <a class="svc-row__link" href="/basement-insulation" aria-label="Read about basement insulation">Read more</a>
         </div>
-      </article>
-      <article class="service-card">
-        <div class="service-card__media">
+        <div class="svc-row__media">
           <picture>
-            <source type="image/webp" srcset="images/service-basement-insulation-640.webp 640w, images/service-basement-insulation-960.webp 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px">
-            <img src="images/service-basement-insulation-640.jpg" srcset="images/service-basement-insulation-640.jpg 640w, images/service-basement-insulation-960.jpg 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px"
+            <source type="image/webp" srcset="images/service-basement-insulation-640.webp 640w, images/service-basement-insulation-960.webp 960w" sizes="(max-width: 760px) 92vw, 260px">
+            <img src="images/service-basement-insulation-640.jpg" srcset="images/service-basement-insulation-640.jpg 640w, images/service-basement-insulation-960.jpg 960w" sizes="(max-width: 760px) 92vw, 260px"
                  alt="Closed cell spray foam basement insulation going onto a foundation wall" width="640" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
-        <div class="service-card__body">
-          <h3><a href="/basement-insulation" style="text-decoration:none;color:inherit;">Basement Insulation</a></h3>
-          <p>Grimsby Spray Foam Insulation installs basement insulation across Grimsby and west Niagara, and every job is fully insured. A foundation wall with nothing on it is a large, cold, permanently damp surface inside your house, pulling heat out all winter and feeding moisture into the air all year.</p>
-          <a class="service-card__link" href="/basement-insulation">View Basement Insulation</a>
+      </li>
+      <li class="svc-row">
+        <h3 class="svc-row__title"><a href="/crawl-space-insulation">Crawl Space Insulation</a></h3>
+        <div class="svc-row__body">
+          <p>Grimsby Spray Foam Insulation installs crawl space insulation throughout Grimsby and west Niagara, and every job is fully insured. A crawl space is the part of the house nobody looks at and everybody feels. Cold floors above, a musty smell that comes and goes with the weather, and humidity that will not settle all trace back down there.</p>
+          <a class="svc-row__link" href="/crawl-space-insulation" aria-label="Read about crawl space insulation">Read more</a>
         </div>
-      </article>
-      <article class="service-card">
-        <div class="service-card__media">
+        <div class="svc-row__media">
           <picture>
-            <source type="image/webp" srcset="images/service-crawl-space-insulation-640.webp 640w, images/service-crawl-space-insulation-960.webp 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px">
-            <img src="images/service-crawl-space-insulation-640.jpg" srcset="images/service-crawl-space-insulation-640.jpg 640w, images/service-crawl-space-insulation-960.jpg 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px"
+            <source type="image/webp" srcset="images/service-crawl-space-insulation-640.webp 640w, images/service-crawl-space-insulation-960.webp 960w" sizes="(max-width: 760px) 92vw, 260px">
+            <img src="images/service-crawl-space-insulation-640.jpg" srcset="images/service-crawl-space-insulation-640.jpg 640w, images/service-crawl-space-insulation-960.jpg 960w" sizes="(max-width: 760px) 92vw, 260px"
                  alt="Crawl space insulation sealing a perimeter wall over a taped ground sheet" width="640" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
-        <div class="service-card__body">
-          <h3><a href="/crawl-space-insulation" style="text-decoration:none;color:inherit;">Crawl Space Insulation</a></h3>
-          <p>Grimsby Spray Foam Insulation installs crawl space insulation throughout Grimsby and west Niagara, and every job is fully insured. A crawl space is the part of the house nobody looks at and everybody feels. Cold floors above, a musty smell that comes and goes with the weather, and humidity that will not settle all trace back down there.</p>
-          <a class="service-card__link" href="/crawl-space-insulation">View Crawl Space Insulation</a>
+      </li>
+      <li class="svc-row">
+        <h3 class="svc-row__title"><a href="/new-construction-insulation">New Construction Insulation</a></h3>
+        <div class="svc-row__body">
+          <p>Grimsby Spray Foam Insulation works with builders and owners on new construction insulation across Grimsby, Lincoln and west Niagara, and every job is fully insured. Nothing beats open framing for cost and cleanliness. Every bay is reachable, no finished surface needs masking, and nothing has to be cut back out later.</p>
+          <a class="svc-row__link" href="/new-construction-insulation" aria-label="Read about new construction insulation">Read more</a>
         </div>
-      </article>
-      <article class="service-card">
-        <div class="service-card__media">
+        <div class="svc-row__media">
           <picture>
-            <source type="image/webp" srcset="images/service-new-construction-insulation-640.webp 640w, images/service-new-construction-insulation-960.webp 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px">
-            <img src="images/service-new-construction-insulation-640.jpg" srcset="images/service-new-construction-insulation-640.jpg 640w, images/service-new-construction-insulation-960.jpg 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px"
+            <source type="image/webp" srcset="images/service-new-construction-insulation-640.webp 640w, images/service-new-construction-insulation-960.webp 960w" sizes="(max-width: 760px) 92vw, 260px">
+            <img src="images/service-new-construction-insulation-640.jpg" srcset="images/service-new-construction-insulation-640.jpg 640w, images/service-new-construction-insulation-960.jpg 960w" sizes="(max-width: 760px) 92vw, 260px"
                  alt="New construction insulation filling open stud bays before drywall" width="640" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
-        <div class="service-card__body">
-          <h3><a href="/new-construction-insulation" style="text-decoration:none;color:inherit;">New Construction Insulation</a></h3>
-          <p>Grimsby Spray Foam Insulation works with builders and owners on new construction insulation across Grimsby, Lincoln and west Niagara, and every job is fully insured. Nothing beats open framing for cost and cleanliness. Every bay is reachable, no finished surface needs masking, and nothing has to be cut back out later.</p>
-          <a class="service-card__link" href="/new-construction-insulation">View New Construction Insulation</a>
+      </li>
+      <li class="svc-row">
+        <h3 class="svc-row__title"><a href="/close-and-open-cell-spray-foam">Closed Cell and Open Cell Spray Foam</a></h3>
+        <div class="svc-row__body">
+          <p>Grimsby Spray Foam Insulation installs both, across Grimsby and west Niagara, and every job is fully insured. There are two spray foams and they are not competing products. They do different jobs, and most houses want both in different places.</p>
+          <a class="svc-row__link" href="/close-and-open-cell-spray-foam" aria-label="Read about closed cell and open cell spray foam">Read more</a>
         </div>
-      </article>
-      <article class="service-card">
-        <div class="service-card__media">
+        <div class="svc-row__media">
           <picture>
-            <source type="image/webp" srcset="images/service-close-and-open-cell-spray-foam-640.webp 640w, images/service-close-and-open-cell-spray-foam-960.webp 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px">
-            <img src="images/service-close-and-open-cell-spray-foam-640.jpg" srcset="images/service-close-and-open-cell-spray-foam-640.jpg 640w, images/service-close-and-open-cell-spray-foam-960.jpg 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px"
+            <source type="image/webp" srcset="images/service-close-and-open-cell-spray-foam-640.webp 640w, images/service-close-and-open-cell-spray-foam-960.webp 960w" sizes="(max-width: 760px) 92vw, 260px">
+            <img src="images/service-close-and-open-cell-spray-foam-640.jpg" srcset="images/service-close-and-open-cell-spray-foam-640.jpg 640w, images/service-close-and-open-cell-spray-foam-960.jpg 960w" sizes="(max-width: 760px) 92vw, 260px"
                  alt="Closed cell spray foam expanding out of the gun into a framed stud bay" width="640" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
-        <div class="service-card__body">
-          <h3><a href="/close-and-open-cell-spray-foam" style="text-decoration:none;color:inherit;">Closed Cell and Open Cell Spray Foam</a></h3>
-          <p>Grimsby Spray Foam Insulation installs both, across Grimsby and west Niagara, and every job is fully insured. There are two spray foams and they are not competing products. They do different jobs, and most houses want both in different places.</p>
-          <a class="service-card__link" href="/close-and-open-cell-spray-foam">View Closed Cell and Open Cell Spray Foam</a>
+      </li>
+      <li class="svc-row">
+        <h3 class="svc-row__title"><a href="/agricultural-insulation">Agricultural Insulation</a></h3>
+        <div class="svc-row__body">
+          <p>We run agricultural spray foam insulation across Grimsby, Lincoln and West Lincoln, and every job is fully insured. Pole barns, machinery sheds, livestock housing, greenhouse service rooms, cold storage and farm shops all take spray foam insulation, though not all of them for the same reason.</p>
+          <a class="svc-row__link" href="/agricultural-insulation" aria-label="Read about agricultural insulation">Read more</a>
         </div>
-      </article>
-      <article class="service-card">
-        <div class="service-card__media">
+        <div class="svc-row__media">
           <picture>
-            <source type="image/webp" srcset="images/service-agricultural-insulation-640.webp 640w, images/service-agricultural-insulation-960.webp 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px">
-            <img src="images/service-agricultural-insulation-640.jpg" srcset="images/service-agricultural-insulation-640.jpg 640w, images/service-agricultural-insulation-960.jpg 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px"
+            <source type="image/webp" srcset="images/service-agricultural-insulation-640.webp 640w, images/service-agricultural-insulation-960.webp 960w" sizes="(max-width: 760px) 92vw, 260px">
+            <img src="images/service-agricultural-insulation-640.jpg" srcset="images/service-agricultural-insulation-640.jpg 640w, images/service-agricultural-insulation-960.jpg 960w" sizes="(max-width: 760px) 92vw, 260px"
                  alt="Pole barn insulated with closed cell spray foam across the roof underside and wall bays" width="640" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
-        <div class="service-card__body">
-          <h3><a href="/agricultural-insulation" style="text-decoration:none;color:inherit;">Agricultural Insulation</a></h3>
-          <p>We run agricultural spray foam insulation across Grimsby, Lincoln and West Lincoln, and every job is fully insured. Pole barns, machinery sheds, livestock housing, greenhouse service rooms, cold storage and farm shops all take spray foam insulation, though not all of them for the same reason.</p>
-          <a class="service-card__link" href="/agricultural-insulation">View Agricultural Insulation</a>
+      </li>
+      <li class="svc-row">
+        <h3 class="svc-row__title"><a href="/commercial-insulation">Commercial Insulation</a></h3>
+        <div class="svc-row__body">
+          <p>We install commercial spray foam insulation across Grimsby and west Niagara, and every job is fully insured. Steel-framed warehouses, fabrication and machine shops, service garages and fleet buildings, food and beverage space, and the small commercial units along the service roads.</p>
+          <a class="svc-row__link" href="/commercial-insulation" aria-label="Read about commercial insulation">Read more</a>
         </div>
-      </article>
-      <article class="service-card">
-        <div class="service-card__media">
+        <div class="svc-row__media">
           <picture>
-            <source type="image/webp" srcset="images/service-commercial-insulation-640.webp 640w, images/service-commercial-insulation-960.webp 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px">
-            <img src="images/service-commercial-insulation-640.jpg" srcset="images/service-commercial-insulation-640.jpg 640w, images/service-commercial-insulation-960.jpg 960w" sizes="(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px"
+            <source type="image/webp" srcset="images/service-commercial-insulation-640.webp 640w, images/service-commercial-insulation-960.webp 960w" sizes="(max-width: 760px) 92vw, 260px">
+            <img src="images/service-commercial-insulation-640.jpg" srcset="images/service-commercial-insulation-640.jpg 640w, images/service-commercial-insulation-960.jpg 960w" sizes="(max-width: 760px) 92vw, 260px"
                  alt="Steel-framed warehouse with closed cell spray foam insulation applied to the roof decking between purlins" width="640" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
-        <div class="service-card__body">
-          <h3><a href="/commercial-insulation" style="text-decoration:none;color:inherit;">Commercial Insulation</a></h3>
-          <p>We install commercial spray foam insulation across Grimsby and west Niagara, and every job is fully insured. Steel-framed warehouses, fabrication and machine shops, service garages and fleet buildings, food and beverage space, and the small commercial units along the service roads.</p>
-          <a class="service-card__link" href="/commercial-insulation">View Commercial Insulation</a>
-        </div>
-      </article>
-    </div>
-    <div class="btn-row is-centered">
-      <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-      <a class="btn btn--outline btn--lg" href="/services">All Insulation Services</a>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
 
 
 <!-- ============================= CTA BAND ============================= -->
-<section class="cta-band" aria-label="Contact call to action">
-  <div class="container">
+<section class="cta-band cta-band--rust foam-top" aria-label="Contact call to action">
+  <div class="container cta-band__inner">
     <h2>Ready To Get This Priced</h2>
+    <div class="cta-band__body">
     <p>Get us out to see it. You get a written spec with the product, the depth and the price on one page.</p>
-    <div class="btn-row is-centered">
-        <a class="btn btn--primary btn--lg" href="#quote">Book Your Consultation</a>
-        <a class="btn btn--ghost btn--lg" href="/contact-us">Contact Us Today</a>
+      <div class="btn-row">
+        <a class="btn btn--dark btn--lg" href="#quote">Book a site visit</a>
+        <a class="btn btn--light btn--lg" href="/contact-us">Contact us</a>
+      </div>
     </div>
   </div>
 </section>
@@ -545,26 +536,24 @@
 
 
 <!-- ============================= LEAD INTAKE FORM ============================= -->
-<section class="section section--alt" id="quote" aria-labelledby="quote-heading">
-  <div class="container container--narrow">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Free Estimate</span>
+<section class="quote" id="quote" aria-labelledby="quote-heading">
+  <div class="container quote__grid">
+    <div class="quote__lead">
       <h2 id="quote-heading">Tell Us About The Space</h2>
-      <p class="lead">Which room, its rough size, and any history of water getting in.
-        If you would rather talk it through, call <a href="tel:+12896724160">(289) 672-4160</a>.</p>
+      <p>Which room, its rough size, and any history of water getting in.</p>
+      <p class="quote__call">Rather talk it through?
+        <a class="quote__phone" href="tel:+12896724160">(289) 672-4160</a></p>
+      <p class="quote__hours">Monday to Saturday, 7:00am to 6:00pm</p>
     </div>
 
     <div class="form-wrap">
-      <!-- Success message: revealed by script.js after successful validation -->
       <div class="form-success" role="status" aria-live="polite">
         <div>
-          <strong>Thanks &mdash; your request has been received.</strong>
+          <strong>Request received.</strong>
           Someone will be in touch about your insulation within one business day.
           For anything urgent, call <a href="tel:+12896724160">(289) 672-4160</a>.
         </div>
       </div>
-
-      <!-- BACKEND: set SHEET_ENDPOINT in script.js to deliver these to your Google Sheet. -->
       <form class="lead-form" action="#" method="post" novalidate
             data-source="Attic Insulation" aria-labelledby="quote-heading">
         <div class="form-grid">
@@ -572,7 +561,7 @@
           <div class="field">
             <label for="lf-name">Name <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="lf-name" name="name" autocomplete="name"
-                   data-label="Name" placeholder="Your full name" required>
+                   data-label="Name" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -586,21 +575,21 @@
           <div class="field">
             <label for="lf-email">Email <span class="req" aria-hidden="true">*</span></label>
             <input type="email" id="lf-email" name="email" autocomplete="email"
-                   data-label="Email" placeholder="you@example.com" required>
+                   data-label="Email" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field">
-            <label for="lf-city">City <span class="req" aria-hidden="true">*</span></label>
+            <label for="lf-city">Town <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="lf-city" name="city" autocomplete="address-level2"
                    data-label="City" placeholder="Grimsby" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field field--full">
-            <label for="lf-service">Service Interested In <span class="req" aria-hidden="true">*</span></label>
+            <label for="lf-service">What needs insulating <span class="req" aria-hidden="true">*</span></label>
             <select id="lf-service" name="service" data-label="Service interested in" required>
-            <option value="">Please choose a service</option>
+            <option value="">Choose a space</option>
             <option value="Attic Insulation">Attic Insulation</option>
             <option value="Garage Insulation">Garage Insulation</option>
             <option value="Basement Insulation">Basement Insulation</option>
@@ -609,16 +598,16 @@
             <option value="Closed Cell and Open Cell Spray Foam">Closed Cell and Open Cell Spray Foam</option>
             <option value="Agricultural Insulation">Agricultural Insulation</option>
             <option value="Commercial Insulation">Commercial Insulation</option>
-            <option value="Not sure yet">Not sure yet - please advise</option>
+            <option value="Not sure yet">Not sure yet</option>
             </select>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field field--full">
-            <label for="lf-message">Message <span class="req" aria-hidden="true">*</span></label>
+            <label for="lf-message">About the space <span class="req" aria-hidden="true">*</span></label>
             <textarea id="lf-message" name="message" data-label="Message" required
-                      
-                      placeholder="Tell us the approximate square footage, what the building is used for, and the current condition of the slab."></textarea>
+                      rows="5"
+                      placeholder="Rough size, what it is used for, and what it does wrong in winter or summer."></textarea>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -630,11 +619,10 @@
           </div>
 
           <div class="field field--full">
-            <button class="btn btn--primary btn--lg btn--block" type="submit">Request an Estimate</button>
-            <p class="form-note"><span class="req" aria-hidden="true">*</span>
+            <button class="btn btn--primary btn--lg btn--block" type="submit">Request an estimate</button>
+            <p class="form-note"><span class="req" aria-hidden="true">*</span> Required.
               Photos are welcome and often tell us more than the phone call does.</p>
           </div>
-
         </div>
       </form>
     </div>
@@ -644,57 +632,49 @@
 </main>
 
 <!-- ============================= FOOTER ============================= -->
-<footer class="site-footer">
+<footer class="site-footer foam-top">
   <div class="container">
+    <div class="footer-top">
+      <a class="footer-logo" href="/" aria-label="Grimsby Spray Foam Insulation home page">
+        <img src="images/lockup-light-240.png" srcset="images/lockup-light-240.png 1x, images/lockup-light-480.png 2x"
+             alt="Grimsby Spray Foam Insulation" width="211" height="56" loading="lazy">
+      </a>
+      <a class="footer-phone" href="tel:+12896724160">(289) 672-4160</a>
+    </div>
+
     <div class="footer-grid">
-
-      <div class="footer-brand">
-        <a class="footer-logo" href="/" aria-label="Grimsby Spray Foam Insulation home page">
-          <img src="images/wordmark-light-300.png"
-               alt="Grimsby Spray Foam Insulation" width="300" height="300" loading="lazy">
-        </a>
+      <div class="footer-about">
         <p>Spray foam insulation for attics, garages, basements, crawl spaces, rim joists and new construction throughout Grimsby, Lincoln and west Niagara.</p>
-        <a class="footer-phone" href="tel:+12896724160">(289) 672-4160</a>
+        <p class="footer-hours">Monday to Saturday, 7:00am to 6:00pm</p>
       </div>
-
-      <nav aria-labelledby="footer-nav-heading">
-        <h3 id="footer-nav-heading">Navigation</h3>
-        <ul class="footer-list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/about-us">About Us</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/contact-us">Contact</a></li>
-        </ul>
-      </nav>
 
       <nav aria-labelledby="footer-svc-heading">
         <h3 id="footer-svc-heading">Services</h3>
         <ul class="footer-list"><li><a href="/attic-insulation">Attic Insulation</a></li><li><a href="/garage-insulation">Garage Insulation</a></li><li><a href="/basement-insulation">Basement Insulation</a></li><li><a href="/crawl-space-insulation">Crawl Space Insulation</a></li><li><a href="/new-construction-insulation">New Construction Insulation</a></li><li><a href="/close-and-open-cell-spray-foam">Closed Cell and Open Cell Spray Foam</a></li><li><a href="/agricultural-insulation">Agricultural Insulation</a></li><li><a href="/commercial-insulation">Commercial Insulation</a></li></ul>
       </nav>
 
-      <div>
-        <h3>Contact Information</h3>
+      <nav aria-labelledby="footer-nav-heading">
+        <h3 id="footer-nav-heading">Company</h3>
         <ul class="footer-list">
-          <li>Grimsby Spray Foam Insulation</li>
-          <li>Grimsby, Ontario</li>
-          <li>Phone: <a href="tel:+12896724160">(289) 672-4160</a></li>
-          <li>Hours: Monday to Saturday, 7:00am to 6:00pm</li>
-          <li><!-- PLACEHOLDER: add street address and email once confirmed --></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">All services</a></li>
+          <li><a href="/about-us">About</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact-us">Contact</a></li>
         </ul>
-        <div class="btn-row">
-          <a class="btn btn--primary btn--sm" href="#quote">Get a Free Quote</a>
-        </div>
-      </div>
+      </nav>
 
+      <div>
+        <h3>Where we work</h3>
+        <p class="footer-towns">Grimsby, Beamsville, Vineland, Jordan, Campden, Smithville, Winona, Stoney Creek, Grassie, Caistor Centre, St. Catharines and Hamilton.</p>
+      </div>
     </div>
 
     <div class="footer-bottom">
-      <p style="margin:0;">&copy; <span data-year>2026</span> Grimsby Spray Foam Insulation. All rights reserved.</p>
+      <p>&copy; <span data-year>2026</span> Grimsby Spray Foam Insulation, Grimsby, Ontario</p>
       <ul class="footer-legal">
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms &amp; Conditions</a></li>
-        <li><a href="/contact-us">Contact</a></li>
+        <li><a href="/privacy-policy">Privacy policy</a></li>
+        <li><a href="/terms">Terms</a></li>
       </ul>
     </div>
   </div>
@@ -702,13 +682,12 @@
 
 <!-- Sticky mobile call bar -->
 <div class="call-bar" role="region" aria-label="Quick contact">
-  <a class="btn btn--primary" href="tel:+12896724160">Call Now</a>
-  <a class="btn btn--secondary" href="#quote">Get a Free Quote</a>
+  <a class="btn btn--dark" href="tel:+12896724160">Call now</a>
+  <a class="btn btn--primary" href="#quote">Free quote</a>
 </div>
 
-<!-- Scroll to top -->
 <button class="to-top" type="button" aria-label="Scroll back to top of page">
-  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4l8 8h-5v8H9v-8H4z"/></svg>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5l7 7-1.4 1.4L13 8.8V20h-2V8.8l-4.6 4.6L5 12z"/></svg>
 </button>
 
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#17382C">
+<meta name="theme-color" content="#2E2B27">
 
 <!-- ===== SEO: unique title + description ===== -->
 <title>Privacy Policy | Grimsby, Ontario</title>
@@ -12,8 +12,6 @@
 <meta name="author" content="Grimsby Spray Foam Insulation">
 <meta name="geo.region" content="CA-ON">
 <meta name="geo.placename" content="Grimsby, Ontario">
-
-<!-- CANONICAL PLACEHOLDER - replace https://www.grimsbysprayfoaminsulation.com with the live domain before launch -->
 <link rel="canonical" href="https://www.grimsbysprayfoaminsulation.com/privacy-policy">
 
 <!-- ===== Open Graph / social sharing ===== -->
@@ -40,7 +38,10 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="style.css?v=42afd54c">
+
+<!-- Archivo (SIL OFL), self-hosted variable font: one file, width and weight axes. -->
+<link rel="preload" href="fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=768c045b">
 <script src="script.js?v=82926f68" defer></script>
 
 <!-- ===== Schema.org: Local Business ===== -->
@@ -220,40 +221,21 @@
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- ============================= TOP UTILITY BAR ============================= -->
-<div class="topbar">
-  <div class="container topbar__inner">
-    <p style="margin:0;">Serving Grimsby, Beamsville, Vineland, Smithville &amp; across west Niagara</p>
-    <p style="margin:0;">Free written estimates &middot; <a href="tel:+12896724160">(289) 672-4160</a></p>
-  </div>
-</div>
-
-<!-- ============================= STICKY HEADER ============================= -->
+<!-- ============================= HEADER ============================= -->
 <header class="site-header">
   <div class="container site-header__inner">
 
     <a class="logo" href="/" aria-label="Grimsby Spray Foam Insulation home page">
-      <img src="images/icon-96.png" alt="Grimsby Spray Foam Insulation logo"
-           width="44" height="44" fetchpriority="high">
-      <span class="logo__text">
-        <span class="logo__name">Grimsby Spray Foam Insulation</span>
-        <span class="logo__tag">Grimsby, Ontario</span>
-      </span>
+      <img src="images/lockup-240.png" srcset="images/lockup-240.png 1x, images/lockup-480.png 2x"
+           alt="Grimsby Spray Foam Insulation" width="181" height="48">
     </a>
-
-    <button class="nav-burger" type="button" aria-expanded="false"
-            aria-controls="primary-nav" aria-label="Open main menu">
-      <span></span><span></span><span></span>
-    </button>
 
     <nav class="nav" id="primary-nav" aria-label="Main navigation">
       <ul class="nav__list">
-        <li><a class="nav__link" href="/">Home</a></li>
         <li class="nav__item--has-menu">
           <button class="nav__link nav__toggle" type="button"
                   aria-expanded="false" aria-controls="services-menu">Services</button>
           <ul class="nav__submenu" id="services-menu">
-            <li><a href="/services">All Services</a></li>
             <li><a href="/attic-insulation">Attic Insulation</a></li>
             <li><a href="/garage-insulation">Garage Insulation</a></li>
             <li><a href="/basement-insulation">Basement Insulation</a></li>
@@ -262,49 +244,56 @@
             <li><a href="/close-and-open-cell-spray-foam">Closed Cell and Open Cell Spray Foam</a></li>
             <li><a href="/agricultural-insulation">Agricultural Insulation</a></li>
             <li><a href="/commercial-insulation">Commercial Insulation</a></li>
+            <li class="nav__submenu-all"><a href="/services">All services</a></li>
           </ul>
         </li>
         <li><a class="nav__link" href="/about-us">About</a></li>
         <li><a class="nav__link" href="/faq">FAQ</a></li>
         <li><a class="nav__link" href="/contact-us">Contact</a></li>
       </ul>
-      <div class="header-cta">
-        <a class="btn btn--primary btn--sm" href="#quote">Get a Free Quote</a>
-      </div>
+      <a class="nav__quote" href="#quote">Get a free quote</a>
     </nav>
+
+    <a class="header-phone" href="tel:+12896724160" aria-label="Call Grimsby Spray Foam Insulation at (289) 672-4160">
+      <span class="header-phone__num">(289) 672-4160</span>
+    </a>
+
+    <button class="nav-burger" type="button" aria-expanded="false"
+            aria-controls="primary-nav" aria-label="Open main menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<!-- ============================= BREADCRUMBS ============================= -->
-<nav class="breadcrumbs" aria-label="Breadcrumb">
-  <div class="container">
-    <ol>
-      <li><a href="/">Home</a></li><li><span aria-current="page">Privacy Policy</span></li>
-    </ol>
-  </div>
-</nav>
-
 <main id="main">
 
-<section class="hero hero--page" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">Legal</span>
+<!-- ============================= HERO ============================= -->
+<section class="page-hero" aria-labelledby="hero-heading">
+  <div class="container page-hero__grid">
+    <div class="page-hero__text">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><span aria-current="page">Privacy Policy</span></li></ol></nav>
       <h1 id="hero-heading">Privacy Policy</h1>
+      <div class="btn-row">
+        
+      </div>
+    </div>
+  </div>
+  <div class="page-hero__foam" aria-hidden="true"></div>
+</section>
+
+
+
+<!-- ============================= INTRO (below the hero) ============================= -->
+<section class="intro-band" aria-label="Introduction">
+  <div class="container intro-band__grid">
+    <div class="intro-band__text prose">
+      <p>PLACEHOLDER DOCUMENT. This page is a working template for Grimsby Spray Foam Insulation and should be reviewed by a legal professional before the site goes live.</p>
     </div>
   </div>
 </section>
 
 
-<!-- ============================= INTRO (below the hero) ============================= -->
-<section class="intro-band" aria-label="Introduction">
-  <div class="container container--narrow prose">
-    <p>PLACEHOLDER DOCUMENT. This page is a working template for Grimsby Spray Foam Insulation and should be reviewed by a legal professional before the site goes live.</p>
-  </div>
-</section>
-
-
-<section class="section">
+<section class="section article">
   <div class="container container--narrow prose">
       <section class="content-block">
         <h2>Information We Collect</h2>
@@ -333,19 +322,20 @@
         <h2>Contact Us About Privacy</h2>
         <p>Questions about this policy can be directed to Grimsby Spray Foam Insulation, Grimsby, Ontario, at (289) 672-4160.</p>
       </section>
-    </div>
   </div>
 </section>
 
 
 <!-- ============================= CTA BAND ============================= -->
-<section class="cta-band" aria-label="Contact call to action">
-  <div class="container">
-    <h2>Questions About Your Floor Or Your Information?</h2>
+<section class="cta-band cta-band--ink foam-top" aria-label="Contact call to action">
+  <div class="container cta-band__inner">
+    <h2>Questions About Your Insulation Or Your Information?</h2>
+    <div class="cta-band__body">
     <p>Call Grimsby Spray Foam Insulation and speak with a local installer.</p>
-    <div class="btn-row is-centered">
-        <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-        <a class="btn btn--ghost btn--lg" href="tel:+12896724160">Call Now: (289) 672-4160</a>
+      <div class="btn-row">
+        <a class="btn btn--primary btn--lg" href="#quote">Get a free quote</a>
+        <a class="btn btn--light btn--lg" href="tel:+12896724160">Call (289) 672-4160</a>
+      </div>
     </div>
   </div>
 </section>
@@ -353,26 +343,24 @@
 
 
 <!-- ============================= LEAD INTAKE FORM ============================= -->
-<section class="section section--alt" id="quote" aria-labelledby="quote-heading">
-  <div class="container container--narrow">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Free Estimate</span>
+<section class="quote" id="quote" aria-labelledby="quote-heading">
+  <div class="container quote__grid">
+    <div class="quote__lead">
       <h2 id="quote-heading">Tell Us About The Space</h2>
-      <p class="lead">Which room, its rough size, and any history of water getting in.
-        If you would rather talk it through, call <a href="tel:+12896724160">(289) 672-4160</a>.</p>
+      <p>Which room, its rough size, and any history of water getting in.</p>
+      <p class="quote__call">Rather talk it through?
+        <a class="quote__phone" href="tel:+12896724160">(289) 672-4160</a></p>
+      <p class="quote__hours">Monday to Saturday, 7:00am to 6:00pm</p>
     </div>
 
     <div class="form-wrap">
-      <!-- Success message: revealed by script.js after successful validation -->
       <div class="form-success" role="status" aria-live="polite">
         <div>
-          <strong>Thanks &mdash; your request has been received.</strong>
+          <strong>Request received.</strong>
           Someone will be in touch about your insulation within one business day.
           For anything urgent, call <a href="tel:+12896724160">(289) 672-4160</a>.
         </div>
       </div>
-
-      <!-- BACKEND: set SHEET_ENDPOINT in script.js to deliver these to your Google Sheet. -->
       <form class="lead-form" action="#" method="post" novalidate
             data-source="Privacy Policy" aria-labelledby="quote-heading">
         <div class="form-grid">
@@ -380,7 +368,7 @@
           <div class="field">
             <label for="lf-name">Name <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="lf-name" name="name" autocomplete="name"
-                   data-label="Name" placeholder="Your full name" required>
+                   data-label="Name" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -394,21 +382,21 @@
           <div class="field">
             <label for="lf-email">Email <span class="req" aria-hidden="true">*</span></label>
             <input type="email" id="lf-email" name="email" autocomplete="email"
-                   data-label="Email" placeholder="you@example.com" required>
+                   data-label="Email" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field">
-            <label for="lf-city">City <span class="req" aria-hidden="true">*</span></label>
+            <label for="lf-city">Town <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="lf-city" name="city" autocomplete="address-level2"
                    data-label="City" placeholder="Grimsby" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field field--full">
-            <label for="lf-service">Service Interested In <span class="req" aria-hidden="true">*</span></label>
+            <label for="lf-service">What needs insulating <span class="req" aria-hidden="true">*</span></label>
             <select id="lf-service" name="service" data-label="Service interested in" required>
-            <option value="">Please choose a service</option>
+            <option value="">Choose a space</option>
             <option value="Attic Insulation">Attic Insulation</option>
             <option value="Garage Insulation">Garage Insulation</option>
             <option value="Basement Insulation">Basement Insulation</option>
@@ -417,16 +405,16 @@
             <option value="Closed Cell and Open Cell Spray Foam">Closed Cell and Open Cell Spray Foam</option>
             <option value="Agricultural Insulation">Agricultural Insulation</option>
             <option value="Commercial Insulation">Commercial Insulation</option>
-            <option value="Not sure yet">Not sure yet - please advise</option>
+            <option value="Not sure yet">Not sure yet</option>
             </select>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field field--full">
-            <label for="lf-message">Message <span class="req" aria-hidden="true">*</span></label>
+            <label for="lf-message">About the space <span class="req" aria-hidden="true">*</span></label>
             <textarea id="lf-message" name="message" data-label="Message" required
-                      
-                      placeholder="Tell us the approximate square footage, what the building is used for, and the current condition of the slab."></textarea>
+                      rows="5"
+                      placeholder="Rough size, what it is used for, and what it does wrong in winter or summer."></textarea>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -438,11 +426,10 @@
           </div>
 
           <div class="field field--full">
-            <button class="btn btn--primary btn--lg btn--block" type="submit">Request an Estimate</button>
-            <p class="form-note"><span class="req" aria-hidden="true">*</span>
+            <button class="btn btn--primary btn--lg btn--block" type="submit">Request an estimate</button>
+            <p class="form-note"><span class="req" aria-hidden="true">*</span> Required.
               Photos are welcome and often tell us more than the phone call does.</p>
           </div>
-
         </div>
       </form>
     </div>
@@ -452,57 +439,49 @@
 </main>
 
 <!-- ============================= FOOTER ============================= -->
-<footer class="site-footer">
+<footer class="site-footer foam-top">
   <div class="container">
+    <div class="footer-top">
+      <a class="footer-logo" href="/" aria-label="Grimsby Spray Foam Insulation home page">
+        <img src="images/lockup-light-240.png" srcset="images/lockup-light-240.png 1x, images/lockup-light-480.png 2x"
+             alt="Grimsby Spray Foam Insulation" width="211" height="56" loading="lazy">
+      </a>
+      <a class="footer-phone" href="tel:+12896724160">(289) 672-4160</a>
+    </div>
+
     <div class="footer-grid">
-
-      <div class="footer-brand">
-        <a class="footer-logo" href="/" aria-label="Grimsby Spray Foam Insulation home page">
-          <img src="images/wordmark-light-300.png"
-               alt="Grimsby Spray Foam Insulation" width="300" height="300" loading="lazy">
-        </a>
+      <div class="footer-about">
         <p>Spray foam insulation for attics, garages, basements, crawl spaces, rim joists and new construction throughout Grimsby, Lincoln and west Niagara.</p>
-        <a class="footer-phone" href="tel:+12896724160">(289) 672-4160</a>
+        <p class="footer-hours">Monday to Saturday, 7:00am to 6:00pm</p>
       </div>
-
-      <nav aria-labelledby="footer-nav-heading">
-        <h3 id="footer-nav-heading">Navigation</h3>
-        <ul class="footer-list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/about-us">About Us</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/contact-us">Contact</a></li>
-        </ul>
-      </nav>
 
       <nav aria-labelledby="footer-svc-heading">
         <h3 id="footer-svc-heading">Services</h3>
         <ul class="footer-list"><li><a href="/attic-insulation">Attic Insulation</a></li><li><a href="/garage-insulation">Garage Insulation</a></li><li><a href="/basement-insulation">Basement Insulation</a></li><li><a href="/crawl-space-insulation">Crawl Space Insulation</a></li><li><a href="/new-construction-insulation">New Construction Insulation</a></li><li><a href="/close-and-open-cell-spray-foam">Closed Cell and Open Cell Spray Foam</a></li><li><a href="/agricultural-insulation">Agricultural Insulation</a></li><li><a href="/commercial-insulation">Commercial Insulation</a></li></ul>
       </nav>
 
-      <div>
-        <h3>Contact Information</h3>
+      <nav aria-labelledby="footer-nav-heading">
+        <h3 id="footer-nav-heading">Company</h3>
         <ul class="footer-list">
-          <li>Grimsby Spray Foam Insulation</li>
-          <li>Grimsby, Ontario</li>
-          <li>Phone: <a href="tel:+12896724160">(289) 672-4160</a></li>
-          <li>Hours: Monday to Saturday, 7:00am to 6:00pm</li>
-          <li><!-- PLACEHOLDER: add street address and email once confirmed --></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">All services</a></li>
+          <li><a href="/about-us">About</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact-us">Contact</a></li>
         </ul>
-        <div class="btn-row">
-          <a class="btn btn--primary btn--sm" href="#quote">Get a Free Quote</a>
-        </div>
-      </div>
+      </nav>
 
+      <div>
+        <h3>Where we work</h3>
+        <p class="footer-towns">Grimsby, Beamsville, Vineland, Jordan, Campden, Smithville, Winona, Stoney Creek, Grassie, Caistor Centre, St. Catharines and Hamilton.</p>
+      </div>
     </div>
 
     <div class="footer-bottom">
-      <p style="margin:0;">&copy; <span data-year>2026</span> Grimsby Spray Foam Insulation. All rights reserved.</p>
+      <p>&copy; <span data-year>2026</span> Grimsby Spray Foam Insulation, Grimsby, Ontario</p>
       <ul class="footer-legal">
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms &amp; Conditions</a></li>
-        <li><a href="/contact-us">Contact</a></li>
+        <li><a href="/privacy-policy">Privacy policy</a></li>
+        <li><a href="/terms">Terms</a></li>
       </ul>
     </div>
   </div>
@@ -510,13 +489,12 @@
 
 <!-- Sticky mobile call bar -->
 <div class="call-bar" role="region" aria-label="Quick contact">
-  <a class="btn btn--primary" href="tel:+12896724160">Call Now</a>
-  <a class="btn btn--secondary" href="#quote">Get a Free Quote</a>
+  <a class="btn btn--dark" href="tel:+12896724160">Call now</a>
+  <a class="btn btn--primary" href="#quote">Free quote</a>
 </div>
 
-<!-- Scroll to top -->
 <button class="to-top" type="button" aria-label="Scroll back to top of page">
-  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4l8 8h-5v8H9v-8H4z"/></svg>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5l7 7-1.4 1.4L13 8.8V20h-2V8.8l-4.6 4.6L5 12z"/></svg>
 </button>
 
 </body>

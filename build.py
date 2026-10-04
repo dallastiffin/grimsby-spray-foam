@@ -58,7 +58,7 @@ CONTENT_FILE = "Grimsby-Spray-Foam-Insulation-Website-Content.md"
 
 # Colour stamped into <meta name="theme-color"> and site.webmanifest. Must
 # agree with --color-primary in site/style.css.
-THEME_COLOR = "#17382C"
+THEME_COLOR = "#2E2B27"
 
 # Microsoft Clarity project ID. Leave "" until the owner creates the project;
 # an empty or placeholder ID would otherwise ship a broken script tag on every
@@ -442,8 +442,6 @@ def head(title, meta, slug, extra_ld=""):
 <meta name="author" content="{BUSINESS}">
 <meta name="geo.region" content="{COUNTRY}-{PROVINCE_CODE}">
 <meta name="geo.placename" content="{CITY_PROV}">
-
-<!-- CANONICAL PLACEHOLDER - replace {DOMAIN} with the live domain before launch -->
 <link rel="canonical" href="{url}">
 
 <!-- ===== Open Graph / social sharing ===== -->
@@ -470,6 +468,9 @@ def head(title, meta, slug, extra_ld=""):
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
 <link rel="manifest" href="site.webmanifest">
+
+<!-- Archivo (SIL OFL), self-hosted variable font: one file, width and weight axes. -->
+<link rel="preload" href="fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{asset_v("style.css")}">
 <script src="{asset_v("script.js")}" defer></script>
 
@@ -482,65 +483,57 @@ def head(title, meta, slug, extra_ld=""):
 <a class="skip-link" href="#main">Skip to main content</a>
 """
 
+
 def header(active):
     def cls(page):
         return ' aria-current="page"' if page == active else ''
     sub = "\n".join(
         f'            <li><a href="{slug}"{cls(slug)}>{esc(title)}</a></li>'
         for slug, title, _ in SERVICE_PAGES)
-    services_open = ' aria-current="page"' if active in [s[0] for s in SERVICE_PAGES] + ["services.html"] else ''
+    services_open = ' data-current="true"' if active in [s[0] for s in SERVICE_PAGES] + ["services.html"] else ''
     return f"""
-<!-- ============================= TOP UTILITY BAR ============================= -->
-<div class="topbar">
-  <div class="container topbar__inner">
-    <p style="margin:0;">Serving {TOPBAR_AREA}</p>
-    <p style="margin:0;">Free written estimates &middot; <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a></p>
-  </div>
-</div>
-
-<!-- ============================= STICKY HEADER ============================= -->
+<!-- ============================= HEADER ============================= -->
 <header class="site-header">
   <div class="container site-header__inner">
 
     <a class="logo" href="index.html" aria-label="{BUSINESS} home page">
-      <img src="images/icon-96.png" alt="{BUSINESS} logo"
-           width="44" height="44" fetchpriority="high">
-      <span class="logo__text">
-        <span class="logo__name">{BUSINESS}</span>
-        <span class="logo__tag">{CITY_PROV}</span>
-      </span>
+      <img src="images/lockup-240.png" srcset="images/lockup-240.png 1x, images/lockup-480.png 2x"
+           alt="{BUSINESS}" width="181" height="48">
     </a>
-
-    <button class="nav-burger" type="button" aria-expanded="false"
-            aria-controls="primary-nav" aria-label="Open main menu">
-      <span></span><span></span><span></span>
-    </button>
 
     <nav class="nav" id="primary-nav" aria-label="Main navigation">
       <ul class="nav__list">
-        <li><a class="nav__link" href="index.html"{cls('index.html')}>Home</a></li>
         <li class="nav__item--has-menu">
           <button class="nav__link nav__toggle" type="button"
                   aria-expanded="false" aria-controls="services-menu"{services_open}>Services</button>
           <ul class="nav__submenu" id="services-menu">
-            <li><a href="services.html"{cls('services.html')}>All Services</a></li>
 {sub}
+            <li class="nav__submenu-all"><a href="services.html"{cls('services.html')}>All services</a></li>
           </ul>
         </li>
         <li><a class="nav__link" href="about.html"{cls('about.html')}>About</a></li>
         <li><a class="nav__link" href="faq.html"{cls('faq.html')}>FAQ</a></li>
         <li><a class="nav__link" href="contact.html"{cls('contact.html')}>Contact</a></li>
       </ul>
-      <div class="header-cta">
-        <a class="btn btn--primary btn--sm" href="#quote">Get a Free Quote</a>
-      </div>
+      <a class="nav__quote" href="#quote">Get a free quote</a>
     </nav>
+
+    <a class="header-phone" href="tel:{PHONE_HREF}" aria-label="Call {BUSINESS} at {PHONE_DISPLAY}">
+      <span class="header-phone__num">{PHONE_DISPLAY}</span>
+    </a>
+
+    <button class="nav-burger" type="button" aria-expanded="false"
+            aria-controls="primary-nav" aria-label="Open main menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 """
 
+
 def breadcrumbs(trail):
-    """trail = [(label, href or None)]"""
+    """trail = [(label, href or None)]. Returns (nav html, schema).
+    The nav is rendered INSIDE the page hero by page_hero(), above the H1."""
     items = []
     ld = []
     for i, (label, href) in enumerate(trail, start=1):
@@ -550,16 +543,7 @@ def breadcrumbs(trail):
             items.append(f'<li><span aria-current="page">{esc(label)}</span></li>')
         ld.append({"@type": "ListItem", "position": i, "name": label,
                    "item": DOMAIN + public_url(href or "index.html")})
-    nav = f"""
-<!-- ============================= BREADCRUMBS ============================= -->
-<nav class="breadcrumbs" aria-label="Breadcrumb">
-  <div class="container">
-    <ol>
-      {"".join(items)}
-    </ol>
-  </div>
-</nav>
-"""
+    nav = f"""<nav class="breadcrumbs" aria-label="Breadcrumb"><ol>{"".join(items)}</ol></nav>"""
     schema = "\n<script type=\"application/ld+json\">\n" + json.dumps(
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": ld},
         indent=2) + "\n</script>"
@@ -571,12 +555,11 @@ SERVICE_OPTIONS = "\n".join(
 def form_fields(pfx, compact=False):
     """The six intake fields. `pfx` keeps ids unique when a page carries
     more than one form (hero card + full section)."""
-    rows = "" if compact else ""
     return f"""
           <div class="field">
             <label for="{pfx}-name">Name <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="{pfx}-name" name="name" autocomplete="name"
-                   data-label="Name" placeholder="Your full name" required>
+                   data-label="Name" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -590,32 +573,32 @@ def form_fields(pfx, compact=False):
           <div class="field">
             <label for="{pfx}-email">Email <span class="req" aria-hidden="true">*</span></label>
             <input type="email" id="{pfx}-email" name="email" autocomplete="email"
-                   data-label="Email" placeholder="you@example.com" required>
+                   data-label="Email" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field">
-            <label for="{pfx}-city">City <span class="req" aria-hidden="true">*</span></label>
+            <label for="{pfx}-city">Town <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="{pfx}-city" name="city" autocomplete="address-level2"
                    data-label="City" placeholder="{CITY}" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field field--full">
-            <label for="{pfx}-service">Service Interested In <span class="req" aria-hidden="true">*</span></label>
+            <label for="{pfx}-service">What needs insulating <span class="req" aria-hidden="true">*</span></label>
             <select id="{pfx}-service" name="service" data-label="Service interested in" required>
-            <option value="">Please choose a service</option>
+            <option value="">Choose a space</option>
 {SERVICE_OPTIONS}
-            <option value="Not sure yet">Not sure yet - please advise</option>
+            <option value="Not sure yet">Not sure yet</option>
             </select>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
           <div class="field field--full">
-            <label for="{pfx}-message">Message <span class="req" aria-hidden="true">*</span></label>
+            <label for="{pfx}-message">About the space <span class="req" aria-hidden="true">*</span></label>
             <textarea id="{pfx}-message" name="message" data-label="Message" required
-                      {'rows="3"' if compact else ''}
-                      placeholder="Tell us the approximate square footage, what the building is used for, and the current condition of the slab."></textarea>
+                      {'rows="3"' if compact else 'rows="5"'}
+                      placeholder="Rough size, what it is used for, and what it does wrong in winter or summer."></textarea>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -631,7 +614,7 @@ def form_fields(pfx, compact=False):
 def success_message(pfx):
     return f"""      <div class="form-success" role="status" aria-live="polite">
         <div>
-          <strong>Thanks &mdash; your request has been received.</strong>
+          <strong>Request received.</strong>
           {esc(sc("Form Success Message"))}
           For anything urgent, call <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>.
         </div>
@@ -639,55 +622,51 @@ def success_message(pfx):
 
 
 def hero_form(page_label):
-    """Compact estimate form that sits in the right of the hero."""
-    return f"""      <div class="hero-form" id="hero-quote">
-        <h2 class="hero-form__title" id="hero-form-heading">{esc(sc("Hero Form Heading"))}</h2>
-        <p class="hero-form__sub">{esc(sc("Hero Form Intro"))}
-          You can also call <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>.</p>
+    """Compact estimate form that sits in the right of the home hero."""
+    return f"""    <div class="hero-form" id="hero-quote">
+      <h2 class="hero-form__title" id="hero-form-heading">{esc(sc("Hero Form Heading"))}</h2>
+      <p class="hero-form__sub">{esc(sc("Hero Form Intro"))}</p>
 
 {success_message('hf')}
 
-        <form class="lead-form" action="#" method="post" novalidate
-              data-source="{esc(page_label)} hero" aria-labelledby="hero-form-heading">
-          <div class="form-grid">
+      <form class="lead-form" action="#" method="post" novalidate
+            data-source="{esc(page_label)} hero" aria-labelledby="hero-form-heading">
+        <div class="form-grid">
 {form_fields('hf', compact=True)}
-            <div class="field field--full">
-              <button class="btn btn--primary btn--block" type="submit">{esc(sc("Hero Form Button"))}</button>
-              <p class="form-note">{esc(sc("Hero Form Note"))}</p>
-            </div>
+          <div class="field field--full">
+            <button class="btn btn--primary btn--block" type="submit">{esc(sc("Hero Form Button"))}</button>
+            <p class="form-note">{esc(sc("Hero Form Note"))}</p>
           </div>
-        </form>
-      </div>"""
+        </div>
+      </form>
+    </div>"""
 
 
 def contact_form(page_label):
-    """Full lead intake form - repeated on every page."""
+    """Full lead intake form - repeated on every page, always id="quote"."""
     return f"""
 <!-- ============================= LEAD INTAKE FORM ============================= -->
-<section class="section section--alt" id="quote" aria-labelledby="quote-heading">
-  <div class="container container--narrow">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Free Estimate</span>
+<section class="quote" id="quote" aria-labelledby="quote-heading">
+  <div class="container quote__grid">
+    <div class="quote__lead">
       <h2 id="quote-heading">{esc(sc("Form Section Heading"))}</h2>
-      <p class="lead">{esc(sc("Form Section Intro"))}
-        If you would rather talk it through, call <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>.</p>
+      <p>{esc(sc("Form Section Intro"))}</p>
+      <p class="quote__call">Rather talk it through?
+        <a class="quote__phone" href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a></p>
+      <p class="quote__hours">{HOURS_TEXT}</p>
     </div>
 
     <div class="form-wrap">
-      <!-- Success message: revealed by script.js after successful validation -->
 {success_message('lf')}
-
-      <!-- BACKEND: set SHEET_ENDPOINT in script.js to deliver these to your Google Sheet. -->
       <form class="lead-form" action="#" method="post" novalidate
             data-source="{esc(page_label)}" aria-labelledby="quote-heading">
         <div class="form-grid">
 {form_fields('lf')}
           <div class="field field--full">
-            <button class="btn btn--primary btn--lg btn--block" type="submit">Request an Estimate</button>
-            <p class="form-note"><span class="req" aria-hidden="true">*</span>
+            <button class="btn btn--primary btn--lg btn--block" type="submit">Request an estimate</button>
+            <p class="form-note"><span class="req" aria-hidden="true">*</span> Required.
               {esc(sc("Form Section Note"))}</p>
           </div>
-
         </div>
       </form>
     </div>
@@ -696,126 +675,158 @@ def contact_form(page_label):
 """
 
 
-def cta_band(heading, text, variant=1):
+def cta_band(heading, text, variant=1, heading_id=None, body_html=None):
+    """Full-width call to action. variant 1 = charcoal, 2 = rust. Both rise
+    out of the section above on a scalloped foam edge."""
     if variant == 1:
-        buttons = f"""<a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-        <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>"""
+        buttons = f"""<a class="btn btn--primary btn--lg" href="#quote">Get a free quote</a>
+        <a class="btn btn--light btn--lg" href="tel:{PHONE_HREF}">Call {PHONE_DISPLAY}</a>"""
     else:
-        buttons = f"""<a class="btn btn--primary btn--lg" href="#quote">Book Your Consultation</a>
-        <a class="btn btn--ghost btn--lg" href="contact.html">Contact Us Today</a>"""
+        buttons = f"""<a class="btn btn--dark btn--lg" href="#quote">Book a site visit</a>
+        <a class="btn btn--light btn--lg" href="contact.html">Contact us</a>"""
+    hid = f' id="{heading_id}"' if heading_id else ''
+    labelled = f'aria-labelledby="{heading_id}"' if heading_id else 'aria-label="Contact call to action"'
+    body = body_html if body_html is not None else f"    <p>{esc(text)}</p>"
     return f"""
 <!-- ============================= CTA BAND ============================= -->
-<section class="cta-band" aria-label="Contact call to action">
-  <div class="container">
-    <h2>{esc(heading)}</h2>
-    <p>{esc(text)}</p>
-    <div class="btn-row is-centered">
+<section class="cta-band cta-band--{'ink' if variant == 1 else 'rust'} foam-top" {labelled}>
+  <div class="container cta-band__inner">
+    <h2{hid}>{esc(heading)}</h2>
+    <div class="cta-band__body">
+{body}
+      <div class="btn-row">
         {buttons}
+      </div>
     </div>
   </div>
 </section>
 """
 
 CTA_INLINE = f"""
-      <!-- Mid-content conversion prompt -->
       <aside class="cta-inline" aria-label="Estimate call to action">
         <p>{esc(sc("Inline CTA Text"))}</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="#quote">Request an Estimate</a>
-          <a class="btn btn--outline" href="tel:{PHONE_HREF}">Call Now</a>
+          <a class="btn btn--primary" href="#quote">Request an estimate</a>
+          <a class="btn btn--line" href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>
         </div>
       </aside>
 """
 
-SIDEBAR = f"""
-      <!-- Sticky conversion sidebar -->
-      <aside class="sidebar" aria-labelledby="sidebar-heading">
-        <div class="card">
-          <h3 id="sidebar-heading">{esc(sc("Sidebar Heading"))}</h3>
+def sidebar(toc=None):
+    """Sticky aside beside long-form copy: an in-page contents list (when the
+    page has one) and a short estimate card."""
+    toc_html = ""
+    if toc:
+        links = "\n".join(f'            <li><a href="#{a}">{esc(t)}</a></li>' for a, t in toc)
+        toc_html = f"""
+        <nav class="toc" aria-label="On this page">
+          <p class="toc__title">On this page</p>
+          <ol>
+{links}
+          </ol>
+        </nav>"""
+    return f"""
+      <aside class="sidebar">{toc_html}
+        <div class="side-card">
+          <p class="side-card__title">{esc(sc("Sidebar Heading"))}</p>
           <p>{esc(sc("Sidebar Text"))}</p>
-          <p><a class="footer-phone" style="color:var(--color-accent-dark) !important;" href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a></p>
-          <div class="btn-row">
-            <a class="btn btn--primary btn--block" href="#quote">Get a Free Quote</a>
-            <a class="btn btn--outline btn--block" href="contact.html">Contact Us Today</a>
-          </div>
-        </div>
-        <div class="panel" style="margin-top:var(--space-5);">
-          <h3>Spray Foam Insulation Services</h3>
-          <ul class="footer-list" style="padding:0;">
-            {"".join(f'<li><a href="{s}" style="color:var(--color-primary-light);">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)}
-          </ul>
+          <a class="side-card__phone" href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>
+          <a class="btn btn--primary btn--block" href="#quote">Get a free quote</a>
         </div>
       </aside>
 """
 
-def intro_band(inner, label):
+def intro_band(inner, label, media=""):
     """Intro prose sits BELOW the hero, never on it. Owner's standing rule:
     the hero carries the eyebrow, H1, badges, buttons and form only."""
+    cls = "intro-band intro-band--media" if media else "intro-band"
+    media_html = f'\n    <div class="intro-band__media">\n{media}\n    </div>' if media else ""
     return f"""
 <!-- ============================= INTRO (below the hero) ============================= -->
-<section class="intro-band" aria-label="{esc(label)}">
-  <div class="container container--narrow prose">
+<section class="{cls}" aria-label="{esc(label)}">
+  <div class="container intro-band__grid">{media_html}
+    <div class="intro-band__text prose">
 {inner}
+    </div>
   </div>
+</section>
+"""
+
+
+def page_hero(h1_text, crumbs_nav, buttons, media_html=""):
+    """Inner-page hero: breadcrumbs, H1, buttons, and optionally a photo that
+    sits on the rust foam block. No paragraphs, per the hero rule."""
+    media = ""
+    if media_html:
+        media = f"""
+    <div class="page-hero__media">
+{media_html}
+    </div>"""
+    return f"""
+<!-- ============================= HERO ============================= -->
+<section class="page-hero{' page-hero--media' if media_html else ''}" aria-labelledby="hero-heading">
+  <div class="container page-hero__grid">
+    <div class="page-hero__text">
+      {crumbs_nav}
+      <h1 id="hero-heading">{esc(h1_text)}</h1>
+      <div class="btn-row">
+        {buttons}
+      </div>
+    </div>{media}
+  </div>
+  <div class="page-hero__foam" aria-hidden="true"></div>
 </section>
 """
 
 
 def footer():
     svc = "".join(f'<li><a href="{s}">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)
+    towns = ", ".join(SERVICE_AREA[:-1]) + " and " + SERVICE_AREA[-1]
     return f"""
 <!-- ============================= FOOTER ============================= -->
-<footer class="site-footer">
+<footer class="site-footer foam-top">
   <div class="container">
+    <div class="footer-top">
+      <a class="footer-logo" href="index.html" aria-label="{BUSINESS} home page">
+        <img src="images/lockup-light-240.png" srcset="images/lockup-light-240.png 1x, images/lockup-light-480.png 2x"
+             alt="{BUSINESS}" width="211" height="56" loading="lazy">
+      </a>
+      <a class="footer-phone" href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>
+    </div>
+
     <div class="footer-grid">
-
-      <div class="footer-brand">
-        <a class="footer-logo" href="index.html" aria-label="{BUSINESS} home page">
-          <img src="images/wordmark-light-300.png"
-               alt="{BUSINESS}" width="300" height="300" loading="lazy">
-        </a>
+      <div class="footer-about">
         <p>{esc(sc("Footer Description"))}</p>
-        <a class="footer-phone" href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a>
+        <p class="footer-hours">{HOURS_TEXT}</p>
       </div>
-
-      <nav aria-labelledby="footer-nav-heading">
-        <h3 id="footer-nav-heading">Navigation</h3>
-        <ul class="footer-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
 
       <nav aria-labelledby="footer-svc-heading">
         <h3 id="footer-svc-heading">Services</h3>
         <ul class="footer-list">{svc}</ul>
       </nav>
 
-      <div>
-        <h3>Contact Information</h3>
+      <nav aria-labelledby="footer-nav-heading">
+        <h3 id="footer-nav-heading">Company</h3>
         <ul class="footer-list">
-          <li>{BUSINESS}</li>
-          <li>{CITY_PROV}</li>
-          <li>Phone: <a href="tel:{PHONE_HREF}">{PHONE_DISPLAY}</a></li>
-          <li>Hours: {HOURS_TEXT}</li>
-          <li><!-- PLACEHOLDER: add street address and email once confirmed --></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">All services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
-        <div class="btn-row">
-          <a class="btn btn--primary btn--sm" href="#quote">Get a Free Quote</a>
-        </div>
-      </div>
+      </nav>
 
+      <div>
+        <h3>Where we work</h3>
+        <p class="footer-towns">{esc(towns)}.</p>
+      </div>
     </div>
 
     <div class="footer-bottom">
-      <p style="margin:0;">&copy; <span data-year>2026</span> {BUSINESS}. All rights reserved.</p>
+      <p>&copy; <span data-year>2026</span> {BUSINESS}, {CITY_PROV}</p>
       <ul class="footer-legal">
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms.html">Terms &amp; Conditions</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy-policy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms</a></li>
       </ul>
     </div>
   </div>
@@ -823,13 +834,12 @@ def footer():
 
 <!-- Sticky mobile call bar -->
 <div class="call-bar" role="region" aria-label="Quick contact">
-  <a class="btn btn--primary" href="tel:{PHONE_HREF}">Call Now</a>
-  <a class="btn btn--secondary" href="#quote">Get a Free Quote</a>
+  <a class="btn btn--dark" href="tel:{PHONE_HREF}">Call now</a>
+  <a class="btn btn--primary" href="#quote">Free quote</a>
 </div>
 
-<!-- Scroll to top -->
 <button class="to-top" type="button" aria-label="Scroll back to top of page">
-  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4l8 8h-5v8H9v-8H4z"/></svg>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5l7 7-1.4 1.4L13 8.8V20h-2V8.8l-4.6 4.6L5 12z"/></svg>
 </button>
 
 </body>
@@ -837,6 +847,9 @@ def footer():
 """
 
 # ---------------------------------------------------------------- renderers
+def anchor_id(text):
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:60]
+
 def nodes_html(nodes, indent="        "):
     out = []
     for kind, text in nodes:
@@ -846,14 +859,15 @@ def nodes_html(nodes, indent="        "):
             out.append(f"{indent}<h3>{esc(text)}</h3>")
     return "\n".join(out)
 
-def content_block(sec, level="h2"):
-    return f"""      <section class="content-block">
+def content_block(sec, level="h2", anchor=False):
+    aid = f' id="{anchor_id(sec["title"])}"' if anchor else ""
+    return f"""      <section class="content-block"{aid}>
         <{level}>{esc(sec['title'])}</{level}>
 {nodes_html(sec['nodes'])}
       </section>
 """
 
-def faq_accordion(sec, id_prefix):
+def faq_accordion(sec, id_prefix, more_link=True):
     """Convert h3/p pairs inside a FAQ section into an accessible accordion."""
     pairs = []
     q = None
@@ -886,61 +900,58 @@ def faq_accordion(sec, id_prefix):
           "mainEntity": [{"@type": "Question", "name": qq,
                           "acceptedAnswer": {"@type": "Answer", "text": " ".join(aa)}}
                          for qq, aa in pairs]}
+    more = f"""
+      <div class="btn-row">
+        <a class="btn btn--line" href="faq.html">More questions</a>
+        <a class="btn btn--primary" href="#quote">Get a free quote</a>
+      </div>""" if more_link else ""
     html_out = f"""
-<!-- ============================= FAQ ACCORDION ============================= -->
-<section class="section section--alt" id="faq" aria-labelledby="faq-heading">
-  <div class="container">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Answers</span>
-      <h2 id="faq-heading">{esc(sec['title'])}</h2>
+<!-- ============================= FAQ ============================= -->
+<section class="section faq-section" id="faq" aria-labelledby="faq-heading">
+  <div class="container faq-section__grid">
+    <div class="faq-section__head">
+      <h2 id="faq-heading">{esc(sec['title'])}</h2>{more}
     </div>
     <div class="faq">
 {chr(10).join(items)}
-    </div>
-    <div class="btn-row is-centered">
-      <a class="btn btn--secondary" href="faq.html">Read More Questions</a>
-      <a class="btn btn--primary" href="#quote">Get a Free Quote</a>
     </div>
   </div>
 </section>
 """
     return html_out, "\n<script type=\"application/ld+json\">\n" + json.dumps(ld, indent=2) + "\n</script>"
 
-def services_grid(exclude=None, heading=None, intro=None):
+def services_grid(exclude=None, heading=None, intro=None, section_id="services"):
+    """Services as an index: one ruled row per service with its photo, rather
+    than a grid of identical cards."""
     heading = heading if heading is not None else sc("Services Grid Heading")
     intro   = intro   if intro   is not None else sc("Services Grid Intro")
-    cards = []
+    rows = []
     for i, (slug, title, _) in enumerate(SERVICE_PAGES):
         if slug == exclude:
             continue
         blurb = SERVICES[i][1][0]["nodes"][0][1]
-        cards.append(f"""      <article class="service-card">
-        <div class="service-card__media">
-{picture(os.path.splitext(os.path.basename(SERVICE_IMG[slug]))[0],
-         "(max-width: 620px) 92vw, (max-width: 1024px) 45vw, 340px", indent="          ")}
-        </div>
-        <div class="service-card__body">
-          <h3><a href="{slug}" style="text-decoration:none;color:inherit;">{esc(title)}</a></h3>
+        rows.append(f"""      <li class="svc-row">
+        <h3 class="svc-row__title"><a href="{slug}">{esc(title)}</a></h3>
+        <div class="svc-row__body">
           <p>{rich(blurb)}</p>
-          <a class="service-card__link" href="{slug}">View {esc(title)}</a>
+          <a class="svc-row__link" href="{slug}" aria-label="Read about {esc(title.lower())}">Read more</a>
         </div>
-      </article>""")
+        <div class="svc-row__media">
+{picture(os.path.splitext(os.path.basename(SERVICE_IMG[slug]))[0],
+         "(max-width: 760px) 92vw, 260px", indent="          ")}
+        </div>
+      </li>""")
     return f"""
-<!-- ============================= SERVICES GRID ============================= -->
-<section class="section" id="services" aria-labelledby="services-heading">
+<!-- ============================= SERVICES INDEX ============================= -->
+<section class="section svc-index" id="{section_id}" aria-labelledby="{section_id}-heading">
   <div class="container">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Spray Foam Insulation</span>
-      <h2 id="services-heading">{esc(heading)}</h2>
-      <p class="lead">{esc(intro)}</p>
+    <div class="split-head">
+      <h2 id="{section_id}-heading">{esc(heading)}</h2>
+      <p>{esc(intro)}</p>
     </div>
-    <div class="grid grid--3">
-{chr(10).join(cards)}
-    </div>
-    <div class="btn-row is-centered">
-      <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-      <a class="btn btn--outline btn--lg" href="services.html">All Insulation Services</a>
-    </div>
+    <ul class="svc-list">
+{chr(10).join(rows)}
+    </ul>
   </div>
 </section>
 """
@@ -1119,28 +1130,23 @@ GALLERY_ITEM = (
 '      </li>')
 
 def gallery_section():
-    """Project gallery. Thumbnails are lazy-loaded; the 1000px version is only
+    """Photo wall. Thumbnails are lazy-loaded; the 1000px version is only
     fetched when a visitor actually opens the lightbox."""
     if not GALLERY:
         return ""
     items = [GALLERY_ITEM.format(s=g["slug"], c=esc(ALT_TEXT.get("gallery-" + g["slug"], g["caption"])))
              for g in GALLERY]
     return """
-<!-- ============================= PROJECT GALLERY ============================= -->
-<section class="section" id="gallery" aria-labelledby="gallery-heading">
+<!-- ============================= PHOTO WALL ============================= -->
+<section class="section gallery-section" id="gallery" aria-labelledby="gallery-heading">
   <div class="container">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Our Work</span>
+    <div class="split-head">
       <h2 id="gallery-heading">__GALLERY_HEADING__</h2>
-      <p class="lead">__GALLERY_INTRO__</p>
+      <p>__GALLERY_INTRO__</p>
     </div>
     <ul class="gallery">
 __ITEMS__
     </ul>
-    <div class="btn-row is-centered">
-      <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-      <a class="btn btn--outline btn--lg" href="tel:__PHONE__">Call Now</a>
-    </div>
   </div>
 </section>
 
@@ -1156,7 +1162,7 @@ __ITEMS__
   </figure>
   <button class="lightbox__nav lightbox__nav--next" type="button" data-lb-next aria-label="Next photo">&#8250;</button>
 </div>
-""".replace("__ITEMS__", chr(10).join(items)).replace("__PHONE__", PHONE_HREF)\
+""".replace("__ITEMS__", chr(10).join(items))\
            .replace("__GALLERY_HEADING__", esc(sc("Gallery Heading")))\
            .replace("__GALLERY_INTRO__", esc(sc("Gallery Intro")))
 
@@ -1196,8 +1202,6 @@ h1, secs = HOME
 by_title = {s["title"]: s for s in secs}
 hero_sec   = secs[0]
 faq_sec    = by_title["Frequently Asked Questions"]
-# Benefits and process are looked up by prefix too, further down, once
-# section_starting() exists.
 # Looked up by prefix, not exact text, so a different city's headings
 # ("Why Choose Grimsby Spray Foam Insulation?") still resolve.
 def section_starting(prefix):
@@ -1224,31 +1228,24 @@ body_sections = [s for s in secs if s["title"] not in special]
 
 hero_paras = "\n".join(f"      <p>{rich(t)}</p>" for k, t in hero_sec["nodes"] if k == "p")
 
-# Benefit cards - one card per source paragraph (no text removed)
-benefit_cards = "\n".join(f"""      <article class="feature">
-        <div class="feature__icon" aria-hidden="true">&#10003;</div>
-        <p>{esc(t)}</p>
-      </article>""" for k, t in benefits["nodes"] if k == "p")
+benefit_cards = "\n".join(f"""      <li class="benefit"><p>{esc(t)}</p></li>"""
+                          for k, t in benefits["nodes"] if k == "p")
 
-# Process steps - one step per source paragraph
-step_cards = "\n".join(f"""      <li class="step">
-        <p>{esc(t)}</p>
-      </li>""" for k, t in process["nodes"] if k == "p")
+# Process steps - one step per source paragraph. This IS a sequence, so it
+# is the one place on the site that carries numbers.
+step_cards = "\n".join(f"""      <li class="step"><p>{esc(t)}</p></li>"""
+                       for k, t in process["nodes"] if k == "p")
 
-# Standards callout - one commitment per source paragraph. Scotland layout
-# profile. An earlier version of this block listed four things the business
-# will NOT do; the owner asked for the same substance stated positively, so
-# each line is now a commitment rather than a refusal.
+# Standards - one commitment per source paragraph, stated positively.
 standards_items = "\n".join(f"""        <li>{esc(t)}</li>"""
                             for k, t in standards["nodes"] if k == "p")
 STANDARDS_BLOCK = f"""
-<!-- ============================= HOW WE WORK ============================= -->
-<section class="section" aria-labelledby="standards-heading">
-  <div class="container container--narrow">
-    <div class="panel panel--standards">
-      <span class="eyebrow">How We Work</span>
-      <h2 id="standards-heading">{esc(standards['title'])}</h2>
-      <ul class="standards-list">
+<!-- ============================= WHAT EVERY JOB GETS ============================= -->
+<section class="section standards" aria-labelledby="standards-heading">
+  <div class="container">
+    <div class="spec">
+      <h2 class="spec__title" id="standards-heading">{esc(standards['title'])}</h2>
+      <ul class="spec__list">
 {standards_items}
       </ul>
     </div>
@@ -1266,125 +1263,94 @@ for i, s in enumerate(body_sections):
 faq_html, faq_ld = faq_accordion(faq_sec, "home-faq")
 
 home = head(seo["Home Page"]["title"], seo["Home Page"]["meta"], "index.html", faq_ld)
-home = home.replace('<link rel="stylesheet" href="%s">' % asset_v("style.css"),
-    '<!-- Preload the LCP hero image so it starts downloading with the stylesheet -->\n'
-    '<link rel="preload" as="image" href="images/%s-1200.jpg"\n'
-    '      imagesrcset="images/%s-800.webp 800w, images/%s-1200.webp 1200w"\n'
-    '      imagesizes="100vw" type="image/webp">\n'
-    '<link rel="stylesheet" href="%s">' % (HERO_IMG, HERO_IMG, HERO_IMG, asset_v("style.css")))
 home += header("index.html")
 home += f"""
 <main id="main">
 
 <!-- ============================= HERO ============================= -->
-<section class="hero hero--home" aria-labelledby="hero-heading">
-
-  <!-- Background photograph. Decorative here, so it carries an empty alt and
-       is hidden from assistive tech - the headline conveys the meaning. -->
-  <div class="hero__bg" aria-hidden="true">
-    <picture>
-      <source type="image/webp"
-              srcset="images/{HERO_IMG}-800.webp 800w, images/{HERO_IMG}-1200.webp 1200w"
-              sizes="100vw">
-      <img src="images/{HERO_IMG}-1200.jpg"
-           srcset="images/{HERO_IMG}-800.jpg 800w, images/{HERO_IMG}-1200.jpg 1200w"
-           sizes="100vw" alt="" width="1200" height="900"
-           fetchpriority="high" decoding="async">
-    </picture>
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <!-- Business name as a masthead. A paragraph, not a heading, so the page
+           keeps exactly one top-level heading. -->
+      <p class="hero__brand">{BUSINESS}</p>
+      <h1 id="hero-heading">{esc(h1)}</h1>
+      <div class="btn-row">
+        <a class="btn btn--dark btn--lg" href="tel:{PHONE_HREF}">Call {PHONE_DISPLAY}</a>
+        <a class="btn btn--line btn--lg" href="#services">See what we insulate</a>
+      </div>
+    </div>
+{hero_form("Home Page")}
   </div>
 
-  <div class="container hero__inner">
-
-    <!-- Business name as a masthead across the top of the hero.
-         Deliberately a paragraph, not a heading, so the page keeps exactly
-         one top-level heading - the search term line directly beneath it. -->
-    <p class="hero__brand">{BUSINESS}</p>
-
-    <div class="hero__intro">
-      <h1 id="hero-heading">{esc(h1)}</h1>
+  <!-- The foam line: the logo's scalloped fill, rising behind the form. -->
+  <div class="hero__foam">
+    <div class="container">
       <ul class="hero__badges">
 {chr(10).join('        <li>%s</li>' % esc(b) for b in sc_lines("Hero Badges"))}
       </ul>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-        <a class="btn btn--ghost btn--lg" href="#services">See Our Services</a>
-      </div>
-    </div>
-
-{hero_form("Home Page")}
-  </div>
-</section>
-
-{intro_band(hero_paras, "Introduction")}
-
-<!-- ============================= TRUST STRIP ============================= -->
-<!-- Secondary service navigation. Built from SERVICE_PAGES so the labels and
-     targets can never drift apart. -->
-<nav class="trust-strip" aria-label="Spray foam insulation services">
-  <div class="container">
-    <ul>
-{chr(10).join('      <li><a href="%s">%s</a></li>' % (slug, esc(title)) for slug, title, _ in SERVICE_PAGES)}
-    </ul>
-  </div>
-</nav>
-
-<!-- ============================= WHY CHOOSE US ============================= -->
-<section class="section" aria-labelledby="why-heading">
-  <div class="container container--narrow prose">
-    <span class="eyebrow">Why Us</span>
-    <h2 id="why-heading">{esc(why['title'])}</h2>
-{nodes_html(why['nodes'], "    ")}
-    <div class="btn-row">
-      <a class="btn btn--primary" href="#quote">Request an Estimate</a>
-      <a class="btn btn--outline" href="about.html">About {BUSINESS}</a>
     </div>
   </div>
 </section>
+
+{intro_band(hero_paras, "Introduction",
+            media=picture(HERO_IMG, "(max-width: 900px) 92vw, 560px", indent="      "))}
 
 {services_grid()}
+
+<!-- ============================= WHY CHOOSE US ============================= -->
+<section class="section why" aria-labelledby="why-heading">
+  <div class="container why__grid">
+    <div class="why__head">
+      <h2 id="why-heading">{esc(why['title'])}</h2>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#quote">Request an estimate</a>
+        <a class="btn btn--light" href="about.html">How we work</a>
+      </div>
+    </div>
+    <div class="why__body">
+{nodes_html(why['nodes'], "      ")}
+    </div>
+  </div>
+</section>
 
 {STANDARDS_BLOCK}
 
 <!-- ============================= BENEFITS ============================= -->
-<section class="section section--alt" aria-labelledby="benefits-heading">
+<section class="section benefits" aria-labelledby="benefits-heading">
   <div class="container">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Benefits</span>
+    <div class="split-head">
       <h2 id="benefits-heading">{esc(benefits['title'])}</h2>
     </div>
-    <div class="grid grid--3">
+    <ul class="benefit-grid">
 {benefit_cards}
-    </div>
+    </ul>
   </div>
 </section>
 
 {cta_band(sc("Consultation CTA Heading"), sc("Consultation CTA Text"), 2)}
 
-<!-- ============================= MAIN CONTENT ============================= -->
-<section class="section" aria-labelledby="detail-heading">
+<!-- ============================= LONG-FORM DETAIL ============================= -->
+<section class="section article" aria-labelledby="detail-heading">
   <div class="container">
     <h2 id="detail-heading" class="visually-hidden">Spray foam insulation information for {CITY} homeowners</h2>
     <div class="layout-split">
       <div class="prose">
 {"".join(main_blocks)}      </div>
-{SIDEBAR}
+{sidebar()}
     </div>
   </div>
 </section>
 
 <!-- ============================= PROCESS ============================= -->
-<section class="section section--alt" aria-labelledby="process-heading">
+<section class="section process" aria-labelledby="process-heading">
   <div class="container">
-    <div class="section-head is-centered">
-      <span class="eyebrow">Our Process</span>
+    <div class="split-head">
       <h2 id="process-heading">{esc(process['title'])}</h2>
     </div>
-    <ol class="steps grid grid--3">
+    <ol class="steps">
 {step_cards}
     </ol>
-    <div class="btn-row is-centered">
-      <a class="btn btn--primary btn--lg" href="#quote">Book Your Consultation</a>
-    </div>
   </div>
 </section>
 
@@ -1393,23 +1359,16 @@ home += f"""
 {cta_band(sc("Closing CTA Heading"), sc("Closing CTA Text"))}
 
 <!-- ============================= SERVICE AREA + MAP ============================= -->
-<section class="section section--alt" aria-labelledby="areas-heading">
-  <div class="container">
-    <div class="layout-split layout-split--even">
-      <div class="prose">
-        <span class="eyebrow">Service Area</span>
-        <h2 id="areas-heading">{esc(areas['title'])}</h2>
-{nodes_html(areas['nodes'], "        ")}
-        <div class="btn-row">
-          <a class="btn btn--primary" href="#quote">Get a Free Quote</a>
-          <a class="btn btn--outline" href="contact.html">Contact Us Today</a>
-        </div>
-      </div>
-      <div class="map-wrap">
-        <iframe src="{MAP_EMBED}" title="Map of the {CITY_PROV} and {REGION} spray foam insulation service area"
-                width="600" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen></iframe>
-      </div>
+<section class="section area" aria-labelledby="areas-heading">
+  <div class="container area__grid">
+    <div class="prose">
+      <h2 id="areas-heading">{esc(areas['title'])}</h2>
+{nodes_html(areas['nodes'], "      ")}
+    </div>
+    <div class="map-wrap">
+      <iframe src="{MAP_EMBED}" title="Map of the {CITY_PROV} and {REGION} spray foam insulation service area"
+              width="600" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -1428,6 +1387,9 @@ write("index.html", home)
 SEO_LABELS = [title for _, title, _ in SERVICE_PAGES]
 NUM_WORDS = {6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
 
+HERO_BUTTONS = (f'<a class="btn btn--primary btn--lg" href="#quote">Get a free quote</a>\n'
+                f'        <a class="btn btn--line btn--lg" href="tel:{PHONE_HREF}">Call {PHONE_DISPLAY}</a>')
+
 for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
     sh1, ssecs = SERVICES[idx]
     label = SEO_LABELS[idx]
@@ -1445,7 +1407,7 @@ for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
         "provider": {"@type": "HomeAndConstructionBusiness", "@id": DOMAIN + "/#business",
                      "name": BUSINESS, "telephone": PHONE_DISPLAY},
         "areaServed": {"@type": "City", "name": CITY_PROV},
-        "url": DOMAIN + "/" + slug
+        "url": DOMAIN + "/" + slug[:-5]
     }
     extra_ld = crumb_ld + "\n<script type=\"application/ld+json\">\n" + json.dumps(service_ld, indent=2) + "\n</script>"
 
@@ -1453,55 +1415,36 @@ for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
 
     blocks_html = []
     for i, s in enumerate(middle):
-        blocks_html.append(content_block(s))
+        blocks_html.append(content_block(s, anchor=True))
         if i == len(middle) // 2:
             blocks_html.append(CTA_INLINE)
+    toc = [(anchor_id(s["title"]), s["title"]) for s in middle]
+
+    img_base = os.path.splitext(os.path.basename(SERVICE_IMG[slug]))[0]
 
     page = head(seo[label]["title"], seo[label]["meta"], slug, extra_ld)
     page += header(slug)
-    page += crumbs
     page += f"""
 <main id="main">
-
-<!-- ============================= HERO ============================= -->
-<section class="hero hero--page" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">{esc(title)}</span>
-      <h1 id="hero-heading">{esc(sh1)}</h1>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-        <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-      </div>
-    </div>
-  </div>
-</section>
+{page_hero(sh1, crumbs, HERO_BUTTONS,
+           picture(img_base, "(max-width: 900px) 92vw, 540px", eager=True, indent="      "))}
 
 {intro_band(over_paras, title + " overview")}
 
 <!-- ============================= SERVICE DETAIL ============================= -->
-<section class="section" aria-labelledby="detail-heading">
+<section class="section article" aria-labelledby="detail-heading">
   <div class="container">
     <h2 id="detail-heading" class="visually-hidden">{esc(title)} details</h2>
     <div class="layout-split">
       <div class="prose">
 {"".join(blocks_html)}      </div>
-{SIDEBAR}
+{sidebar(toc)}
     </div>
   </div>
 </section>
 
-<!-- ============================= CLOSING CTA (from source copy) ============================= -->
-<section class="cta-band" aria-labelledby="closing-heading">
-  <div class="container">
-    <h2 id="closing-heading">{esc(closing['title'])}</h2>
-{nodes_html(closing['nodes'], "    ")}
-    <div class="btn-row is-centered">
-      <a class="btn btn--primary btn--lg" href="#quote">Request an Estimate</a>
-      <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-    </div>
-  </div>
-</section>
+{cta_band(closing['title'], None, 1, heading_id="closing-heading",
+          body_html=nodes_html(closing['nodes'], "      "))}
 
 {services_grid(exclude=slug, heading=sc("Other Services Heading"), intro=sc("Other Services Intro"))}
 
@@ -1521,27 +1464,12 @@ svc_page = head(f"Spray Foam Insulation Services | {CITY_PROV}",
                 f"Attic, garage, basement, crawl space and new construction spray foam insulation in {CITY_PROV}. Free written quotes. Call {PHONE_DISPLAY}.",
                 "services.html", crumb_ld)
 svc_page += header("services.html")
-svc_page += crumbs
 svc_page += f"""
 <main id="main">
+{page_hero(sc("Services Page Heading"), crumbs, HERO_BUTTONS,
+           picture(SERVICES_IMG, "(max-width: 900px) 92vw, 540px", eager=True, indent="      "))}
 
-<section class="hero hero--page hero--split" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">Services</span>
-      <h1 id="hero-heading">{esc(sc("Services Page Heading"))}</h1>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-        <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-      </div>
-    </div>
-    <div class="hero__media">
-{picture(SERVICES_IMG, "(max-width: 1024px) 92vw, 460px", eager=True, indent="      ")}
-    </div>
-  </div>
-</section>
-
-{intro_band("    <p>%s</p>" % esc(sc("Services Page Intro")), "Introduction")}
+{intro_band("      <p>%s</p>" % esc(sc("Services Page Intro")), "Introduction")}
 
 {services_grid(heading=sc("Services Page Grid Heading"), intro=sc("Services Page Grid Intro"))}
 
@@ -1564,57 +1492,35 @@ about_mid = asecs[1:-1]
 
 mid_blocks = []
 for i, s in enumerate(about_mid):
-    mid_blocks.append(content_block(s))
+    mid_blocks.append(content_block(s, anchor=True))
     if i == len(about_mid) // 2:
         mid_blocks.append(CTA_INLINE)
+about_toc = [(anchor_id(s["title"]), s["title"]) for s in about_mid]
 
 about = head(seo["About Page"]["title"], seo["About Page"]["meta"], "about.html", crumb_ld)
 about += header("about.html")
-about += crumbs
 about += f"""
 <main id="main">
+{page_hero(ah1, crumbs, HERO_BUTTONS,
+           picture(ABOUT_IMG, "(max-width: 900px) 92vw, 540px", eager=True, indent="      "))}
 
-<section class="hero hero--page hero--split" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">About Us</span>
-      <h1 id="hero-heading">{esc(ah1)}</h1>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-        <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-      </div>
-    </div>
-    <div class="hero__media">
-{picture(ABOUT_IMG, "(max-width: 1024px) 92vw, 460px", eager=True, indent="      ")}
-    </div>
-  </div>
-</section>
+{intro_band(("      <h2>%s</h2>" + chr(10) + "%s") % (esc(about_lead['title']), nodes_html(about_lead['nodes'], "      ")), "Introduction")}
 
-{intro_band(("    <h2>%s</h2>" + chr(10) + "%s") % (esc(about_lead['title']), nodes_html(about_lead['nodes'], "    ")), "Introduction")}
-
-<section class="section" aria-labelledby="about-heading">
+<section class="section article" aria-labelledby="about-heading">
   <div class="container">
     <h2 id="about-heading" class="visually-hidden">About {BUSINESS}</h2>
     <div class="layout-split">
       <div class="prose">
 {"".join(mid_blocks)}      </div>
-{SIDEBAR}
+{sidebar(about_toc)}
     </div>
   </div>
 </section>
 
-<section class="cta-band" aria-labelledby="about-close-heading">
-  <div class="container">
-    <h2 id="about-close-heading">{esc(about_close['title'])}</h2>
-{nodes_html(about_close['nodes'], "    ")}
-    <div class="btn-row is-centered">
-      <a class="btn btn--primary btn--lg" href="#quote">Book Your Consultation</a>
-      <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-    </div>
-  </div>
-</section>
+{cta_band(about_close['title'], None, 2, heading_id="about-close-heading",
+          body_html=nodes_html(about_close['nodes'], "      "))}
 
-{services_grid(heading="Everything We Insulate", intro=f"{NUM_WORDS.get(N_SERVICES, str(N_SERVICES))} spray foam insulation services for {CITY} homes, garages and new builds.")}
+{services_grid(heading="Everything We Insulate", intro=f"{NUM_WORDS.get(N_SERVICES, str(N_SERVICES))} spray foam insulation services for {CITY} homes, farms and businesses.")}
 
 {contact_form("About")}
 </main>
@@ -1641,8 +1547,7 @@ for k, t in info_sec["nodes"]:
             lab, val = part.split(":", 1)
             info_pairs.append((lab.strip(), val.strip()))
 info_html = "\n".join(
-    f'        <div><dt style="font-weight:800;color:var(--color-heading);">{esc(l)}</dt>'
-    f'<dd style="margin:0 0 var(--space-3);">'
+    f'            <div><dt>{esc(l)}</dt><dd>'
     + (f'<a href="tel:{PHONE_HREF}">{esc(v)}</a>' if l.lower() == "phone" else esc(v))
     + '</dd></div>'
     for l, v in info_pairs)
@@ -1651,26 +1556,15 @@ rest_blocks = "".join(content_block(s) for s in rest)
 
 contact_page = head(seo["Contact Page"]["title"], seo["Contact Page"]["meta"], "contact.html", crumb_ld)
 contact_page += header("contact.html")
-contact_page += crumbs
 contact_page += f"""
 <main id="main">
+{page_hero(ch1, crumbs,
+           f'<a class="btn btn--dark btn--lg" href="tel:{PHONE_HREF}">Call {PHONE_DISPLAY}</a>'
+           f'<a class="btn btn--line btn--lg" href="#quote">Request an estimate</a>')}
 
-<section class="hero hero--page" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">Contact</span>
-      <h1 id="hero-heading">{esc(ch1)}</h1>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-        <a class="btn btn--ghost btn--lg" href="#quote">Request an Estimate</a>
-      </div>
-    </div>
-  </div>
-</section>
+{intro_band(("      <h2>%s</h2>" + chr(10) + "%s") % (esc(lead_sec['title']), nodes_html(lead_sec['nodes'], "      ")), "Introduction")}
 
-{intro_band(("    <h2>%s</h2>" + chr(10) + "%s") % (esc(lead_sec['title']), nodes_html(lead_sec['nodes'], "    ")), "Introduction")}
-
-<section class="section" aria-labelledby="contact-detail-heading">
+<section class="section article" aria-labelledby="contact-detail-heading">
   <div class="container">
     <h2 id="contact-detail-heading" class="visually-hidden">Contact details and what to expect</h2>
     <div class="layout-split">
@@ -1678,22 +1572,13 @@ contact_page += f"""
 {rest_blocks}      </div>
 
       <aside class="sidebar" aria-labelledby="info-heading">
-        <div class="card">
-          <h3 id="info-heading">{esc(info_sec['title'])}</h3>
-          <dl style="margin:0;">
+        <div class="side-card side-card--info">
+          <h3 class="side-card__title" id="info-heading">{esc(info_sec['title'])}</h3>
+          <dl class="info-list">
 {info_html}
+            <div><dt>Hours</dt><dd>{HOURS_TEXT}</dd></div>
           </dl>
-          <!-- PLACEHOLDER: add email address, street address and Google Maps embed when available -->
-          <div class="btn-row">
-            <a class="btn btn--primary btn--block" href="tel:{PHONE_HREF}">Call Now</a>
-            <a class="btn btn--outline btn--block" href="#quote">Get a Free Quote</a>
-          </div>
-        </div>
-        <div class="panel" style="margin-top:var(--space-5);">
-          <h3>Spray Foam Insulation Services</h3>
-          <ul class="footer-list" style="padding:0;">
-            {"".join(f'<li><a href="{s}" style="color:var(--color-primary-light);">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)}
-          </ul>
+          <a class="btn btn--primary btn--block" href="tel:{PHONE_HREF}">Call now</a>
         </div>
       </aside>
     </div>
@@ -1713,33 +1598,20 @@ write("contact.html", contact_page)
 # ============================================================================
 fh1, fsecs = FAQPAGE
 crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), ("FAQ", None)])
-faq_body, faq_ld2 = faq_accordion(fsecs[0], "faq-page")
+faq_body, faq_ld2 = faq_accordion(fsecs[0], "faq-page", more_link=False)
 faq_page = head(seo["FAQ Page"]["title"], seo["FAQ Page"]["meta"], "faq.html", crumb_ld + faq_ld2)
 faq_page += header("faq.html")
-faq_page += crumbs
 faq_page += f"""
 <main id="main">
+{page_hero(sc("FAQ Page Heading"), crumbs, HERO_BUTTONS)}
 
-<section class="hero hero--page" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">Answers</span>
-      <h1 id="hero-heading">{esc(sc("FAQ Page Heading"))}</h1>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-        <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-{intro_band("    <p>%s</p>" % esc(sc("FAQ Page Intro")), "Introduction")}
-
-{cta_band(sc("FAQ Page CTA Heading"), sc("FAQ Page CTA Text"), 1)}
+{intro_band("      <p>%s</p>" % esc(sc("FAQ Page Intro")), "Introduction")}
 
 {faq_body}
 
-{services_grid(heading="Every System We Offer", intro=f"Each page below covers cost, cure times and upkeep for that system in {CITY}.")}
+{cta_band(sc("FAQ Page CTA Heading"), sc("FAQ Page CTA Text"), 1)}
+
+{services_grid(heading="Every Space We Insulate", intro=f"Each page below covers how the job is specified, what changes afterwards and what it costs to get right in {CITY}.")}
 
 {contact_form("FAQ")}
 </main>
@@ -1759,31 +1631,20 @@ def legal_page(slug, title, meta, h1, eyebrow, crumb_label, sections):
 """ for t, ps in sections)
     page = head(title, meta, slug, crumb_ld)
     # Privacy and terms are boilerplate by nature and carry no ranking value.
-    # Keeping them out of the index means they cannot count against a network
-    # of city sites for near-duplicate content.
     page = page.replace('<meta name="robots" content="index, follow, max-image-preview:large">',
                         '<meta name="robots" content="noindex, follow">')
-    page += header(slug) + crumbs + f"""
+    page += header(slug) + f"""
 <main id="main">
+{page_hero(h1, crumbs, "")}
 
-<section class="hero hero--page" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">{esc(eyebrow)}</span>
-      <h1 id="hero-heading">{esc(h1)}</h1>
-    </div>
-  </div>
-</section>
+{intro_band("      <p>PLACEHOLDER DOCUMENT. This page is a working template for %s and should be reviewed by a legal professional before the site goes live.</p>" % BUSINESS, "Introduction")}
 
-{intro_band("    <p>PLACEHOLDER DOCUMENT. This page is a working template for %s and should be reviewed by a legal professional before the site goes live.</p>" % BUSINESS, "Introduction")}
-
-<section class="section">
+<section class="section article">
   <div class="container container--narrow prose">
-{body}    </div>
-  </div>
+{body}  </div>
 </section>
 
-{cta_band("Questions About Your Floor Or Your Information?", f"Call {BUSINESS} and speak with a local installer.", 1)}
+{cta_band("Questions About Your Insulation Or Your Information?", f"Call {BUSINESS} and speak with a local installer.", 1)}
 
 {contact_form(h1)}
 </main>
@@ -1822,11 +1683,11 @@ legal_page(
         ("Use Of This Website", [
             "The content on this website is provided for general information about spray foam insulation and air sealing services in %s." % CITY_PROV]),
         ("Estimates And Pricing", [
-            "Prices described on this website are general ranges only. A binding price is provided in a written estimate after an on-site measurement and slab assessment."]),
+            "Prices described on this website are general ranges only. A binding price is provided in a written estimate after an on-site measurement and assessment."]),
         ("Workmanship And Warranty", [
             "Installations include a written warranty. PLACEHOLDER: insert the exact warranty term, coverage and exclusions supplied by %s." % BUSINESS]),
         ("Cure Times And Site Conditions", [
-            "Stated cure times are typical and depend on slab temperature, humidity and the system installed. Written cure times are supplied at the end of every job."]),
+            "Stated cure times are typical and depend on substrate temperature, humidity and the product installed. Written cure times are supplied at the end of every job."]),
         ("Limitation Of Liability", [
             "PLACEHOLDER: insert the limitation of liability wording reviewed by your legal advisor."]),
         ("Changes To These Terms", [
@@ -1933,6 +1794,8 @@ open(os.path.join(OUT, "_headers"), "w", encoding="utf-8").write(
 # Images, CSS and JS are content-addressed by name, so they can cache hard.
 /images/*
   Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
 
 # Fingerprinted in the HTML as style.css?v=<hash>, so these can cache hard.
 # The hash changes whenever the file changes, which busts the cache instantly.
@@ -1958,23 +1821,14 @@ notfound = head(f"Page Not Found | {BUSINESS}",
 notfound = notfound.replace('<meta name="robots" content="index, follow, max-image-preview:large">',
                             '<meta name="robots" content="noindex, follow">')
 notfound += header("404.html")
+_nf_crumbs, _ = breadcrumbs([("Home", "index.html"), ("Page not found", None)])
 notfound += f'''
 <main id="main">
+{page_hero(sc("Not Found Heading"), _nf_crumbs,
+           f'<a class="btn btn--dark btn--lg" href="index.html">Back to the home page</a>'
+           f'<a class="btn btn--line btn--lg" href="tel:{PHONE_HREF}">Call {PHONE_DISPLAY}</a>')}
 
-<section class="hero hero--page" aria-labelledby="hero-heading">
-  <div class="container hero__inner">
-    <div class="hero__intro">
-      <span class="eyebrow" style="color:var(--color-accent-light);">Error 404</span>
-      <h1 id="hero-heading">{esc(sc("Not Found Heading"))}</h1>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="index.html">Back To The Home Page</a>
-        <a class="btn btn--ghost btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-{intro_band("    <p>%s</p>" % esc(sc("Not Found Text")), "Page not found")}
+{intro_band("      <p>%s</p>" % esc(sc("Not Found Text")), "Page not found")}
 
 {services_grid(heading="Our Services", intro=f"Spray foam insulation installed across {CITY} and {REGION}.")}
 
