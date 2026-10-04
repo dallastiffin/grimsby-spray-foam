@@ -1,0 +1,65 @@
+{
+ "site": "site",
+ "label": "Grimsby Spray Foam Insulation",
+ "head_terms": {
+  "*": "spray foam insulation",
+  "attic-insulation.html": "attic insulation",
+  "garage-insulation.html": "garage insulation",
+  "basement-insulation.html": "basement insulation",
+  "crawl-space-insulation.html": "crawl space insulation",
+  "new-construction-insulation.html": "new construction insulation",
+  "close-and-open-cell-spray-foam.html": "closed cell spray foam",
+  "agricultural-insulation.html": "spray foam insulation",
+  "commercial-insulation.html": "spray foam insulation"
+ },
+ "other_terms": [
+  "spray foam insulation",
+  "closed cell",
+  "attic insulation"
+ ],
+ "place_names": [
+  "Grimsby",
+  "Lincoln",
+  "West Lincoln",
+  "Beamsville",
+  "Vineland",
+  "Jordan",
+  "Campden",
+  "Smithville",
+  "Caistor Centre",
+  "Niagara",
+  "Niagara Region",
+  "Grimsby Beach",
+  "Casablanca",
+  "Nelles Estates",
+  "Winona",
+  "Stoney Creek",
+  "Escarpment",
+  "Niagara Escarpment",
+  "Bruce Trail",
+  "Forty Mile Creek",
+  "Beamer Memorial",
+  "Main Street West",
+  "Main Street East",
+  "Ontario Street",
+  "Casablanca Boulevard",
+  "Winston Road",
+  "Mountain Road",
+  "Ridge Road",
+  "Nelles Road",
+  "Elm Street",
+  "QEW",
+  "South Service Road",
+  "Lake Ontario"
+ ],
+ "aliases": {
+  "about.html": "about-us.html",
+  "contact.html": "contact-us.html"
+ },
+ "compare": [
+  "../Chatham Spray Foam Insulation/site",
+  "../Windsor Spray Foam Insulation/site",
+  "../Milton Spray Foam Insulation/site",
+  "../Leamington Spray Foam Insulation/site"
+ ]
+}

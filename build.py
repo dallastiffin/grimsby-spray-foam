@@ -236,6 +236,10 @@ SERVICE_PAGES = [
     ("new-construction-insulation.html",   "New Construction Insulation", "New Construction"),
     ("close-and-open-cell-spray-foam.html","Closed Cell and Open Cell Spray Foam",
      "Closed and Open Cell"),
+    # Added October 2026. Not legacy slugs - these are new pages, so they are
+    # free to use the tidy spelling.
+    ("agricultural-insulation.html",       "Agricultural Insulation",     "Agricultural"),
+    ("commercial-insulation.html",         "Commercial Insulation",       "Commercial"),
 ]
 N_SERVICES = len(SERVICE_PAGES)
 SERVICE_IMG = {slug: "images/service-%s.jpg" % slug[:-5] for slug, _, _ in SERVICE_PAGES}
@@ -1009,6 +1013,12 @@ PAGE_PHOTOS = [
    f"New construction insulation filling open stud bays before drywall in a {CITY} build"),
   ("Spray Foam Close UP.png", "service-close-and-open-cell-spray-foam", (16,10), [640,960],
    "Closed cell spray foam expanding out of the gun into a framed stud bay"),
+  ("agricultural-pole-barn-spray-foam-ai.png", "service-agricultural-insulation",
+   (16,10), [640,960],
+   f"Pole barn near {CITY} insulated with closed cell spray foam across the roof underside and wall bays"),
+  ("industrial-warehouse-spray-foam-ai.png", "service-commercial-insulation",
+   (16,10), [640,960],
+   f"Steel-framed warehouse in {CITY_PROV} with closed cell spray foam insulation on the roof decking between purlins"),
   ("Crawl Space Installation.png", ABOUT_IMG, (4,3), [800,1200],
    f"A {BUSINESS} installer working a crawl space in full protective kit"),
   ("Basement fully insulated with spray foam.png", SERVICES_IMG, (4,3), [800,1200],
@@ -1038,6 +1048,10 @@ GALLERY_PHOTOS = [
   "Attic rafters sprayed with insulation from the ridge down"),
  ("Garage Wall with Spray Foam Insulation.png", "garage-wall-finished",
   "Garage wall insulation finished from the slab to the ceiling"),
+ ("agricultural-machinery-shed-spray-foam-ai.png", "machinery-shed-steel-bays",
+  "Machinery shed with closed cell spray foam across the steel roof and wall bays"),
+ ("industrial-workshop-spray-foam-ai.png", "workshop-steel-wall-panels",
+  "Fabrication workshop with spray foam insulation on the corrugated wall panels"),
 ]
 
 

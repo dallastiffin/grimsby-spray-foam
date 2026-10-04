@@ -480,6 +480,114 @@ Tell us the room and the symptom. We will name the foam that suits it, and say s
 
 ---
 
+# SERVICE PAGE 7
+
+# Agricultural Insulation In Grimsby, Ontario
+
+## Spray Foam Insulation For Barns, Sheds And Farm Buildings
+
+We run agricultural spray foam insulation across Grimsby, Lincoln and West Lincoln, and every job is fully insured. Pole barns, machinery sheds, livestock housing, greenhouse service rooms, cold storage and farm shops all take spray foam insulation, though not all of them for the same reason.
+
+Farm buildings are not big houses. The reason to insulate one is usually not the heating bill. It is condensation, and condensation is a different problem with a different fix.
+
+## Condensation Is The Real Job, Not R-Value
+
+Warm moist air inside a building meets cold steel roof sheeting and gives up its water there. In a barn that water drips onto stored crop, feed and machinery. On the structure it sits against purlins and fasteners and rusts them from the inside.
+
+Closed cell spray foam insulation solves this by removing the cold surface. Applied directly to the underside of the deck, it lifts the interior face above the dew point, so there is nowhere for the moisture to land. Nothing drips because nothing condenses. That is the single thing spray foam insulation does for a farm building that no other product does as reliably.
+
+That is worth understanding before anyone quotes you an R-value. You can add R-value to a leaky farm building and still have it raining indoors every cold morning.
+
+## Why Closed Cell Spray Foam Insulation On Farm Buildings
+
+It is low permeance and continuously adhered, so unlike a batt it does not soak up water and hold it against the frame. Barns get wet. Batt insulation in a barn is usually a maintenance problem within a few years.
+
+Closed cell spray foam insulation tolerates washdown, and once cured it is chemically inert and copes with the ammonia and slurry vapour inside livestock housing.
+
+It is rigid and non-fibrous, so it gives rodents nothing to nest in — which is not the same as being a rodent barrier, and we will not tell you it is one. Mice will tunnel through closed cell if they want to. The honest difference is that they treat fibreglass batt as bedding and they do not treat foam that way.
+
+On older pole and post-frame buildings closed cell spray foam insulation also bonds hard and adds some stiffness across the frame.
+
+## Cold Storage Is Where Spray Foam Insulation Earns Most
+
+West Niagara grows tender fruit because of the lake and the escarpment, and tender fruit has to go somewhere cold.
+
+A temperature-critical room wants insulation, an air barrier and vapour control, and closed cell spray foam insulation is all three in one pass with no seams to tape and no gaps at the junctions. That is the whole reason it is the standard envelope for cold rooms rather than a panel-and-tape assembly that is only as good as its weakest joint.
+
+Get the vapour side wrong on a cold room and the moisture drive runs inward all summer and condenses inside the assembly where nobody can see it.
+
+## The Rule That Catches Farm Shops
+
+Agricultural buildings sit outside the normal occupancy rules, which is why you will see foam left exposed in plenty of barns.
+
+The moment the building changes what it is used for, that changes. A cold storage building becoming a heated workshop, or a barn becoming a shop you work in, is a change of use under the Ontario Building Code, and the thermal barrier requirement comes with it. Exposed foam then has to be covered to a fifteen-minute standard — half-inch gypsum, or an approved intumescent coating.
+
+We raise this at the quote rather than after, because the person it catches is always the same person: someone insulating a shop they intend to heat and work in. Your building department has the final say on which side of the line your building falls, and we will tell you to ask them.
+
+## Greenhouses And The Buildings Around Them
+
+Grimsby has greenhouses, and Lincoln has a lot more. The glass is not our work, but the headers, sidewalls, service rooms, boiler rooms and packing areas all take spray foam insulation, and those are usually where the heat is actually going.
+
+## Book A Farm Building Assessment
+
+Tell us the building, roughly its size, and what is going wrong — dripping, rusting, freezing, or a heating bill that makes no sense. We walk it, take moisture and substrate readings, and put the spray foam insulation product and the installed depth in writing.
+
+We do commercial and industrial buildings too, on our [commercial insulation](commercial-insulation.html) page. For the difference between the two foams, see [closed cell and open cell](close-and-open-cell-spray-foam.html), or everything else we install on our [home page](index.html). You can also just [contact us](contact.html).
+
+---
+
+# SERVICE PAGE 8
+
+# Commercial Insulation In Grimsby, Ontario
+
+## Spray Foam Insulation For Warehouses, Shops And Units
+
+We install commercial spray foam insulation across Grimsby and west Niagara, and every job is fully insured. Steel-framed warehouses, fabrication and machine shops, service garages and fleet buildings, food and beverage space, and the small commercial units along the service roads.
+
+The arguments that sell insulation to a homeowner are mostly the wrong arguments for a building like yours. Comfort is not the driver. Stock, equipment, operating cost and the building's own structure are.
+
+## Tall Buildings Lose Heat Through The Roof
+
+A forty-foot clear height puts your most expensive air at the ceiling, forty feet from anyone who benefits from it. Then it leaves through the roof plane.
+
+Air sealing is what stops that, and it is the part most buildings are missing. Spray foam insulation does it as a by-product of being installed properly. Adding R-value to an envelope that leaks is paying for insulation you will not receive. Spray foam insulation seals and insulates in the same pass, which is the main reason it suits this kind of building.
+
+## Condensation On Steel Decking
+
+Same mechanism as a barn, bigger consequences. Warm moist air meets cold deck, water forms, and it falls on racking, stock and whatever is underneath.
+
+Closed cell spray foam insulation applied between the purlins directly to the underside of the decking raises that surface above the dew point and ends it. One operation covers insulation, air barrier and vapour control, with no seams to fail.
+
+For buildings with a corrosion history, that is usually the whole business case on its own.
+
+## Dock Doors, Shops And Temperature Stability
+
+A fabrication shop with doors that open all day is not trying to hold a steady temperature so much as recover quickly. A sealed envelope recovers far faster than a leaky one, and spray foam insulation also takes some of the noise out of a steel building.
+
+Food and beverage space has the strictest version of the same problem, and the same answer, with the vapour side mattering a great deal more.
+
+## Covering The Foam In A Commercial Building
+
+Exposed foam rules are the thing to get right and the thing most quotes stay quiet about.
+
+In occupied space, spray foam insulation has to sit behind a thermal barrier rated to fifteen minutes. Half-inch gypsum is the standard assembly, but drywalling the underside of a forty-foot deck is not realistic, so an approved sprayed intumescent coating is usually the practical route. Whether it is accepted for your building is your inspector's decision, not ours, and we will not pretend otherwise.
+
+If your building is sprinklered, foam thickness at the deck can interact with the sprinkler design. That is a question for whoever holds your sprinkler drawings, and we will flag it rather than work around it.
+
+## New Industrial Along The Service Road
+
+Grimsby's employment lands sit downtown, out along the South Service Road and in the east industrial area, and the service road corridor is being built out with large-format industrial space at clear heights that did not exist here ten years ago.
+
+New construction is the cheapest time to do this properly, because the deck and the wall bays are open and nobody is working underneath. We would rather talk to you then than retrofit around your racking later. There is more on timing on our [new construction insulation](new-construction-insulation.html) page.
+
+## Get A Commercial Building Quoted
+
+Tell us the building, the clear height, the structure, and what is going wrong. We walk it, take readings, and give you a written price with the spray foam insulation product and the installed depth attached to each area.
+
+We also do [agricultural insulation](agricultural-insulation.html) for farm buildings across Lincoln and West Lincoln. The rest of what we install is on our [home page](index.html), or you can just [contact us](contact.html).
+
+---
+
 # ABOUT PAGE
 
 # About Grimsby Spray Foam Insulation
@@ -662,6 +770,16 @@ Meta Description: New construction insulation for Grimsby builders at framing st
 SEO Title: Closed Cell Spray Foam Grimsby ON | And Open Cell
 Meta Description: Closed cell spray foam below grade, open cell above it. Which one your Grimsby project needs and why. Fully insured. Call (289) 672-4160.
 
+## Agricultural Insulation
+
+SEO Title: Agricultural Insulation Grimsby ON | Barns And Sheds
+Meta Description: Spray foam insulation for barns, machinery sheds, cold storage and farm shops across Grimsby, Lincoln and West Lincoln. Fully insured. Call (289) 672-4160.
+
+## Commercial Insulation
+
+SEO Title: Commercial Insulation Grimsby ON | Warehouses And Shops
+Meta Description: Commercial spray foam insulation for warehouses, shops and units in Grimsby. Stops condensation on steel decking. Fully insured. Call (289) 672-4160.
+
 ## About Page
 
 SEO Title: About Us | Grimsby Spray Foam Insulation
@@ -725,11 +843,11 @@ Attics, garages, basements, crawl spaces and new construction across Grimsby and
 
 ## Gallery Heading
 
-Recent Work
+What Spray Foam Insulation Looks Like Installed
 
 ## Gallery Intro
 
-Attics, basements, crawl spaces and new builds around Grimsby, Lincoln and up on the escarpment.
+Attics, basements, crawl spaces, farm buildings and new builds — the finishes and depths we work to around Grimsby, Lincoln and up on the escarpment.
 
 ## Sidebar Heading
 
@@ -859,6 +977,10 @@ service-new-construction-insulation: New construction insulation filling open st
 
 service-close-and-open-cell-spray-foam: Closed cell spray foam expanding out of the gun into a framed stud bay
 
+service-agricultural-insulation: Pole barn insulated with closed cell spray foam across the roof underside and wall bays
+
+service-commercial-insulation: Steel-framed warehouse with closed cell spray foam insulation applied to the roof decking between purlins
+
 about-grimsby-spray-foam-insulation: A Grimsby Spray Foam Insulation installer working a crawl space in full protective kit
 
 services-spray-foam-insulation-grimsby: Finished basement with every foundation wall sealed in spray foam insulation
@@ -868,6 +990,10 @@ gallery-attic-finished-ridge-to-eaves: Attic insulation finished from the ridge 
 gallery-basement-foundation-walls-sealed: Basement with every foundation wall sealed in closed cell spray foam
 
 gallery-crawl-space-sheeted-and-sealed: Crawl space insulation sealed over a taped ground sheet
+
+gallery-machinery-shed-steel-bays: Machinery shed with closed cell spray foam across the steel roof and wall bays
+
+gallery-workshop-steel-wall-panels: Fabrication workshop with spray foam insulation on the corrugated wall panels
 
 gallery-crawl-space-installer-at-work: Installer spraying foam insulation along a crawl space wall
 

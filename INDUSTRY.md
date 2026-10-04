@@ -212,6 +212,146 @@ Replace this section wholesale for a different city.
   a basement-flooding history and an automotive economy. Grimsby is topographic,
   lake-moderated and residential. Different mechanism, different lead argument.
 
+## Agriculture — the Niagara fruit belt
+
+Researched October 2026, after the owner pointed out it was missing from the
+first Grimsby pass. The original city research covered the escarpment, the
+freeze-thaw argument, Grimsby Beach and the Casablanca new-build market, all
+residential, and said nothing about farming. The owner confirmed the business
+takes agricultural work of all kinds, so this now carries a service page.
+
+The escarpment mechanism already in this file **is** the fruit-belt mechanism.
+Lake moderation plus escarpment shelter is why tender fruit grows here and
+almost nowhere else in Canada. The first pass used that geography for snowfall
+and stopped there.
+
+### The land
+
+- Niagara has **232,817 acres of farmland**, but only about **15,000 acres are
+  suitable for tender fruit** and **15,000–20,000 for grapes**. A scarce,
+  concentrated band, and Grimsby sits inside it.
+- **Grimsby: 11 greenhouses**, and **+423 farmland acres** 2016–2021.
+- **Lincoln** (Beamsville, Vineland, Jordan Station): **23,615 farmland acres**,
+  the core of the wine and fruit belt. Vineyards, tender fruit, greenhouses.
+- **West Lincoln** (Smithville, Caistor Centre): **+1,533 farmland acres**. This
+  is the livestock and cash-crop half, not the fruit half. Different buildings,
+  different argument.
+- **Tender fruit** means cold-sensitive crops: peaches, apricots, sweet and sour
+  cherries, plums, and pears for marketing purposes.
+
+All three municipalities are already named in the site's service-area copy.
+
+### Building types worth copy
+
+1. **Barns and livestock housing** — mostly West Lincoln. Closed cell is the
+   product; the argument is condensation on the underside of steel.
+2. **Greenhouses** — headers, sidewalls, service rooms. Grimsby has 11.
+3. **Cold storage for tender fruit** — the strongest fit on the list. Closed
+   cell is the standard envelope for a temperature-critical room because it is
+   insulation and vapour control in one assembly.
+4. **Winery barrel cellars** — Lincoln. Stable temperature and humidity.
+5. **Farm shops and machine sheds** — the most common actual job.
+
+### Why closed cell, for farm buildings specifically
+
+- **Condensation is the headline, not R-value.** Warm moist air meeting cold
+  steel roof sheeting drips on stored crop and corrodes purlins. Closed cell
+  raises the interior surface temperature above the dew point, so there is no
+  cold face for moisture to land on. This is a better lead than any R-number.
+- **Washdown.** Low permeance, continuous and adhered. It does not absorb water
+  and hold it against the structure the way a wet batt does.
+- **Ammonia and slurry vapour.** Cured closed cell is chemically inert and
+  tolerates the atmosphere inside livestock housing.
+- **No nesting material.** Rigid and non-fibrous, so it gives rodents nothing to
+  nest in — unlike batt, which they treat as bedding. **Do not call it a rodent
+  barrier or claim it resists chewing.** Competitor sites say both. Rodents
+  tunnel through closed cell perfectly well. The honest claim is the narrow one.
+- **Racking strength** on older pole and post-frame structures, same as houses.
+
+### Code — the trap, and it is the useful one
+
+Agricultural buildings sit outside the normal occupancy rules, which is why
+foam is often left exposed in a barn. **The moment the building changes use —
+a cold storage building becoming a heated workshop, a barn becoming a shop with
+occupancy — that is a change of use under the OBC and the thermal barrier
+requirement applies.** OBC 9.10.17.10, 15-minute rating, ½-inch gypsum or an
+approved intumescent coating under 9.29.4–9.29.9.
+
+This is worth saying plainly on the page. A farmer insulating a shop they
+intend to heat and work in is the exact person who gets caught by it, and
+nobody in the trade writes about it. It also sets up the honest version of the
+thermal barrier content already on the site.
+
+Always defer to the local building department. Do not state on the page which
+side of the line a given building falls on.
+
+## Commercial and industrial — west Niagara
+
+Researched October 2026 alongside the agriculture layer. The owner confirmed
+commercial and industrial work, so this carries its own service page.
+
+### The local base
+
+- **Grimsby's employment lands** sit in three places: the Downtown District,
+  the **South Service Road** corridor, and the **East industrial area**. The
+  town keeps a Vacant Employment Lands Directory.
+- The **South Service Road corridor is being built out with large-format
+  industrial** — three new buildings, roughly 642,500 sq ft across 35 acres,
+  40-foot clear heights, occupancy from Q3 2026.
+  **Do not name the development or its owner on the site.** Naming a specific
+  developer's project on a contractor's page implies an association that does
+  not exist. Refer to the corridor, the scale and the clear heights instead.
+- **12 acres on Main Street West** is the site of **an old cannery**, closed for
+  decades, with developer interest. A good detail — it ties the agricultural and
+  commercial threads together and is unmistakably local.
+- **Smithville** is West Lincoln's urban centre and its industrial and
+  commercial growth area.
+- Grimsby's labour pool is described locally as experienced in **agriculture,
+  manufacturing and technology**.
+
+### Building types
+
+Steel-framed warehouses and distribution space, fabrication and machine shops,
+service garages and fleet buildings, food and beverage processing, and the
+small-unit commercial along the service roads.
+
+### What the argument is, and how it differs from the house pages
+
+The residential pages argue comfort and bills. The commercial page should not.
+
+- **Tall buildings stratify.** A 40-foot clear height puts the expensive warm
+  air at the ceiling, far from anyone. Air sealing the envelope is what stops it
+  leaving through the roof plane; adding R-value to a leaky building does little.
+- **Condensation on steel is the same mechanism as the barn page** — warm moist
+  air meeting a cold deck. In a warehouse it drips on stock and racking and
+  corrodes purlins.
+- **Closed cell applied directly to the underside of metal decking** between
+  purlins is the standard retrofit assembly, and it is one operation for
+  insulation, air barrier and vapour control.
+- **Sound and temperature stability** matter in a fabrication shop; so does not
+  losing the heat every time a dock door opens.
+
+### Code — same trap, commercial version
+
+Exposed foam rules are the thing to get right. OBC 9.10.17.10, 15-minute
+thermal barrier in occupied space, ½-inch gypsum or an approved intumescent
+coating under 9.29.4–9.29.9. In a warehouse the practical answer is usually a
+sprayed intumescent coating rather than drywall across a whole deck, because
+drywalling a 40-foot ceiling is not realistic. Say the coating is an option,
+not that it is approved for a given building — that is the inspector's call.
+
+**Be careful with sprinklers.** ESFR systems are common in new large-format
+industrial, and foam thickness at the deck can interact with sprinkler design.
+Do not write anything that sounds like a sprinkler determination.
+
+### Watch out — two UK traps
+
+Search results for "Grimsby business park" and "Grimsby employment" return
+**Grimsby, North East Lincolnshire, England** constantly — Great Grimsby
+Business Park, nelincs.gov.uk, greaterlincolnshire-cca.gov.uk. Two of the three
+confusable names (Grimsby **and** Lincoln) exist in both places. Verify every
+commercial fact is Ontario before it reaches copy.
+
 ### Bad sources encountered — do not reuse
 
 - **Grokipedia** claims Grimsby temperatures "rarely reach below 0°C". That is
