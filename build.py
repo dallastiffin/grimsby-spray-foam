@@ -579,7 +579,7 @@ def form_fields(pfx, compact=False):
           <div class="field">
             <label for="{pfx}-phone">Phone <span class="req" aria-hidden="true">*</span></label>
             <input type="tel" id="{pfx}-phone" name="phone" autocomplete="tel"
-                   data-label="Phone" placeholder="782-000-0000" required>
+                   data-label="Phone" placeholder="289-000-0000" required>
             <span class="field__error" aria-live="polite"></span>
           </div>
 
@@ -736,7 +736,7 @@ SIDEBAR = f"""
           </div>
         </div>
         <div class="panel" style="margin-top:var(--space-5);">
-          <h3>Industrial Flooring Services</h3>
+          <h3>Spray Foam Insulation Services</h3>
           <ul class="footer-list" style="padding:0;">
             {"".join(f'<li><a href="{s}" style="color:var(--color-primary-light);">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)}
           </ul>
@@ -926,7 +926,7 @@ def services_grid(exclude=None, heading=None, intro=None):
 <section class="section" id="services" aria-labelledby="services-heading">
   <div class="container">
     <div class="section-head is-centered">
-      <span class="eyebrow">Industrial Flooring</span>
+      <span class="eyebrow">Spray Foam Insulation</span>
       <h2 id="services-heading">{esc(heading)}</h2>
       <p class="lead">{esc(intro)}</p>
     </div>
@@ -935,7 +935,7 @@ def services_grid(exclude=None, heading=None, intro=None):
     </div>
     <div class="btn-row is-centered">
       <a class="btn btn--primary btn--lg" href="#quote">Get a Free Quote</a>
-      <a class="btn btn--outline btn--lg" href="services.html">All Industrial Flooring Services</a>
+      <a class="btn btn--outline btn--lg" href="services.html">All Insulation Services</a>
     </div>
   </div>
 </section>
@@ -1293,7 +1293,7 @@ home += f"""
       </ul>
       <div class="btn-row">
         <a class="btn btn--primary btn--lg" href="tel:{PHONE_HREF}">Call Now: {PHONE_DISPLAY}</a>
-        <a class="btn btn--ghost btn--lg" href="#services">Industrial Flooring Services</a>
+        <a class="btn btn--ghost btn--lg" href="#services">See Our Services</a>
       </div>
     </div>
 
@@ -1306,7 +1306,7 @@ home += f"""
 <!-- ============================= TRUST STRIP ============================= -->
 <!-- Secondary service navigation. Built from SERVICE_PAGES so the labels and
      targets can never drift apart. -->
-<nav class="trust-strip" aria-label="Industrial flooring services">
+<nav class="trust-strip" aria-label="Spray foam insulation services">
   <div class="container">
     <ul>
 {chr(10).join('      <li><a href="%s">%s</a></li>' % (slug, esc(title)) for slug, title, _ in SERVICE_PAGES)}
@@ -1349,7 +1349,7 @@ home += f"""
 <!-- ============================= MAIN CONTENT ============================= -->
 <section class="section" aria-labelledby="detail-heading">
   <div class="container">
-    <h2 id="detail-heading" class="visually-hidden">Industrial flooring information for {CITY} facility managers</h2>
+    <h2 id="detail-heading" class="visually-hidden">Spray foam insulation information for {CITY} homeowners</h2>
     <div class="layout-split">
       <div class="prose">
 {"".join(main_blocks)}      </div>
@@ -1392,7 +1392,7 @@ home += f"""
         </div>
       </div>
       <div class="map-wrap">
-        <iframe src="{MAP_EMBED}" title="Map of the {CITY_PROV} and {REGION} industrial flooring service area"
+        <iframe src="{MAP_EMBED}" title="Map of the {CITY_PROV} and {REGION} spray foam insulation service area"
                 width="600" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 allowfullscreen></iframe>
       </div>
@@ -1421,7 +1421,7 @@ for idx, (slug, title, short) in enumerate(SERVICE_PAGES):
     closing  = ssecs[-1]
     middle   = ssecs[1:-1]
 
-    crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), ("Industrial Flooring", "services.html"), (title, None)])
+    crumbs, crumb_ld = breadcrumbs([("Home", "index.html"), ("Services", "services.html"), (title, None)])
 
     service_ld = {
         "@context": "https://schema.org", "@type": "Service",
@@ -1676,7 +1676,7 @@ contact_page += f"""
           </div>
         </div>
         <div class="panel" style="margin-top:var(--space-5);">
-          <h3>Industrial Flooring Services</h3>
+          <h3>Spray Foam Insulation Services</h3>
           <ul class="footer-list" style="padding:0;">
             {"".join(f'<li><a href="{s}" style="color:var(--color-primary-light);">{esc(t)}</a></li>' for s, t, _ in SERVICE_PAGES)}
           </ul>
@@ -1962,7 +1962,7 @@ notfound += f'''
 
 {intro_band("    <p>%s</p>" % esc(sc("Not Found Text")), "Page not found")}
 
-{services_grid(heading="Our Services", intro=f"Industrial flooring systems installed across {CITY} and {REGION}.")}
+{services_grid(heading="Our Services", intro=f"Spray foam insulation installed across {CITY} and {REGION}.")}
 
 {contact_form("404")}
 </main>
