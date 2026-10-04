@@ -244,7 +244,7 @@ Never hand-edit anything in `site/` except `style.css` and `script.js`.
 The earlier v2 rebuild changed the palette but kept the template's layout, so
 the site still read as the old format. This pass replaces the look entirely.
 **Copy is unchanged** — every page, slug, paragraph and FAQ comes from the same
-markdown. Not pushed yet.
+markdown. Pushed live 3 Oct 2026 (commit bd60d94) together with the agricultural and commercial pages; Workers Builds succeeded and all 13 sitemap URLs return the new design.
 
 What changed (all in `build.py` templates, `site/style.css`, `tools/make-logo.py`):
 
