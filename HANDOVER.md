@@ -131,6 +131,65 @@ block is now conditional — locality, region and country only, until
 
 ---
 
+## October 2026 — agricultural and commercial pages added
+
+Eight services now, up from six. The owner pointed out that the first build
+researched Grimsby's residential geography thoroughly and never touched
+agriculture, despite the site already claiming Lincoln and West Lincoln as
+service area. Both new pages carry new slugs — no legacy constraint.
+
+- `/agricultural-insulation` — barns, machinery sheds, livestock housing,
+  greenhouse service rooms, cold storage, farm shops
+- `/commercial-insulation` — warehouses, fabrication shops, service garages,
+  food and beverage, small units
+
+Research is in `INDUSTRY.md` under "Agriculture — the Niagara fruit belt" and
+"Commercial and industrial — west Niagara". Three things recorded there that
+must not drift:
+
+1. **Do not name the South Service Road development or its owner.** Naming a
+   specific developer's project on a contractor site implies an association
+   that does not exist. The copy refers to the corridor and the clear heights.
+2. **Do not claim foam is a rodent barrier or resists chewing.** Competitor
+   sites claim both; neither is true. The page says it gives rodents nothing
+   to nest in, and says explicitly that this is not the same thing.
+3. **Verify every "Grimsby business" fact is Ontario.** Grimsby *and* Lincoln
+   both exist in North East Lincolnshire, England, and UK results dominate
+   those searches.
+
+**Gallery retitled.** It read "Recent Work" over a photo set that
+`generated-industrial-agricultural-prompts.txt` documents as *"AI-generated
+spray foam project illustrations; not photographs of completed customer
+projects."* It now reads "What Spray Foam Insulation Looks Like Installed",
+which sells the finish without asserting authorship. **The same heading is
+still live on Halifax, Windsor, Chatham and the other siblings.**
+
+### Audit after the change
+
+`_audit-tools/` now exists in this folder with a Grimsby config — per-page head
+terms, local place names, and four sibling sites in `compare`.
+
+- Both new pages inside the density band; 0 British spellings; 0 certification
+  claims; 0 images without alt; 16/16 unique titles and descriptions; both
+  pages linked from the home page and linking back; initial weight 245 KB
+- Sitemap 13 URLs, `llms.txt` and the `Service` schema both picked the pages up
+
+### One failure, pre-existing, NOT introduced here
+
+**Overlap with Leamington Spray Foam Insulation is 3.74%, against a 3% rule.**
+
+This was never measured before — Leamington was not in the original compare
+list, which only held Windsor and Chatham. Every one of the ten
+highest-scoring matched phrases comes from pages that existed before this
+change (crawl space headroom, the rebate "not the program administrator"
+line, ducting and air handlers, foundation walls and rim joists, the written
+spec sentence). None come from the agricultural or commercial copy.
+
+So the two new pages are clean and the overlap is older than they are. It is
+a real duplicate-content risk between two same-trade sibling sites and it
+wants its own pass — rewriting shared boilerplate touches six already-indexed
+pages, which is not something to fold into an additive change.
+
 ## Accepted deviations from the skill
 
 **Cross-links to the owner's other sites — kept at the owner's instruction.**
