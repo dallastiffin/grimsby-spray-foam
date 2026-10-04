@@ -1263,12 +1263,33 @@ for i, s in enumerate(body_sections):
 faq_html, faq_ld = faq_accordion(faq_sec, "home-faq")
 
 home = head(seo["Home Page"]["title"], seo["Home Page"]["meta"], "index.html", faq_ld)
+# The hero photo is now the first large image on screen, so preload it.
+home = home.replace('<link rel="stylesheet" href="%s">' % asset_v("style.css"),
+    '<link rel="preload" as="image" href="images/%s-1200.jpg"\n'
+    '      imagesrcset="images/%s-800.webp 800w, images/%s-1200.webp 1200w"\n'
+    '      imagesizes="(max-width: 960px) 100vw, 62vw" type="image/webp">\n'
+    '<link rel="stylesheet" href="%s">' % (HERO_IMG, HERO_IMG, HERO_IMG, asset_v("style.css")))
 home += header("index.html")
 home += f"""
 <main id="main">
 
 <!-- ============================= HERO ============================= -->
 <section class="hero" aria-labelledby="hero-heading">
+
+  <!-- Soft-faded photo on the right. Decorative (empty alt): it fades to white
+       before it reaches the headline, so no text ever sits on the photo. -->
+  <div class="hero__photo" aria-hidden="true">
+    <picture>
+      <source type="image/webp"
+              srcset="images/{HERO_IMG}-800.webp 800w, images/{HERO_IMG}-1200.webp 1200w"
+              sizes="(max-width: 960px) 100vw, 62vw">
+      <img src="images/{HERO_IMG}-1200.jpg"
+           srcset="images/{HERO_IMG}-800.jpg 800w, images/{HERO_IMG}-1200.jpg 1200w"
+           sizes="(max-width: 960px) 100vw, 62vw" alt="" width="1200" height="900"
+           fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+
   <div class="container hero__grid">
     <div class="hero__text">
       <!-- Business name as a masthead. A paragraph, not a heading, so the page
@@ -1294,7 +1315,7 @@ home += f"""
 </section>
 
 {intro_band(hero_paras, "Introduction",
-            media=picture(HERO_IMG, "(max-width: 900px) 92vw, 560px", indent="      "))}
+            media=picture(SERVICES_IMG, "(max-width: 900px) 92vw, 560px", indent="      "))}
 
 {services_grid()}
 

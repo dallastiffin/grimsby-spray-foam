@@ -266,6 +266,19 @@ h3 { font-size: var(--fs-h3); font-weight: 700; line-height: 1.2; }
   align-items: start;
 }
 .hero__text { padding-bottom: 190px; }
+
+/* Soft-faded photo: anchored right, fading to white well before the
+   headline column. Sits under the foam band. */
+.hero__photo {
+  position: absolute; z-index: 0;
+  top: 0; right: 0; bottom: 0;
+  width: 64%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 22%, #000 55%);
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 22%, #000 55%);
+}
+.hero__photo picture, .hero__photo img { width: 100%; height: 100%; }
+.hero__photo img { object-fit: cover; object-position: 50% 40%; opacity: .9; }
 .hero__brand {
   margin: 0 0 22px;
   color: var(--rust);
@@ -697,7 +710,12 @@ h3 { font-size: var(--fs-h3); font-weight: 700; line-height: 1.2; }
   .nav__quote { display: flex; margin-top: 18px; justify-content: center; min-height: 52px; align-items: center; background: var(--rust); color: var(--white); font-weight: 700; text-decoration: none; border-radius: 3px; }
 
   .hero__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .hero__text { padding-bottom: 0; }
+  .hero__text { padding-bottom: 0; padding-top: 236px; }
+  .hero__photo {
+    width: 100%; bottom: auto; height: 270px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  }
   .hero h1 { max-width: 14ch; }
   .hero-form { margin-bottom: -72px; z-index: 3; }
   .hero__foam { position: relative; height: auto; padding: 112px 0 36px; margin-top: 0; }

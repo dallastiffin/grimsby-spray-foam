@@ -41,7 +41,10 @@
 
 <!-- Archivo (SIL OFL), self-hosted variable font: one file, width and weight axes. -->
 <link rel="preload" href="fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=768c045b">
+<link rel="preload" as="image" href="images/hero-spray-foam-insulation-grimsby-1200.jpg"
+      imagesrcset="images/hero-spray-foam-insulation-grimsby-800.webp 800w, images/hero-spray-foam-insulation-grimsby-1200.webp 1200w"
+      imagesizes="(max-width: 960px) 100vw, 62vw" type="image/webp">
+<link rel="stylesheet" href="style.css?v=43b92e7d">
 <script src="script.js?v=82926f68" defer></script>
 
 <!-- ===== Schema.org: Local Business ===== -->
@@ -297,6 +300,21 @@
 
 <!-- ============================= HERO ============================= -->
 <section class="hero" aria-labelledby="hero-heading">
+
+  <!-- Soft-faded photo on the right. Decorative (empty alt): it fades to white
+       before it reaches the headline, so no text ever sits on the photo. -->
+  <div class="hero__photo" aria-hidden="true">
+    <picture>
+      <source type="image/webp"
+              srcset="images/hero-spray-foam-insulation-grimsby-800.webp 800w, images/hero-spray-foam-insulation-grimsby-1200.webp 1200w"
+              sizes="(max-width: 960px) 100vw, 62vw">
+      <img src="images/hero-spray-foam-insulation-grimsby-1200.jpg"
+           srcset="images/hero-spray-foam-insulation-grimsby-800.jpg 800w, images/hero-spray-foam-insulation-grimsby-1200.jpg 1200w"
+           sizes="(max-width: 960px) 100vw, 62vw" alt="" width="1200" height="900"
+           fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+
   <div class="container hero__grid">
     <div class="hero__text">
       <!-- Business name as a masthead. A paragraph, not a heading, so the page
@@ -411,9 +429,9 @@
   <div class="container intro-band__grid">
     <div class="intro-band__media">
       <picture>
-        <source type="image/webp" srcset="images/hero-spray-foam-insulation-grimsby-800.webp 800w, images/hero-spray-foam-insulation-grimsby-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 560px">
-        <img src="images/hero-spray-foam-insulation-grimsby-800.jpg" srcset="images/hero-spray-foam-insulation-grimsby-800.jpg 800w, images/hero-spray-foam-insulation-grimsby-1200.jpg 1200w" sizes="(max-width: 900px) 92vw, 560px"
-             alt="Attic in a Grimsby home finished ridge to eaves in spray foam insulation" width="800" height="600" loading="lazy" decoding="async">
+        <source type="image/webp" srcset="images/services-spray-foam-insulation-grimsby-800.webp 800w, images/services-spray-foam-insulation-grimsby-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 560px">
+        <img src="images/services-spray-foam-insulation-grimsby-800.jpg" srcset="images/services-spray-foam-insulation-grimsby-800.jpg 800w, images/services-spray-foam-insulation-grimsby-1200.jpg 1200w" sizes="(max-width: 900px) 92vw, 560px"
+             alt="Finished basement with every foundation wall sealed in spray foam insulation" width="800" height="600" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="intro-band__text prose">
