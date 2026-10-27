@@ -156,7 +156,7 @@ Grimsby itself, from the lakeshore and Grimsby Beach up through the older street
 
 Through the Town of Lincoln, which means Beamsville, Vineland, Jordan and Campden. Those are neighbourhoods of one municipality rather than separate towns, and we cover all of them.
 
-Smithville, Caistor Centre and Grassie to the south, Winona and Stoney Creek to the west, and out as far as St. Catharines and Hamilton. If you sit just past the edge of that, call and ask. Further afield, there are spray foam insulation crews we know in [Milton](https://www.miltonsprayfoaminsulation.com/) and [Windsor](https://sprayfoaminsulationwindsor.com/).
+Smithville, Caistor Centre and Grassie to the south, Winona and Stoney Creek to the west, and out as far as St. Catharines and Hamilton. If you sit just past the edge of that, call and ask. Further afield, there are spray foam insulation crews we know in [Milton](https://www.miltonsprayfoaminsulation.com/) and [Windsor](https://sprayfoaminsulationwindsor.com/). For a job that is only the attic, [Vaughan Attic Insulation](https://vaughanatticinsulation.com/ "nf") works in the Vaughan area.
 
 ## Frequently Asked Questions
 
